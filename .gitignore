@@ -7,7 +7,13 @@
 secrets/
 
 # ---- Run artifacts ----
-runs/
+runs/*
+# ...except the P5 benchmark report, which is a deliverable, not a scratch run.
+!runs/benchmark/
+runs/benchmark/*
+!runs/benchmark/results.json
+!runs/benchmark/results.md
+!runs/benchmark/failure-analysis.md
 *.patch
 state.db
 *.sqlite
