@@ -1,0 +1,26 @@
+{
+  "task_id": "task01_datetime",
+  "difficulty": "easy",
+  "source_api": "datetime.utcnow",
+  "target_api": "datetime.now(timezone.utc)",
+  "call_sites": [
+    {
+      "file": "src/pkg/core.py",
+      "line": 8,
+      "col": 11,
+      "symbol": "datetime.datetime.utcnow",
+      "kind": "call"
+    }
+  ],
+  "expected_import_changes": [
+    {
+      "file": "src/pkg/core.py",
+      "add": ["timezone"],
+      "remove": []
+    }
+  ],
+  "semantic_checks": [
+    "make_timestamp() returns a timezone-aware datetime (tzinfo is not None)"
+  ],
+  "gold_commit": "pending"
+}

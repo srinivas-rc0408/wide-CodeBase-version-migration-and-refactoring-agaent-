@@ -1,0 +1,9 @@
+id: task01_datetime
+description: >-
+  Replace the deprecated naive datetime.utcnow() with the timezone-aware
+  datetime.now(timezone.utc), adding timezone to the datetime import. The
+  call site lives in src/pkg/core.py; src/pkg/report.py imports and does
+  arithmetic on its result, so the contract change is cross-file.
+source_api: datetime.utcnow
+target_api: datetime.now(timezone.utc)
+difficulty: easy
