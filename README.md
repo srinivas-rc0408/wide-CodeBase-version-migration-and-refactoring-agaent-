@@ -121,6 +121,13 @@ python -m mra.run --task-dir corpus/tierA/task01_datetime
 Outputs land in `runs/<run_id>/`: the unified `migration.patch`, `trajectory.json`,
 `metrics.json`, and the normalized `test_report.json`.
 
+The recovery loop is exercised by `corpus/tierA/task03_half_migration`, which is
+built to be broken: migrate two of its three call sites and the suite goes red
+with `TypeError: can't subtract offset-naive and offset-aware datetimes`, and
+the CORRECT loop has to finish the job. Its deterministic tests need no API key
+— `pytest tests/test_recovery.py` runs the whole state machine offline and skips
+only the live-model case.
+
 ## Evaluation
 
 Three metrics, defined formally in [`docs/05_DATA_EVALUATION_PROTOCOL.md`](docs/05_DATA_EVALUATION_PROTOCOL.md):
@@ -147,7 +154,7 @@ Three metrics, defined formally in [`docs/05_DATA_EVALUATION_PROTOCOL.md`](docs/
 - [x] **P0** Dockerized skeleton: `pytest` + `git` wrapped as tools
 - [x] **P1** Static analyzer: call sites + dependency graph (deterministic)
 - [x] **P2** Single-file edit + verify (end-to-end tiny agent)
-- [ ] **P3** Recovery loop (the graded core)
+- [x] **P3** Recovery loop (the graded core): classify -> locate -> patch -> re-test, capped per failure signature
 - [ ] **P4** Multi-file + memory (state tracker + summarization)
 - [ ] **P5** Benchmark + report + paper
 
