@@ -129,12 +129,18 @@ def build_graph(
     target: str = TARGET,
     run_id: str | None = None,
     router: Router | None = None,
+    planner: Any = plan_node,
 ) -> StateGraph:
-    """The graph of docs/04 §2.4, with the sandbox and corrector bound in."""
+    """The graph of docs/04 §2.4, with the sandbox and corrector bound in.
+
+    ``planner`` is the PLAN node. It defaults to the dependency-ordered one and
+    is a parameter only so P5's ordering ablation can swap in a deliberately
+    worse order (``mra.benchmark``) and measure what FR-3 buys.
+    """
     graph = StateGraph(MigrationState)
     for name, node in (
         ("map", make_map_node(target)),
-        ("plan", plan_node),
+        ("plan", planner),
         ("edit", make_edit_node()),
         ("test", make_test_node(runner, task_id, run_id)),
         ("correct", make_correct_node(corrector, router)),
@@ -206,6 +212,7 @@ def run_migration(
     router: Router | None = None,
     state: MigrationState | None = None,
     recursion_limit: int = DEFAULT_RECURSION_LIMIT,
+    planner: Any = plan_node,
 ) -> dict[str, Any]:
     """Migrate a Tier-A task by driving the graph, and score the result.
 
@@ -241,7 +248,7 @@ def run_migration(
     base_sha = snapshot(work, "pre-migration snapshot")
 
     graph = build_graph(runner=runner, corrector=corrector, task_id=task_id,
-                        target=target, run_id=run_id, router=router)
+                        target=target, run_id=run_id, router=router, planner=planner)
     config = {"configurable": {"thread_id": run_id}, "recursion_limit": recursion_limit}
     with SqliteSaver.from_conn_string(str(out_dir / "state.db")) as saver:
         app = graph.compile(checkpointer=saver)
