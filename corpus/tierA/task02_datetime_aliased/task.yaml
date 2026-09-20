@@ -1,0 +1,11 @@
+id: task02_datetime_aliased
+description: >-
+  Same migration as task01 (datetime.utcnow -> datetime.now(timezone.utc)),
+  varying exactly one factor: import style. core.py binds the module with
+  `import datetime` and calls datetime.datetime.utcnow(); report.py binds it
+  with `import datetime as dt` and calls dt.datetime.utcnow(). Neither form
+  is reachable by a matcher written for task01's from-import style, so the
+  analyzer must resolve module aliases and scope before editing.
+source_api: datetime.utcnow
+target_api: datetime.now(timezone.utc)
+difficulty: easy

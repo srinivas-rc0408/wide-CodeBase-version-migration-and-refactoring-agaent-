@@ -1,0 +1,38 @@
+{
+  "task_id": "task02_datetime_aliased",
+  "difficulty": "easy",
+  "source_api": "datetime.utcnow",
+  "target_api": "datetime.now(timezone.utc)",
+  "call_sites": [
+    {
+      "file": "src/pkg/core.py",
+      "line": 8,
+      "col": 11,
+      "symbol": "datetime.datetime.utcnow",
+      "kind": "call"
+    },
+    {
+      "file": "src/pkg/report.py",
+      "line": 20,
+      "col": 12,
+      "symbol": "datetime.datetime.utcnow",
+      "kind": "call"
+    }
+  ],
+  "expected_import_changes": [
+    {
+      "file": "src/pkg/core.py",
+      "add": [],
+      "remove": []
+    },
+    {
+      "file": "src/pkg/report.py",
+      "add": [],
+      "remove": []
+    }
+  ],
+  "semantic_checks": [
+    "make_timestamp() returns a timezone-aware datetime (tzinfo is not None)"
+  ],
+  "gold_commit": "pending"
+}
