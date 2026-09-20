@@ -1,0 +1,19 @@
+id: task03_half_migration
+description: >-
+  The recovery test bed. Same contract as task01 (datetime.utcnow ->
+  datetime.now(timezone.utc)) in the same from-import style, but across three
+  modules instead of one, and |A| = 3. Its purpose is not enumeration — it is
+  the break that appears when only a SUBSET of those three sites is migrated.
+  core.py defines the clock; report.py subtracts its own reading from core's;
+  audit.py reads the clock but never mixes two readings. Migrate core.py and
+  audit.py and leave report.py and exactly one test fails, with
+  "TypeError: can't subtract offset-naive and offset-aware datetimes".
+  That red state is what the CORRECT loop has to finish.
+source_api: datetime.utcnow
+target_api: datetime.now(timezone.utc)
+difficulty: medium
+recovery_fixture:
+  migrate_first: [src/pkg/core.py, src/pkg/audit.py]
+  leaves_broken: src/pkg/report.py
+  expected_failure: tests/test_report.py::test_stamp_age_is_non_negative
+  expected_exc_type: TypeError

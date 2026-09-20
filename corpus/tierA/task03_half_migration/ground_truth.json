@@ -1,0 +1,51 @@
+{
+  "task_id": "task03_half_migration",
+  "difficulty": "medium",
+  "source_api": "datetime.utcnow",
+  "target_api": "datetime.now(timezone.utc)",
+  "call_sites": [
+    {
+      "file": "src/pkg/audit.py",
+      "line": 19,
+      "col": 10,
+      "symbol": "datetime.datetime.utcnow",
+      "kind": "call"
+    },
+    {
+      "file": "src/pkg/core.py",
+      "line": 8,
+      "col": 11,
+      "symbol": "datetime.datetime.utcnow",
+      "kind": "call"
+    },
+    {
+      "file": "src/pkg/report.py",
+      "line": 20,
+      "col": 12,
+      "symbol": "datetime.datetime.utcnow",
+      "kind": "call"
+    }
+  ],
+  "expected_import_changes": [
+    {
+      "file": "src/pkg/audit.py",
+      "add": ["timezone"],
+      "remove": []
+    },
+    {
+      "file": "src/pkg/core.py",
+      "add": ["timezone"],
+      "remove": []
+    },
+    {
+      "file": "src/pkg/report.py",
+      "add": ["timezone"],
+      "remove": []
+    }
+  ],
+  "semantic_checks": [
+    "make_timestamp() returns a timezone-aware datetime (tzinfo is not None)",
+    "stamp_age_seconds() subtracts two aware datetimes and does not raise TypeError"
+  ],
+  "gold_commit": "PENDING"
+}
