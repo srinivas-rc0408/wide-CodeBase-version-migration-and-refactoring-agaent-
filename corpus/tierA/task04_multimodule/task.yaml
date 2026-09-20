@@ -1,0 +1,26 @@
+id: task04_multimodule
+description: >-
+  The batching and scale fixture. Same contract as task01 (datetime.utcnow ->
+  datetime.now(timezone.utc)), from-import style, but across a seven-module
+  billing app with a realistic import DAG. |A| = 6. Three properties the
+  single-file tasks cannot test: (1) pkg.ledger and pkg.audit import each
+  other, so the planner must collapse that cycle into one atomic batch;
+  (2) pkg.clock is the most-depended-upon module, so dependency-ordered
+  batching migrates it first; (3) pkg.invoice stamps with its OWN clock
+  reading while pkg.report subtracts from that stamp, so the break appears
+  only in the window after invoice.py is migrated and before report.py is —
+  a genuine cross-batch regression that recovery has to repair mid-run.
+source_api: datetime.utcnow
+target_api: datetime.now(timezone.utc)
+difficulty: hard
+batching:
+  expected_batches:
+    - [src/pkg/clock.py]
+    - [src/pkg/audit.py, src/pkg/ledger.py]   # the collapsed import cycle
+    - [src/pkg/invoice.py]
+    - [src/pkg/report.py]
+    - [src/pkg/api.py]
+  cycle: [src/pkg/audit.py, src/pkg/ledger.py]
+  breaks_after_batch: 2
+  expected_failure: tests/test_report.py::test_invoice_age_is_non_negative
+  expected_exc_type: TypeError

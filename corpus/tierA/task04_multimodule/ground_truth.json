@@ -1,0 +1,100 @@
+{
+  "task_id": "task04_multimodule",
+  "difficulty": "hard",
+  "source_api": "datetime.utcnow",
+  "target_api": "datetime.now(timezone.utc)",
+  "call_sites": [
+    {
+      "file": "src/pkg/api.py",
+      "line": 12,
+      "col": 21,
+      "symbol": "datetime.datetime.utcnow",
+      "kind": "call"
+    },
+    {
+      "file": "src/pkg/audit.py",
+      "line": 31,
+      "col": 22,
+      "symbol": "datetime.datetime.utcnow",
+      "kind": "call"
+    },
+    {
+      "file": "src/pkg/clock.py",
+      "line": 12,
+      "col": 11,
+      "symbol": "datetime.datetime.utcnow",
+      "kind": "call"
+    },
+    {
+      "file": "src/pkg/invoice.py",
+      "line": 17,
+      "col": 63,
+      "symbol": "datetime.datetime.utcnow",
+      "kind": "call"
+    },
+    {
+      "file": "src/pkg/ledger.py",
+      "line": 35,
+      "col": 10,
+      "symbol": "datetime.datetime.utcnow",
+      "kind": "call"
+    },
+    {
+      "file": "src/pkg/report.py",
+      "line": 16,
+      "col": 12,
+      "symbol": "datetime.datetime.utcnow",
+      "kind": "call"
+    }
+  ],
+  "expected_import_changes": [
+    {
+      "file": "src/pkg/api.py",
+      "add": [
+        "timezone"
+      ],
+      "remove": []
+    },
+    {
+      "file": "src/pkg/audit.py",
+      "add": [
+        "timezone"
+      ],
+      "remove": []
+    },
+    {
+      "file": "src/pkg/clock.py",
+      "add": [
+        "timezone"
+      ],
+      "remove": []
+    },
+    {
+      "file": "src/pkg/invoice.py",
+      "add": [
+        "timezone"
+      ],
+      "remove": []
+    },
+    {
+      "file": "src/pkg/ledger.py",
+      "add": [
+        "timezone"
+      ],
+      "remove": []
+    },
+    {
+      "file": "src/pkg/report.py",
+      "add": [
+        "timezone"
+      ],
+      "remove": []
+    }
+  ],
+  "semantic_checks": [
+    "make_timestamp() returns a timezone-aware datetime (tzinfo is not None)",
+    "every stamp in one api.handle() response is timezone-aware",
+    "invoice_age_seconds() subtracts two aware datetimes and does not raise TypeError"
+  ],
+  "gold_commit": "PENDING"
+}
