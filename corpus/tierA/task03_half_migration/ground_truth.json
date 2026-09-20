@@ -47,5 +47,5 @@
     "make_timestamp() returns a timezone-aware datetime (tzinfo is not None)",
     "stamp_age_seconds() subtracts two aware datetimes and does not raise TypeError"
   ],
-  "gold_commit": "PENDING"
+  "gold_commit": "db5493d6ab6b126888a9a81e3e24a17e0a5ba362"
 }
