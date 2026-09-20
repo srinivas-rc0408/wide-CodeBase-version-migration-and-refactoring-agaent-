@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mra"
+version = "0.1.0"
+description = "Codebase-Wide Version Migration & Refactoring Agent"
+requires-python = "==3.12.*"
+dependencies = [
+    "libcst==1.9.0",
+    "langgraph==1.2.11",
+    "langgraph-checkpoint-sqlite==3.1.1",
+    "networkx==3.6.1",
+    "pytest==9.1.1",
+    "pytest-json-report==1.5.0",
+    "ruff==0.16.8",
+    "GitPython==3.1.62",
+    "python-dotenv==1.2.3",
+    "openai==3.16.2",
+]
+
+[project.optional-dependencies]
+dev = ["mypy==2.3.1"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["corpus", "runs"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
