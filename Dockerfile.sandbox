@@ -1,0 +1,31 @@
+# Verification sandbox. One container per run; the repo is bind-mounted at run
+# time, never baked in (SRS NFR-8).
+#
+#   docker build -f Dockerfile.sandbox -t mra-sandbox:py312 .
+#
+# On a host whose kernel cannot create veth pairs (seen on CachyOS/Arch:
+# "failed to add the host <=> sandbox pair interfaces: operation not supported")
+# add --network=host to the BUILD only. Runs are unaffected: they use
+# --network none, which needs no veth at all (NB-5).
+FROM python:3.12-slim
+
+# git is needed for snapshot/rollback/diff inside the sandbox.
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends git \
+ && rm -rf /var/lib/apt/lists/*
+
+# Verifier toolchain, pinned for reproducibility (NFR-7). These must match the
+# host pins in pyproject.toml so a report means the same thing in both places.
+RUN pip install --no-cache-dir \
+      pytest==9.1.1 \
+      pytest-json-report==1.5.0 \
+      ruff==0.16.8
+
+# The container runs as the calling user's uid:gid so bind-mounted output is not
+# root-owned on a Linux host. That uid has no passwd entry and no home, so make
+# the work tree world-writable and give HOME a writable target.
+RUN mkdir -p /work && chmod 1777 /work
+ENV HOME=/tmp \
+    PYTHONDONTWRITEBYTECODE=1
+
+WORKDIR /work

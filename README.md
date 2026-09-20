@@ -148,7 +148,7 @@ Three metrics, defined formally in [`docs/05_DATA_EVALUATION_PROTOCOL.md`](docs/
 
 ## Roadmap (build phases)
 
-- [ ] **P0** Dockerized skeleton: `pytest` + `git` wrapped as tools
+- [x] **P0** Dockerized skeleton: `pytest` + `git` wrapped as tools
 - [ ] **P1** Static analyzer: call sites + dependency graph (deterministic)
 - [ ] **P2** Single-file edit + verify (end-to-end tiny agent)
 - [ ] **P3** Recovery loop (the graded core)
