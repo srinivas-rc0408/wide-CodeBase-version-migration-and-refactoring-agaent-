@@ -16,6 +16,7 @@ the repo is how a long-horizon run runs out of context and out of budget.
 
 from __future__ import annotations
 
+import os
 import re
 from pathlib import Path
 from typing import Any
@@ -24,8 +25,8 @@ import libcst as cst
 
 from mra.analysis import call_sites as call_sites_module
 from mra.analysis import dep_graph as dep_graph_module
+from mra.memory import edit_context
 from mra.models import Router
-from mra.sandbox.runner import TRACE_MAX_CHARS
 
 #: docs/04 §2.5 taxonomy. "non_fixable" is the class that ends the loop.
 FAILURE_CLASSES = ("import", "signature", "behaviour", "assertion", "non_fixable")
@@ -162,29 +163,20 @@ def locate(
 
 
 def patch_prompt(
-    failure: dict[str, Any], located: dict[str, Any], contract: dict[str, Any], klass: str
+    failure: dict[str, Any],
+    located: dict[str, Any],
+    contract: dict[str, Any],
+    klass: str,
+    summary: str = "",
 ) -> str:
-    """The whole context a corrective edit gets. Nothing else is sent (NFR-12)."""
-    return "\n".join([
-        f"# migration contract: {contract.get('source_api')} -> {contract.get('target_api')}",
-        f"# failure class: {klass}",
-        f"# failing test: {failure.get('nodeid')}",
-        f"# exception: {failure.get('exc_type')}: {failure.get('message')}",
-        "",
-        "# trace",
-        str(failure.get("trace", ""))[:TRACE_MAX_CHARS],
-        "",
-        "# dependency-graph slice",
-        f"# {located['file']} is imported by: {located['importers'] or 'nothing'}",
-        f"# {located['file']} imports: {located['imports'] or 'nothing'}",
-        f"# unmigrated call sites still in this file: "
-        f"{[(s['line'], s['symbol']) for s in located['sites']]}",
-        "",
-        f"# file to rewrite: {located['file']}",
-        "```python",
-        located["source"],
-        "```",
-    ])
+    """The whole context a corrective edit gets. Nothing else is sent (NFR-12).
+
+    Assembled by :mod:`mra.memory`, which caps every component that would
+    otherwise grow with the repo — the neighbour list, the trace and the
+    rolling summary — so the payload tracks the file being fixed, not the
+    number of files around it.
+    """
+    return edit_context(failure, located, contract, klass, summary)
 
 
 def extract_source(reply: str) -> str:
@@ -205,10 +197,11 @@ def corrective_patch(
     located: dict[str, Any],
     contract: dict[str, Any],
     klass: str,
+    summary: str = "",
 ) -> str:
     """Ask V4-Pro for the corrected file (whole-file, libcst-validated)."""
     reply = router.complete(
-        "edit", PATCH_SYSTEM, patch_prompt(failure, located, contract, klass)
+        "edit", PATCH_SYSTEM, patch_prompt(failure, located, contract, klass, summary)
     )
     return extract_source(reply)
 
@@ -241,6 +234,9 @@ class LLMCorrector:
         self.contract = contract
         #: What each round decided, for the trajectory.
         self.log: list[dict[str, Any]] = []
+        #: Size of every prompt sent, so the context budget is measurable
+        #: rather than asserted (NFR-12, M3).
+        self.payload_chars: list[int] = []
 
     def __call__(
         self, repo: Path, failure: dict[str, Any], context: dict[str, Any]
@@ -250,7 +246,13 @@ class LLMCorrector:
         if located is None or klass == "non_fixable":
             self.log.append({"class": klass, "file": None, "reason": "nothing left to migrate"})
             return []
-        source = corrective_patch(self.router, failure, located, self.contract, klass)
+        summary = context.get("summary", "")
+        self.payload_chars.append(
+            len(patch_prompt(failure, located, self.contract, klass, summary))
+        )
+        source = corrective_patch(
+            self.router, failure, located, self.contract, klass, summary
+        )
         changed = apply_source(repo, located["file"], source)
         self.log.append({
             "class": klass,
@@ -259,3 +261,74 @@ class LLMCorrector:
             "changed": changed,
         })
         return changed
+
+
+def make_correct_node(corrector: Any, router: Router | None = None):
+    """Bind a corrector and return the node LangGraph calls.
+
+    One visit repairs one failure. The node owns the two invariants the loop
+    cannot delegate: the per-signature attempt counter (NFR-1), and the NB-4
+    guard that reverts a patch which touched the test oracle before it can be
+    tested against it.
+    """
+    from mra.memory import summarize
+    from mra.sandbox import changed_paths, rollback, snapshot
+
+    def correct_node(state: dict[str, Any]) -> dict[str, Any]:
+        report = state["last_test_report"]
+        attempts = dict(state.get("fix_attempts") or {})
+        cap = _cap()
+        failure = next(
+            (f for f in report["failures"] if attempts.get(f["signature"], 0) < cap), None
+        )
+        if failure is None:  # pragma: no cover - the router routes to give_up first
+            return {"note": {"action": "no failure left with attempts to spend", "detail": {}}}
+
+        signature = failure["signature"]
+        attempts[signature] = attempts.get(signature, 0) + 1
+        repo = Path(state["repo_path"])
+        summary = summarize(state, router)
+
+        base_sha = snapshot(repo, f"pre-correction ({signature})")
+        changed = corrector(repo, failure, {
+            "call_sites": state.get("call_sites") or {},
+            "dep_graph": state.get("dep_graph") or {},
+            "contract": state.get("contract") or {},
+            "summary": summary,
+        })
+
+        tampered = [p for p in changed_paths(repo, base_sha) if is_test_path(p)]
+        if tampered:
+            # Golden rule 1: revert first, report second.
+            rollback(repo, base_sha)
+            return {
+                "fix_attempts": attempts, "summary": summary,
+                "note": {
+                    "action": "rejected a patch that edited the test oracle (NB-4)",
+                    "detail": {"signature": signature, "attempt": attempts[signature],
+                               "rejected": tampered, "changed": []},
+                },
+            }
+
+        sha = snapshot(repo, f"correction {attempts[signature]} for {signature}")
+        status = dict(state.get("file_status") or {})
+        for file in changed:
+            status[file] = "migrated"
+        return {
+            "fix_attempts": attempts,
+            "file_status": status,
+            "summary": summary,
+            "note": {
+                "action": f"attempt {attempts[signature]}/{cap} on {failure['nodeid']}",
+                "detail": {"signature": signature, "attempt": attempts[signature],
+                           "exc_type": failure.get("exc_type"), "changed": changed, "sha": sha},
+            },
+        }
+
+    return correct_node
+
+
+def _cap() -> int:
+    from mra.recovery.loop import DEFAULT_MAX_FIX_ATTEMPTS
+
+    return int(os.environ.get("MRA_MAX_FIX_ATTEMPTS", str(DEFAULT_MAX_FIX_ATTEMPTS)))

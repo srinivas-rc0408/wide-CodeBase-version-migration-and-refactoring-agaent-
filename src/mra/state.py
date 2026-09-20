@@ -49,6 +49,13 @@ class MigrationState(TypedDict, total=False):
     #: is counted per signature, not per run, which is why this is a map.
     fix_attempts: dict[str, int]
     trajectory: list[dict[str, Any]]
+    #: Rolling progress note carried into the next LLM prompt. Bounded by
+    #: mra.memory so the context does not grow with the repo (NFR-12).
+    summary: str
+    #: The step just taken, as {action, detail}. A single slot, not a list:
+    #: the checkpointer keeps one snapshot per step, so the history is the
+    #: audit log and mra.graph reconstructs trajectory.json from it.
+    note: dict[str, Any]
     tokens: Tokens
     done: bool
 
