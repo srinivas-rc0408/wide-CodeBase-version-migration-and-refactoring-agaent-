@@ -96,5 +96,5 @@
     "every stamp in one api.handle() response is timezone-aware",
     "invoice_age_seconds() subtracts two aware datetimes and does not raise TypeError"
   ],
-  "gold_commit": "PENDING"
+  "gold_commit": "54d4301e5df2acc5090f34ca4ba6b96e02bcd3a6"
 }
