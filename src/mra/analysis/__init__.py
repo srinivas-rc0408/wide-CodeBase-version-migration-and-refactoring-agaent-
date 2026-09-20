@@ -2,7 +2,13 @@
 
 from mra.analysis.analyzer import analyze, flat_sites
 from mra.analysis.call_sites import CallSite, find_in_repo, find_in_source
-from mra.analysis.dep_graph import build, module_index, python_files, to_state_adjacency
+from mra.analysis.dep_graph import (
+    build,
+    from_state_adjacency,
+    module_index,
+    python_files,
+    to_state_adjacency,
+)
 
 __all__ = [
     "CallSite",
@@ -11,6 +17,7 @@ __all__ = [
     "find_in_repo",
     "find_in_source",
     "flat_sites",
+    "from_state_adjacency",
     "module_index",
     "python_files",
     "to_state_adjacency",

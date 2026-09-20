@@ -124,3 +124,20 @@ def to_state_adjacency(graph: nx.DiGraph) -> dict[str, list[str]]:
         for node in sorted(graph.nodes)
         if graph.in_degree(node) > 0
     }
+
+
+def from_state_adjacency(adjacency: dict[str, list[str]]) -> nx.DiGraph:
+    """The inverse of :func:`to_state_adjacency`: rebuild the ``importer -> imported`` graph.
+
+    Lets a node recover the graph from ``MigrationState.dep_graph`` instead of
+    re-parsing the repo or stowing a ``DiGraph`` in a checkpoint (it would have
+    to be pickled, and it would be written again on every step). Files nothing
+    imports and which import nothing are absent from the adjacency, but they
+    are exactly the files with no ordering constraint, so no edge is lost.
+    """
+    graph = nx.DiGraph()
+    for imported, importers in adjacency.items():
+        graph.add_node(imported)
+        for importer in importers:
+            graph.add_edge(importer, imported)
+    return graph
