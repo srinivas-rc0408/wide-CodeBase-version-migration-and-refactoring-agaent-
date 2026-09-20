@@ -81,7 +81,7 @@ Use Conventional Commits: `feat:`, `fix:`, `docs:`, `test:`, `refactor:`, `chore
 
 Fill this in as you progress so the assistant has current context:
 
-- **Current phase:** P0/P1 (skeleton + static analyzer)
+- **Current phase:** P1 (static analyzer; P0 sandbox verifier done)
 - **Active migration task:** T1 — `datetime.utcnow()` → `datetime.now(timezone.utc)`
 - **Next milestone:** analyzer output matches `ground_truth.json` on `task01_datetime`
 
