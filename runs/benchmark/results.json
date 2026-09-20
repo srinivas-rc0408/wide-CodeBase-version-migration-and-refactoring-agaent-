@@ -1,0 +1,5385 @@
+{
+  "schema": "mra:benchmark_results/1",
+  "generated_at": "2026-09-20T17:26:25.912132+00:00",
+  "out_dir": "runs/benchmark",
+  "repeats": 3,
+  "tasks": [
+    "task01_datetime",
+    "task02_datetime_aliased",
+    "task03_half_migration",
+    "task04_multimodule"
+  ],
+  "configs": [
+    {
+      "name": "baseline",
+      "recovery": true,
+      "order": "dependency",
+      "batch_size": 3,
+      "model": "deterministic",
+      "ablation": "reference",
+      "note": "recovery on, dependency order, batch 3, deterministic corrector"
+    },
+    {
+      "name": "no-recovery",
+      "recovery": false,
+      "order": "dependency",
+      "batch_size": 3,
+      "model": "deterministic",
+      "ablation": "A",
+      "note": "CORRECT loop disabled (MRA_MAX_FIX_ATTEMPTS=0)"
+    },
+    {
+      "name": "order-alphabetical",
+      "recovery": true,
+      "order": "alphabetical",
+      "batch_size": 3,
+      "model": "deterministic",
+      "ablation": "B",
+      "note": "batches by file name instead of the dependency graph"
+    },
+    {
+      "name": "order-fr3-violating",
+      "recovery": true,
+      "order": "fr3_violating",
+      "batch_size": 3,
+      "model": "deterministic",
+      "ablation": "B",
+      "note": "plain topological order \u2014 dependents before dependencies, the docs/04 \u00a73.4 pseudocode defect"
+    },
+    {
+      "name": "order-alphabetical-b1",
+      "recovery": true,
+      "order": "alphabetical",
+      "batch_size": 1,
+      "model": "deterministic",
+      "ablation": "B",
+      "note": "file-name order, one file per EDIT"
+    },
+    {
+      "name": "order-fr3-violating-b1",
+      "recovery": true,
+      "order": "fr3_violating",
+      "batch_size": 1,
+      "model": "deterministic",
+      "ablation": "B",
+      "note": "dependents-first order, one file per EDIT"
+    },
+    {
+      "name": "batch-1",
+      "recovery": true,
+      "order": "dependency",
+      "batch_size": 1,
+      "model": "deterministic",
+      "ablation": "D",
+      "note": "one file per EDIT"
+    },
+    {
+      "name": "batch-5",
+      "recovery": true,
+      "order": "dependency",
+      "batch_size": 5,
+      "model": "deterministic",
+      "ablation": "D",
+      "note": "five files per EDIT"
+    },
+    {
+      "name": "edit-v4-pro",
+      "recovery": true,
+      "order": "dependency",
+      "batch_size": 3,
+      "model": "v4-pro",
+      "ablation": "C",
+      "note": "live corrective edits from the strong model"
+    },
+    {
+      "name": "edit-v4-flash",
+      "recovery": true,
+      "order": "dependency",
+      "batch_size": 3,
+      "model": "v4-flash",
+      "ablation": "C",
+      "note": "live corrective edits from the cheap model"
+    }
+  ],
+  "live_llm_available": false,
+  "rows": [
+    {
+      "config": "baseline",
+      "ablation": "reference",
+      "task_id": "task01_datetime",
+      "repeat": 0,
+      "run_id": "baseline-task01_datetime-r0-0afb20",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.73,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "baseline",
+      "ablation": "reference",
+      "task_id": "task01_datetime",
+      "repeat": 1,
+      "run_id": "baseline-task01_datetime-r1-fcc1a8",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.72,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "baseline",
+      "ablation": "reference",
+      "task_id": "task01_datetime",
+      "repeat": 2,
+      "run_id": "baseline-task01_datetime-r2-b0276f",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.76,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "baseline",
+      "ablation": "reference",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 0,
+      "run_id": "baseline-task02_datetime_aliased-r0-2200ef",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.41,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "baseline",
+      "ablation": "reference",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 1,
+      "run_id": "baseline-task02_datetime_aliased-r1-ec0e84",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.42,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "baseline",
+      "ablation": "reference",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 2,
+      "run_id": "baseline-task02_datetime_aliased-r2-c676e1",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.52,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "baseline",
+      "ablation": "reference",
+      "task_id": "task03_half_migration",
+      "repeat": 0,
+      "run_id": "baseline-task03_half_migration-r0-3ebf91",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.47,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "baseline",
+      "ablation": "reference",
+      "task_id": "task03_half_migration",
+      "repeat": 1,
+      "run_id": "baseline-task03_half_migration-r1-2dd8c9",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.47,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "baseline",
+      "ablation": "reference",
+      "task_id": "task03_half_migration",
+      "repeat": 2,
+      "run_id": "baseline-task03_half_migration-r2-b75046",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.5,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "baseline",
+      "ablation": "reference",
+      "task_id": "task04_multimodule",
+      "repeat": 0,
+      "run_id": "baseline-task04_multimodule-r0-0588a1",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 17,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 2,
+      "wall_clock_s": 3.23,
+      "batches": [
+        [
+          "src/pkg/clock.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/api.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "2773f89c64a8ae65": 2
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 5/5"
+    },
+    {
+      "config": "baseline",
+      "ablation": "reference",
+      "task_id": "task04_multimodule",
+      "repeat": 1,
+      "run_id": "baseline-task04_multimodule-r1-3a54fe",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 17,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 2,
+      "wall_clock_s": 3.22,
+      "batches": [
+        [
+          "src/pkg/clock.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/api.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "2773f89c64a8ae65": 2
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 5/5"
+    },
+    {
+      "config": "baseline",
+      "ablation": "reference",
+      "task_id": "task04_multimodule",
+      "repeat": 2,
+      "run_id": "baseline-task04_multimodule-r2-65c4a4",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 17,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 2,
+      "wall_clock_s": 3.23,
+      "batches": [
+        [
+          "src/pkg/clock.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/api.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "2773f89c64a8ae65": 2
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 5/5"
+    },
+    {
+      "config": "no-recovery",
+      "ablation": "A",
+      "task_id": "task01_datetime",
+      "repeat": 0,
+      "run_id": "no-recovery-task01_datetime-r0-d7fae3",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.7,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "no-recovery",
+      "ablation": "A",
+      "task_id": "task01_datetime",
+      "repeat": 1,
+      "run_id": "no-recovery-task01_datetime-r1-493b7f",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.71,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "no-recovery",
+      "ablation": "A",
+      "task_id": "task01_datetime",
+      "repeat": 2,
+      "run_id": "no-recovery-task01_datetime-r2-6da32d",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.69,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "no-recovery",
+      "ablation": "A",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 0,
+      "run_id": "no-recovery-task02_datetime_aliased-r0-2874f2",
+      "outcome": "gave_up",
+      "m1_recall": 50.0,
+      "m1_precision": 100.0,
+      "m1_f1": 66.66666666666667,
+      "m2_pass_rate": 80.0,
+      "m2_regressions": 1,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.69,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [
+        {
+          "nodeid": "tests/test_report.py::test_stamp_age_is_non_negative",
+          "signature": "7769f4e867263e8d",
+          "exc_type": "TypeError",
+          "message": "TypeError: can't subtract offset-naive and offset-aware datetimes",
+          "file": "src/pkg/report.py",
+          "failure_class": "behaviour"
+        }
+      ],
+      "stopped_at_batch": "gave_up after batch 1/2"
+    },
+    {
+      "config": "no-recovery",
+      "ablation": "A",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 1,
+      "run_id": "no-recovery-task02_datetime_aliased-r1-3f7ce4",
+      "outcome": "gave_up",
+      "m1_recall": 50.0,
+      "m1_precision": 100.0,
+      "m1_f1": 66.66666666666667,
+      "m2_pass_rate": 80.0,
+      "m2_regressions": 1,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.69,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [
+        {
+          "nodeid": "tests/test_report.py::test_stamp_age_is_non_negative",
+          "signature": "7769f4e867263e8d",
+          "exc_type": "TypeError",
+          "message": "TypeError: can't subtract offset-naive and offset-aware datetimes",
+          "file": "src/pkg/report.py",
+          "failure_class": "behaviour"
+        }
+      ],
+      "stopped_at_batch": "gave_up after batch 1/2"
+    },
+    {
+      "config": "no-recovery",
+      "ablation": "A",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 2,
+      "run_id": "no-recovery-task02_datetime_aliased-r2-7857f4",
+      "outcome": "gave_up",
+      "m1_recall": 50.0,
+      "m1_precision": 100.0,
+      "m1_f1": 66.66666666666667,
+      "m2_pass_rate": 80.0,
+      "m2_regressions": 1,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.7,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [
+        {
+          "nodeid": "tests/test_report.py::test_stamp_age_is_non_negative",
+          "signature": "7769f4e867263e8d",
+          "exc_type": "TypeError",
+          "message": "TypeError: can't subtract offset-naive and offset-aware datetimes",
+          "file": "src/pkg/report.py",
+          "failure_class": "behaviour"
+        }
+      ],
+      "stopped_at_batch": "gave_up after batch 1/2"
+    },
+    {
+      "config": "no-recovery",
+      "ablation": "A",
+      "task_id": "task03_half_migration",
+      "repeat": 0,
+      "run_id": "no-recovery-task03_half_migration-r0-5667dc",
+      "outcome": "gave_up",
+      "m1_recall": 33.333333333333336,
+      "m1_precision": 100.0,
+      "m1_f1": 50.0,
+      "m2_pass_rate": 85.71428571428571,
+      "m2_regressions": 1,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.73,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [
+        {
+          "nodeid": "tests/test_report.py::test_stamp_age_is_non_negative",
+          "signature": "7769f4e867263e8d",
+          "exc_type": "TypeError",
+          "message": "TypeError: can't subtract offset-naive and offset-aware datetimes",
+          "file": "src/pkg/report.py",
+          "failure_class": "behaviour"
+        }
+      ],
+      "stopped_at_batch": "gave_up after batch 1/2"
+    },
+    {
+      "config": "no-recovery",
+      "ablation": "A",
+      "task_id": "task03_half_migration",
+      "repeat": 1,
+      "run_id": "no-recovery-task03_half_migration-r1-492e1e",
+      "outcome": "gave_up",
+      "m1_recall": 33.333333333333336,
+      "m1_precision": 100.0,
+      "m1_f1": 50.0,
+      "m2_pass_rate": 85.71428571428571,
+      "m2_regressions": 1,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.74,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [
+        {
+          "nodeid": "tests/test_report.py::test_stamp_age_is_non_negative",
+          "signature": "7769f4e867263e8d",
+          "exc_type": "TypeError",
+          "message": "TypeError: can't subtract offset-naive and offset-aware datetimes",
+          "file": "src/pkg/report.py",
+          "failure_class": "behaviour"
+        }
+      ],
+      "stopped_at_batch": "gave_up after batch 1/2"
+    },
+    {
+      "config": "no-recovery",
+      "ablation": "A",
+      "task_id": "task03_half_migration",
+      "repeat": 2,
+      "run_id": "no-recovery-task03_half_migration-r2-e4351d",
+      "outcome": "gave_up",
+      "m1_recall": 33.333333333333336,
+      "m1_precision": 100.0,
+      "m1_f1": 50.0,
+      "m2_pass_rate": 85.71428571428571,
+      "m2_regressions": 1,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.73,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [
+        {
+          "nodeid": "tests/test_report.py::test_stamp_age_is_non_negative",
+          "signature": "7769f4e867263e8d",
+          "exc_type": "TypeError",
+          "message": "TypeError: can't subtract offset-naive and offset-aware datetimes",
+          "file": "src/pkg/report.py",
+          "failure_class": "behaviour"
+        }
+      ],
+      "stopped_at_batch": "gave_up after batch 1/2"
+    },
+    {
+      "config": "no-recovery",
+      "ablation": "A",
+      "task_id": "task04_multimodule",
+      "repeat": 0,
+      "run_id": "no-recovery-task04_multimodule-r0-a9cc02",
+      "outcome": "gave_up",
+      "m1_recall": 66.66666666666667,
+      "m1_precision": 100.0,
+      "m1_f1": 80.0,
+      "m2_pass_rate": 72.72727272727273,
+      "m2_regressions": 3,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 1.58,
+      "batches": [
+        [
+          "src/pkg/clock.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/api.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py"
+      ],
+      "fix_attempts": {},
+      "failures": [
+        {
+          "nodeid": "tests/test_api.py::test_handle_serves_a_complete_response",
+          "signature": "2773f89c64a8ae65",
+          "exc_type": "TypeError",
+          "message": "TypeError: can't subtract offset-naive and offset-aware datetimes",
+          "file": "src/pkg/report.py",
+          "failure_class": "behaviour"
+        },
+        {
+          "nodeid": "tests/test_report.py::test_invoice_age_is_non_negative",
+          "signature": "06db386a6ac883bc",
+          "exc_type": "TypeError",
+          "message": "TypeError: can't subtract offset-naive and offset-aware datetimes",
+          "file": "src/pkg/report.py",
+          "failure_class": "behaviour"
+        },
+        {
+          "nodeid": "tests/test_report.py::test_summary_reports_the_invoice_and_its_age",
+          "signature": "910006be8e460f47",
+          "exc_type": "TypeError",
+          "message": "TypeError: can't subtract offset-naive and offset-aware datetimes",
+          "file": "src/pkg/report.py",
+          "failure_class": "behaviour"
+        }
+      ],
+      "stopped_at_batch": "gave_up after batch 3/5"
+    },
+    {
+      "config": "no-recovery",
+      "ablation": "A",
+      "task_id": "task04_multimodule",
+      "repeat": 1,
+      "run_id": "no-recovery-task04_multimodule-r1-4d2747",
+      "outcome": "gave_up",
+      "m1_recall": 66.66666666666667,
+      "m1_precision": 100.0,
+      "m1_f1": 80.0,
+      "m2_pass_rate": 72.72727272727273,
+      "m2_regressions": 3,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 1.57,
+      "batches": [
+        [
+          "src/pkg/clock.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/api.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py"
+      ],
+      "fix_attempts": {},
+      "failures": [
+        {
+          "nodeid": "tests/test_api.py::test_handle_serves_a_complete_response",
+          "signature": "2773f89c64a8ae65",
+          "exc_type": "TypeError",
+          "message": "TypeError: can't subtract offset-naive and offset-aware datetimes",
+          "file": "src/pkg/report.py",
+          "failure_class": "behaviour"
+        },
+        {
+          "nodeid": "tests/test_report.py::test_invoice_age_is_non_negative",
+          "signature": "06db386a6ac883bc",
+          "exc_type": "TypeError",
+          "message": "TypeError: can't subtract offset-naive and offset-aware datetimes",
+          "file": "src/pkg/report.py",
+          "failure_class": "behaviour"
+        },
+        {
+          "nodeid": "tests/test_report.py::test_summary_reports_the_invoice_and_its_age",
+          "signature": "910006be8e460f47",
+          "exc_type": "TypeError",
+          "message": "TypeError: can't subtract offset-naive and offset-aware datetimes",
+          "file": "src/pkg/report.py",
+          "failure_class": "behaviour"
+        }
+      ],
+      "stopped_at_batch": "gave_up after batch 3/5"
+    },
+    {
+      "config": "no-recovery",
+      "ablation": "A",
+      "task_id": "task04_multimodule",
+      "repeat": 2,
+      "run_id": "no-recovery-task04_multimodule-r2-7adafd",
+      "outcome": "gave_up",
+      "m1_recall": 66.66666666666667,
+      "m1_precision": 100.0,
+      "m1_f1": 80.0,
+      "m2_pass_rate": 72.72727272727273,
+      "m2_regressions": 3,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 1.58,
+      "batches": [
+        [
+          "src/pkg/clock.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/api.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py"
+      ],
+      "fix_attempts": {},
+      "failures": [
+        {
+          "nodeid": "tests/test_api.py::test_handle_serves_a_complete_response",
+          "signature": "2773f89c64a8ae65",
+          "exc_type": "TypeError",
+          "message": "TypeError: can't subtract offset-naive and offset-aware datetimes",
+          "file": "src/pkg/report.py",
+          "failure_class": "behaviour"
+        },
+        {
+          "nodeid": "tests/test_report.py::test_invoice_age_is_non_negative",
+          "signature": "06db386a6ac883bc",
+          "exc_type": "TypeError",
+          "message": "TypeError: can't subtract offset-naive and offset-aware datetimes",
+          "file": "src/pkg/report.py",
+          "failure_class": "behaviour"
+        },
+        {
+          "nodeid": "tests/test_report.py::test_summary_reports_the_invoice_and_its_age",
+          "signature": "910006be8e460f47",
+          "exc_type": "TypeError",
+          "message": "TypeError: can't subtract offset-naive and offset-aware datetimes",
+          "file": "src/pkg/report.py",
+          "failure_class": "behaviour"
+        }
+      ],
+      "stopped_at_batch": "gave_up after batch 3/5"
+    },
+    {
+      "config": "order-alphabetical",
+      "ablation": "B",
+      "task_id": "task01_datetime",
+      "repeat": 0,
+      "run_id": "order-alphabetical-task01_datetime-r0-0847a2",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.69,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "order-alphabetical",
+      "ablation": "B",
+      "task_id": "task01_datetime",
+      "repeat": 1,
+      "run_id": "order-alphabetical-task01_datetime-r1-fd54df",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.71,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "order-alphabetical",
+      "ablation": "B",
+      "task_id": "task01_datetime",
+      "repeat": 2,
+      "run_id": "order-alphabetical-task01_datetime-r2-fbd5c9",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.7,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "order-alphabetical",
+      "ablation": "B",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 0,
+      "run_id": "order-alphabetical-task02_datetime_aliased-r0-1e20cb",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.73,
+      "batches": [
+        [
+          "src/pkg/core.py",
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "order-alphabetical",
+      "ablation": "B",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 1,
+      "run_id": "order-alphabetical-task02_datetime_aliased-r1-f0192c",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.69,
+      "batches": [
+        [
+          "src/pkg/core.py",
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "order-alphabetical",
+      "ablation": "B",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 2,
+      "run_id": "order-alphabetical-task02_datetime_aliased-r2-91b9db",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.7,
+      "batches": [
+        [
+          "src/pkg/core.py",
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "order-alphabetical",
+      "ablation": "B",
+      "task_id": "task03_half_migration",
+      "repeat": 0,
+      "run_id": "order-alphabetical-task03_half_migration-r0-7922a3",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.78,
+      "batches": [
+        [
+          "src/pkg/audit.py",
+          "src/pkg/core.py",
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "order-alphabetical",
+      "ablation": "B",
+      "task_id": "task03_half_migration",
+      "repeat": 1,
+      "run_id": "order-alphabetical-task03_half_migration-r1-d3af20",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.76,
+      "batches": [
+        [
+          "src/pkg/audit.py",
+          "src/pkg/core.py",
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "order-alphabetical",
+      "ablation": "B",
+      "task_id": "task03_half_migration",
+      "repeat": 2,
+      "run_id": "order-alphabetical-task03_half_migration-r2-81ad46",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.77,
+      "batches": [
+        [
+          "src/pkg/audit.py",
+          "src/pkg/core.py",
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "order-alphabetical",
+      "ablation": "B",
+      "task_id": "task04_multimodule",
+      "repeat": 0,
+      "run_id": "order-alphabetical-task04_multimodule-r0-b12ca0",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 7,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 1.3,
+      "batches": [
+        [
+          "src/pkg/api.py",
+          "src/pkg/audit.py",
+          "src/pkg/clock.py"
+        ],
+        [
+          "src/pkg/invoice.py",
+          "src/pkg/ledger.py",
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "order-alphabetical",
+      "ablation": "B",
+      "task_id": "task04_multimodule",
+      "repeat": 1,
+      "run_id": "order-alphabetical-task04_multimodule-r1-7863e5",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 7,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 1.3,
+      "batches": [
+        [
+          "src/pkg/api.py",
+          "src/pkg/audit.py",
+          "src/pkg/clock.py"
+        ],
+        [
+          "src/pkg/invoice.py",
+          "src/pkg/ledger.py",
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "order-alphabetical",
+      "ablation": "B",
+      "task_id": "task04_multimodule",
+      "repeat": 2,
+      "run_id": "order-alphabetical-task04_multimodule-r2-4c4a27",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 7,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 1.3,
+      "batches": [
+        [
+          "src/pkg/api.py",
+          "src/pkg/audit.py",
+          "src/pkg/clock.py"
+        ],
+        [
+          "src/pkg/invoice.py",
+          "src/pkg/ledger.py",
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "order-fr3-violating",
+      "ablation": "B",
+      "task_id": "task01_datetime",
+      "repeat": 0,
+      "run_id": "order-fr3-violating-task01_datetime-r0-4c1cd3",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.69,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "order-fr3-violating",
+      "ablation": "B",
+      "task_id": "task01_datetime",
+      "repeat": 1,
+      "run_id": "order-fr3-violating-task01_datetime-r1-1c607e",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.7,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "order-fr3-violating",
+      "ablation": "B",
+      "task_id": "task01_datetime",
+      "repeat": 2,
+      "run_id": "order-fr3-violating-task01_datetime-r2-7c2bde",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.71,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "order-fr3-violating",
+      "ablation": "B",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 0,
+      "run_id": "order-fr3-violating-task02_datetime_aliased-r0-a0fae5",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.54,
+      "batches": [
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "order-fr3-violating",
+      "ablation": "B",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 1,
+      "run_id": "order-fr3-violating-task02_datetime_aliased-r1-2cf698",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.37,
+      "batches": [
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "order-fr3-violating",
+      "ablation": "B",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 2,
+      "run_id": "order-fr3-violating-task02_datetime_aliased-r2-c7967c",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.38,
+      "batches": [
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "order-fr3-violating",
+      "ablation": "B",
+      "task_id": "task03_half_migration",
+      "repeat": 0,
+      "run_id": "order-fr3-violating-task03_half_migration-r0-9de94c",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.48,
+      "batches": [
+        [
+          "src/pkg/audit.py",
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "order-fr3-violating",
+      "ablation": "B",
+      "task_id": "task03_half_migration",
+      "repeat": 1,
+      "run_id": "order-fr3-violating-task03_half_migration-r1-3423de",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.49,
+      "batches": [
+        [
+          "src/pkg/audit.py",
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "order-fr3-violating",
+      "ablation": "B",
+      "task_id": "task03_half_migration",
+      "repeat": 2,
+      "run_id": "order-fr3-violating-task03_half_migration-r2-0ecdbf",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.48,
+      "batches": [
+        [
+          "src/pkg/audit.py",
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "order-fr3-violating",
+      "ablation": "B",
+      "task_id": "task04_multimodule",
+      "repeat": 0,
+      "run_id": "order-fr3-violating-task04_multimodule-r0-4a88c3",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 19,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 3,
+      "wall_clock_s": 3.88,
+      "batches": [
+        [
+          "src/pkg/api.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/clock.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "2773f89c64a8ae65": 3
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 5/5"
+    },
+    {
+      "config": "order-fr3-violating",
+      "ablation": "B",
+      "task_id": "task04_multimodule",
+      "repeat": 1,
+      "run_id": "order-fr3-violating-task04_multimodule-r1-fd1515",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 19,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 3,
+      "wall_clock_s": 4.07,
+      "batches": [
+        [
+          "src/pkg/api.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/clock.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "2773f89c64a8ae65": 3
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 5/5"
+    },
+    {
+      "config": "order-fr3-violating",
+      "ablation": "B",
+      "task_id": "task04_multimodule",
+      "repeat": 2,
+      "run_id": "order-fr3-violating-task04_multimodule-r2-1367bd",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 19,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 3,
+      "wall_clock_s": 3.87,
+      "batches": [
+        [
+          "src/pkg/api.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/clock.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "2773f89c64a8ae65": 3
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 5/5"
+    },
+    {
+      "config": "order-alphabetical-b1",
+      "ablation": "B",
+      "task_id": "task01_datetime",
+      "repeat": 0,
+      "run_id": "order-alphabetical-b1-task01_datetime-r0-44cde3",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.71,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "order-alphabetical-b1",
+      "ablation": "B",
+      "task_id": "task01_datetime",
+      "repeat": 1,
+      "run_id": "order-alphabetical-b1-task01_datetime-r1-ba520b",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.7,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "order-alphabetical-b1",
+      "ablation": "B",
+      "task_id": "task01_datetime",
+      "repeat": 2,
+      "run_id": "order-alphabetical-b1-task01_datetime-r2-546046",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.7,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "order-alphabetical-b1",
+      "ablation": "B",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 0,
+      "run_id": "order-alphabetical-b1-task02_datetime_aliased-r0-821037",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.55,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "order-alphabetical-b1",
+      "ablation": "B",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 1,
+      "run_id": "order-alphabetical-b1-task02_datetime_aliased-r1-00b2dc",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.39,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "order-alphabetical-b1",
+      "ablation": "B",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 2,
+      "run_id": "order-alphabetical-b1-task02_datetime_aliased-r2-c0cbca",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.38,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "order-alphabetical-b1",
+      "ablation": "B",
+      "task_id": "task03_half_migration",
+      "repeat": 0,
+      "run_id": "order-alphabetical-b1-task03_half_migration-r0-d5f79d",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 11,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.81,
+      "batches": [
+        [
+          "src/pkg/audit.py"
+        ],
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 3/3"
+    },
+    {
+      "config": "order-alphabetical-b1",
+      "ablation": "B",
+      "task_id": "task03_half_migration",
+      "repeat": 1,
+      "run_id": "order-alphabetical-b1-task03_half_migration-r1-52ad1c",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 11,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.8,
+      "batches": [
+        [
+          "src/pkg/audit.py"
+        ],
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 3/3"
+    },
+    {
+      "config": "order-alphabetical-b1",
+      "ablation": "B",
+      "task_id": "task03_half_migration",
+      "repeat": 2,
+      "run_id": "order-alphabetical-b1-task03_half_migration-r2-e1ec56",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 11,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 2.06,
+      "batches": [
+        [
+          "src/pkg/audit.py"
+        ],
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 3/3"
+    },
+    {
+      "config": "order-alphabetical-b1",
+      "ablation": "B",
+      "task_id": "task04_multimodule",
+      "repeat": 0,
+      "run_id": "order-alphabetical-b1-task04_multimodule-r0-e78527",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 17,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 3.7,
+      "batches": [
+        [
+          "src/pkg/api.py"
+        ],
+        [
+          "src/pkg/audit.py"
+        ],
+        [
+          "src/pkg/clock.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "2773f89c64a8ae65": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 6/6"
+    },
+    {
+      "config": "order-alphabetical-b1",
+      "ablation": "B",
+      "task_id": "task04_multimodule",
+      "repeat": 1,
+      "run_id": "order-alphabetical-b1-task04_multimodule-r1-dd5305",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 17,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 3.08,
+      "batches": [
+        [
+          "src/pkg/api.py"
+        ],
+        [
+          "src/pkg/audit.py"
+        ],
+        [
+          "src/pkg/clock.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "2773f89c64a8ae65": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 6/6"
+    },
+    {
+      "config": "order-alphabetical-b1",
+      "ablation": "B",
+      "task_id": "task04_multimodule",
+      "repeat": 2,
+      "run_id": "order-alphabetical-b1-task04_multimodule-r2-fd19fd",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 17,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 3.53,
+      "batches": [
+        [
+          "src/pkg/api.py"
+        ],
+        [
+          "src/pkg/audit.py"
+        ],
+        [
+          "src/pkg/clock.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "2773f89c64a8ae65": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 6/6"
+    },
+    {
+      "config": "order-fr3-violating-b1",
+      "ablation": "B",
+      "task_id": "task01_datetime",
+      "repeat": 0,
+      "run_id": "order-fr3-violating-b1-task01_datetime-r0-8431d5",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.81,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "order-fr3-violating-b1",
+      "ablation": "B",
+      "task_id": "task01_datetime",
+      "repeat": 1,
+      "run_id": "order-fr3-violating-b1-task01_datetime-r1-edf4a9",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.7,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "order-fr3-violating-b1",
+      "ablation": "B",
+      "task_id": "task01_datetime",
+      "repeat": 2,
+      "run_id": "order-fr3-violating-b1-task01_datetime-r2-0ceb0f",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.71,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "order-fr3-violating-b1",
+      "ablation": "B",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 0,
+      "run_id": "order-fr3-violating-b1-task02_datetime_aliased-r0-7b3d98",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.38,
+      "batches": [
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "order-fr3-violating-b1",
+      "ablation": "B",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 1,
+      "run_id": "order-fr3-violating-b1-task02_datetime_aliased-r1-7e6847",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.38,
+      "batches": [
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "order-fr3-violating-b1",
+      "ablation": "B",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 2,
+      "run_id": "order-fr3-violating-b1-task02_datetime_aliased-r2-fd5815",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.37,
+      "batches": [
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "order-fr3-violating-b1",
+      "ablation": "B",
+      "task_id": "task03_half_migration",
+      "repeat": 0,
+      "run_id": "order-fr3-violating-b1-task03_half_migration-r0-4070da",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 11,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.82,
+      "batches": [
+        [
+          "src/pkg/audit.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 3/3"
+    },
+    {
+      "config": "order-fr3-violating-b1",
+      "ablation": "B",
+      "task_id": "task03_half_migration",
+      "repeat": 1,
+      "run_id": "order-fr3-violating-b1-task03_half_migration-r1-a5e924",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 11,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.78,
+      "batches": [
+        [
+          "src/pkg/audit.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 3/3"
+    },
+    {
+      "config": "order-fr3-violating-b1",
+      "ablation": "B",
+      "task_id": "task03_half_migration",
+      "repeat": 2,
+      "run_id": "order-fr3-violating-b1-task03_half_migration-r2-5b6ee6",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 11,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.82,
+      "batches": [
+        [
+          "src/pkg/audit.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 3/3"
+    },
+    {
+      "config": "order-fr3-violating-b1",
+      "ablation": "B",
+      "task_id": "task04_multimodule",
+      "repeat": 0,
+      "run_id": "order-fr3-violating-b1-task04_multimodule-r0-1cc5ed",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 19,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 3,
+      "wall_clock_s": 3.69,
+      "batches": [
+        [
+          "src/pkg/api.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/clock.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "2773f89c64a8ae65": 3
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 5/5"
+    },
+    {
+      "config": "order-fr3-violating-b1",
+      "ablation": "B",
+      "task_id": "task04_multimodule",
+      "repeat": 1,
+      "run_id": "order-fr3-violating-b1-task04_multimodule-r1-ae3c17",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 19,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 3,
+      "wall_clock_s": 3.73,
+      "batches": [
+        [
+          "src/pkg/api.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/clock.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "2773f89c64a8ae65": 3
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 5/5"
+    },
+    {
+      "config": "order-fr3-violating-b1",
+      "ablation": "B",
+      "task_id": "task04_multimodule",
+      "repeat": 2,
+      "run_id": "order-fr3-violating-b1-task04_multimodule-r2-da7090",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 19,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 3,
+      "wall_clock_s": 3.72,
+      "batches": [
+        [
+          "src/pkg/api.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/clock.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "2773f89c64a8ae65": 3
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 5/5"
+    },
+    {
+      "config": "batch-1",
+      "ablation": "D",
+      "task_id": "task01_datetime",
+      "repeat": 0,
+      "run_id": "batch-1-task01_datetime-r0-394d87",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.71,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "batch-1",
+      "ablation": "D",
+      "task_id": "task01_datetime",
+      "repeat": 1,
+      "run_id": "batch-1-task01_datetime-r1-57a817",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.7,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "batch-1",
+      "ablation": "D",
+      "task_id": "task01_datetime",
+      "repeat": 2,
+      "run_id": "batch-1-task01_datetime-r2-b7d0c9",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.7,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "batch-1",
+      "ablation": "D",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 0,
+      "run_id": "batch-1-task02_datetime_aliased-r0-4ec777",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.37,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "batch-1",
+      "ablation": "D",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 1,
+      "run_id": "batch-1-task02_datetime_aliased-r1-a6fc2d",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.38,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "batch-1",
+      "ablation": "D",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 2,
+      "run_id": "batch-1-task02_datetime_aliased-r2-892b50",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.39,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "batch-1",
+      "ablation": "D",
+      "task_id": "task03_half_migration",
+      "repeat": 0,
+      "run_id": "batch-1-task03_half_migration-r0-eb3c4e",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 11,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.79,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/audit.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 3/3"
+    },
+    {
+      "config": "batch-1",
+      "ablation": "D",
+      "task_id": "task03_half_migration",
+      "repeat": 1,
+      "run_id": "batch-1-task03_half_migration-r1-1b8e26",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 11,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.81,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/audit.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 3/3"
+    },
+    {
+      "config": "batch-1",
+      "ablation": "D",
+      "task_id": "task03_half_migration",
+      "repeat": 2,
+      "run_id": "batch-1-task03_half_migration-r2-db35fa",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 11,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.8,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/audit.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 3/3"
+    },
+    {
+      "config": "batch-1",
+      "ablation": "D",
+      "task_id": "task04_multimodule",
+      "repeat": 0,
+      "run_id": "batch-1-task04_multimodule-r0-4e69f8",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 17,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 2,
+      "wall_clock_s": 3.3,
+      "batches": [
+        [
+          "src/pkg/clock.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/api.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "2773f89c64a8ae65": 2
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 5/5"
+    },
+    {
+      "config": "batch-1",
+      "ablation": "D",
+      "task_id": "task04_multimodule",
+      "repeat": 1,
+      "run_id": "batch-1-task04_multimodule-r1-92a9c1",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 17,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 2,
+      "wall_clock_s": 3.21,
+      "batches": [
+        [
+          "src/pkg/clock.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/api.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "2773f89c64a8ae65": 2
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 5/5"
+    },
+    {
+      "config": "batch-1",
+      "ablation": "D",
+      "task_id": "task04_multimodule",
+      "repeat": 2,
+      "run_id": "batch-1-task04_multimodule-r2-3c98d7",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 17,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 2,
+      "wall_clock_s": 3.4,
+      "batches": [
+        [
+          "src/pkg/clock.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/api.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "2773f89c64a8ae65": 2
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 5/5"
+    },
+    {
+      "config": "batch-5",
+      "ablation": "D",
+      "task_id": "task01_datetime",
+      "repeat": 0,
+      "run_id": "batch-5-task01_datetime-r0-84259c",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.69,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "batch-5",
+      "ablation": "D",
+      "task_id": "task01_datetime",
+      "repeat": 1,
+      "run_id": "batch-5-task01_datetime-r1-c8b1e7",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.7,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "batch-5",
+      "ablation": "D",
+      "task_id": "task01_datetime",
+      "repeat": 2,
+      "run_id": "batch-5-task01_datetime-r2-d6a59c",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 5,
+      "cost_usd": 0.0,
+      "recovery_used": false,
+      "corrections": 0,
+      "wall_clock_s": 0.69,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py"
+      ],
+      "fix_attempts": {},
+      "failures": [],
+      "stopped_at_batch": "success after batch 1/1"
+    },
+    {
+      "config": "batch-5",
+      "ablation": "D",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 0,
+      "run_id": "batch-5-task02_datetime_aliased-r0-84edfc",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.36,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "batch-5",
+      "ablation": "D",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 1,
+      "run_id": "batch-5-task02_datetime_aliased-r1-9568df",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.38,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "batch-5",
+      "ablation": "D",
+      "task_id": "task02_datetime_aliased",
+      "repeat": 2,
+      "run_id": "batch-5-task02_datetime_aliased-r2-6cb20e",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.38,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "batch-5",
+      "ablation": "D",
+      "task_id": "task03_half_migration",
+      "repeat": 0,
+      "run_id": "batch-5-task03_half_migration-r0-2126ae",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.66,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "batch-5",
+      "ablation": "D",
+      "task_id": "task03_half_migration",
+      "repeat": 1,
+      "run_id": "batch-5-task03_half_migration-r1-3fe4c5",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.48,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "batch-5",
+      "ablation": "D",
+      "task_id": "task03_half_migration",
+      "repeat": 2,
+      "run_id": "batch-5-task03_half_migration-r2-2ab4c9",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 9,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 1,
+      "wall_clock_s": 1.49,
+      "batches": [
+        [
+          "src/pkg/core.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/report.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/audit.py",
+        "src/pkg/core.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "7769f4e867263e8d": 1
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 2/2"
+    },
+    {
+      "config": "batch-5",
+      "ablation": "D",
+      "task_id": "task04_multimodule",
+      "repeat": 0,
+      "run_id": "batch-5-task04_multimodule-r0-0540fa",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 17,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 2,
+      "wall_clock_s": 3.23,
+      "batches": [
+        [
+          "src/pkg/clock.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/api.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "2773f89c64a8ae65": 2
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 5/5"
+    },
+    {
+      "config": "batch-5",
+      "ablation": "D",
+      "task_id": "task04_multimodule",
+      "repeat": 1,
+      "run_id": "batch-5-task04_multimodule-r1-6fdc41",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 17,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 2,
+      "wall_clock_s": 3.28,
+      "batches": [
+        [
+          "src/pkg/clock.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/api.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "2773f89c64a8ae65": 2
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 5/5"
+    },
+    {
+      "config": "batch-5",
+      "ablation": "D",
+      "task_id": "task04_multimodule",
+      "repeat": 2,
+      "run_id": "batch-5-task04_multimodule-r2-68eefc",
+      "outcome": "success",
+      "m1_recall": 100.0,
+      "m1_precision": 100.0,
+      "m1_f1": 100.0,
+      "m2_pass_rate": 100.0,
+      "m2_regressions": 0,
+      "m3_tokens": 0,
+      "pro_in": 0,
+      "pro_out": 0,
+      "flash_in": 0,
+      "flash_out": 0,
+      "m3_steps": 17,
+      "cost_usd": 0.0,
+      "recovery_used": true,
+      "corrections": 2,
+      "wall_clock_s": 3.27,
+      "batches": [
+        [
+          "src/pkg/clock.py"
+        ],
+        [
+          "src/pkg/audit.py",
+          "src/pkg/ledger.py"
+        ],
+        [
+          "src/pkg/invoice.py"
+        ],
+        [
+          "src/pkg/report.py"
+        ],
+        [
+          "src/pkg/api.py"
+        ]
+      ],
+      "changed_files": [
+        "src/pkg/api.py",
+        "src/pkg/audit.py",
+        "src/pkg/clock.py",
+        "src/pkg/invoice.py",
+        "src/pkg/ledger.py",
+        "src/pkg/report.py"
+      ],
+      "fix_attempts": {
+        "2773f89c64a8ae65": 2
+      },
+      "failures": [],
+      "stopped_at_batch": "success after batch 5/5"
+    }
+  ],
+  "skipped": [
+    {
+      "config": "edit-v4-pro",
+      "task_id": "task01_datetime",
+      "reason": "requires DEEPSEEK_API_KEY"
+    },
+    {
+      "config": "edit-v4-pro",
+      "task_id": "task02_datetime_aliased",
+      "reason": "requires DEEPSEEK_API_KEY"
+    },
+    {
+      "config": "edit-v4-pro",
+      "task_id": "task03_half_migration",
+      "reason": "requires DEEPSEEK_API_KEY"
+    },
+    {
+      "config": "edit-v4-pro",
+      "task_id": "task04_multimodule",
+      "reason": "requires DEEPSEEK_API_KEY"
+    },
+    {
+      "config": "edit-v4-flash",
+      "task_id": "task01_datetime",
+      "reason": "requires DEEPSEEK_API_KEY"
+    },
+    {
+      "config": "edit-v4-flash",
+      "task_id": "task02_datetime_aliased",
+      "reason": "requires DEEPSEEK_API_KEY"
+    },
+    {
+      "config": "edit-v4-flash",
+      "task_id": "task03_half_migration",
+      "reason": "requires DEEPSEEK_API_KEY"
+    },
+    {
+      "config": "edit-v4-flash",
+      "task_id": "task04_multimodule",
+      "reason": "requires DEEPSEEK_API_KEY"
+    }
+  ],
+  "aggregates": [
+    {
+      "config": "baseline",
+      "task_id": "task01_datetime",
+      "ablation": "reference",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": false,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 0.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 5.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 0.7366666666666667,
+      "wall_clock_s_spread": 0.040000000000000036
+    },
+    {
+      "config": "baseline",
+      "task_id": "task02_datetime_aliased",
+      "ablation": "reference",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": true,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 1.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 9.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 1.45,
+      "wall_clock_s_spread": 0.1100000000000001
+    },
+    {
+      "config": "baseline",
+      "task_id": "task03_half_migration",
+      "ablation": "reference",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": true,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 1.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 9.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 1.4799999999999998,
+      "wall_clock_s_spread": 0.030000000000000027
+    },
+    {
+      "config": "baseline",
+      "task_id": "task04_multimodule",
+      "ablation": "reference",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": true,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 2.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 17.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 3.2266666666666666,
+      "wall_clock_s_spread": 0.009999999999999787
+    },
+    {
+      "config": "no-recovery",
+      "task_id": "task01_datetime",
+      "ablation": "A",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": false,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 0.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 5.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 0.6999999999999998,
+      "wall_clock_s_spread": 0.020000000000000018
+    },
+    {
+      "config": "no-recovery",
+      "task_id": "task02_datetime_aliased",
+      "ablation": "A",
+      "n": 3,
+      "outcomes": {
+        "gave_up": 3
+      },
+      "recovery_used": false,
+      "m1_recall_mean": 50.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 66.66666666666667,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 80.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 1.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 0.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 5.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 0.6933333333333334,
+      "wall_clock_s_spread": 0.010000000000000009
+    },
+    {
+      "config": "no-recovery",
+      "task_id": "task03_half_migration",
+      "ablation": "A",
+      "n": 3,
+      "outcomes": {
+        "gave_up": 3
+      },
+      "recovery_used": false,
+      "m1_recall_mean": 33.333333333333336,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 50.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 85.71428571428571,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 1.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 0.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 5.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 0.7333333333333334,
+      "wall_clock_s_spread": 0.010000000000000009
+    },
+    {
+      "config": "no-recovery",
+      "task_id": "task04_multimodule",
+      "ablation": "A",
+      "n": 3,
+      "outcomes": {
+        "gave_up": 3
+      },
+      "recovery_used": false,
+      "m1_recall_mean": 66.66666666666667,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 80.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 72.72727272727273,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 3.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 0.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 9.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 1.5766666666666669,
+      "wall_clock_s_spread": 0.010000000000000009
+    },
+    {
+      "config": "order-alphabetical",
+      "task_id": "task01_datetime",
+      "ablation": "B",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": false,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 0.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 5.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 0.6999999999999998,
+      "wall_clock_s_spread": 0.020000000000000018
+    },
+    {
+      "config": "order-alphabetical",
+      "task_id": "task02_datetime_aliased",
+      "ablation": "B",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": false,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 0.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 5.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 0.7066666666666667,
+      "wall_clock_s_spread": 0.040000000000000036
+    },
+    {
+      "config": "order-alphabetical",
+      "task_id": "task03_half_migration",
+      "ablation": "B",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": false,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 0.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 5.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 0.77,
+      "wall_clock_s_spread": 0.020000000000000018
+    },
+    {
+      "config": "order-alphabetical",
+      "task_id": "task04_multimodule",
+      "ablation": "B",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": false,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 0.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 7.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 1.3,
+      "wall_clock_s_spread": 0.0
+    },
+    {
+      "config": "order-fr3-violating",
+      "task_id": "task01_datetime",
+      "ablation": "B",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": false,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 0.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 5.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 0.6999999999999998,
+      "wall_clock_s_spread": 0.020000000000000018
+    },
+    {
+      "config": "order-fr3-violating",
+      "task_id": "task02_datetime_aliased",
+      "ablation": "B",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": true,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 1.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 9.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 1.43,
+      "wall_clock_s_spread": 0.16999999999999993
+    },
+    {
+      "config": "order-fr3-violating",
+      "task_id": "task03_half_migration",
+      "ablation": "B",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": true,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 1.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 9.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 1.4833333333333334,
+      "wall_clock_s_spread": 0.010000000000000009
+    },
+    {
+      "config": "order-fr3-violating",
+      "task_id": "task04_multimodule",
+      "ablation": "B",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": true,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 3.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 19.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 3.94,
+      "wall_clock_s_spread": 0.20000000000000018
+    },
+    {
+      "config": "order-alphabetical-b1",
+      "task_id": "task01_datetime",
+      "ablation": "B",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": false,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 0.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 5.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 0.7033333333333333,
+      "wall_clock_s_spread": 0.010000000000000009
+    },
+    {
+      "config": "order-alphabetical-b1",
+      "task_id": "task02_datetime_aliased",
+      "ablation": "B",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": true,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 1.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 9.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 1.4400000000000002,
+      "wall_clock_s_spread": 0.17000000000000015
+    },
+    {
+      "config": "order-alphabetical-b1",
+      "task_id": "task03_half_migration",
+      "ablation": "B",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": true,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 1.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 11.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 1.89,
+      "wall_clock_s_spread": 0.26
+    },
+    {
+      "config": "order-alphabetical-b1",
+      "task_id": "task04_multimodule",
+      "ablation": "B",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": true,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 1.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 17.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 3.436666666666667,
+      "wall_clock_s_spread": 0.6200000000000001
+    },
+    {
+      "config": "order-fr3-violating-b1",
+      "task_id": "task01_datetime",
+      "ablation": "B",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": false,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 0.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 5.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 0.7399999999999999,
+      "wall_clock_s_spread": 0.1100000000000001
+    },
+    {
+      "config": "order-fr3-violating-b1",
+      "task_id": "task02_datetime_aliased",
+      "ablation": "B",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": true,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 1.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 9.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 1.3766666666666667,
+      "wall_clock_s_spread": 0.009999999999999787
+    },
+    {
+      "config": "order-fr3-violating-b1",
+      "task_id": "task03_half_migration",
+      "ablation": "B",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": true,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 1.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 11.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 1.8066666666666666,
+      "wall_clock_s_spread": 0.040000000000000036
+    },
+    {
+      "config": "order-fr3-violating-b1",
+      "task_id": "task04_multimodule",
+      "ablation": "B",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": true,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 3.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 19.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 3.7133333333333334,
+      "wall_clock_s_spread": 0.040000000000000036
+    },
+    {
+      "config": "batch-1",
+      "task_id": "task01_datetime",
+      "ablation": "D",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": false,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 0.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 5.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 0.7033333333333333,
+      "wall_clock_s_spread": 0.010000000000000009
+    },
+    {
+      "config": "batch-1",
+      "task_id": "task02_datetime_aliased",
+      "ablation": "D",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": true,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 1.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 9.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 1.38,
+      "wall_clock_s_spread": 0.019999999999999796
+    },
+    {
+      "config": "batch-1",
+      "task_id": "task03_half_migration",
+      "ablation": "D",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": true,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 1.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 11.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 1.8,
+      "wall_clock_s_spread": 0.020000000000000018
+    },
+    {
+      "config": "batch-1",
+      "task_id": "task04_multimodule",
+      "ablation": "D",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": true,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 2.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 17.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 3.3033333333333332,
+      "wall_clock_s_spread": 0.18999999999999995
+    },
+    {
+      "config": "batch-5",
+      "task_id": "task01_datetime",
+      "ablation": "D",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": false,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 0.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 5.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 0.6933333333333334,
+      "wall_clock_s_spread": 0.010000000000000009
+    },
+    {
+      "config": "batch-5",
+      "task_id": "task02_datetime_aliased",
+      "ablation": "D",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": true,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 1.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 9.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 1.3733333333333333,
+      "wall_clock_s_spread": 0.019999999999999796
+    },
+    {
+      "config": "batch-5",
+      "task_id": "task03_half_migration",
+      "ablation": "D",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": true,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 1.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 9.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 1.5433333333333332,
+      "wall_clock_s_spread": 0.17999999999999994
+    },
+    {
+      "config": "batch-5",
+      "task_id": "task04_multimodule",
+      "ablation": "D",
+      "n": 3,
+      "outcomes": {
+        "success": 3
+      },
+      "recovery_used": true,
+      "m1_recall_mean": 100.0,
+      "m1_recall_spread": 0.0,
+      "m1_precision_mean": 100.0,
+      "m1_precision_spread": 0.0,
+      "m1_f1_mean": 100.0,
+      "m1_f1_spread": 0.0,
+      "m2_pass_rate_mean": 100.0,
+      "m2_pass_rate_spread": 0.0,
+      "m2_regressions_mean": 0.0,
+      "m2_regressions_spread": 0,
+      "corrections_mean": 2.0,
+      "corrections_spread": 0,
+      "m3_tokens_mean": 0.0,
+      "m3_tokens_spread": 0,
+      "m3_steps_mean": 17.0,
+      "m3_steps_spread": 0,
+      "cost_usd_mean": 0.0,
+      "cost_usd_spread": 0.0,
+      "wall_clock_s_mean": 3.26,
+      "wall_clock_s_spread": 0.04999999999999982
+    }
+  ],
+  "baselines": [
+    {
+      "task_id": "task01_datetime",
+      "ground_truth_sites": 1,
+      "tools": [
+        {
+          "tool": "ruff (DTZ)",
+          "detected": 1,
+          "detect_recall": 100.0,
+          "detect_precision": 100.0,
+          "fixed_files": 0,
+          "m1_recall_after_fix": 0.0,
+          "sites_remaining": 1,
+          "suite_after_fix": "5/5 passed",
+          "suite_green": true,
+          "can_repair_cross_file_break": false
+        },
+        {
+          "tool": "pyupgrade",
+          "detected": 0,
+          "detect_recall": 0.0,
+          "detect_precision": 0.0,
+          "fixed_files": 0,
+          "m1_recall_after_fix": 0.0,
+          "sites_remaining": 1,
+          "suite_after_fix": "5/5 passed",
+          "suite_green": true,
+          "can_repair_cross_file_break": false
+        }
+      ]
+    },
+    {
+      "task_id": "task02_datetime_aliased",
+      "ground_truth_sites": 2,
+      "tools": [
+        {
+          "tool": "ruff (DTZ)",
+          "detected": 2,
+          "detect_recall": 100.0,
+          "detect_precision": 100.0,
+          "fixed_files": 0,
+          "m1_recall_after_fix": 0.0,
+          "sites_remaining": 2,
+          "suite_after_fix": "5/5 passed",
+          "suite_green": true,
+          "can_repair_cross_file_break": false
+        },
+        {
+          "tool": "pyupgrade",
+          "detected": 0,
+          "detect_recall": 0.0,
+          "detect_precision": 0.0,
+          "fixed_files": 0,
+          "m1_recall_after_fix": 0.0,
+          "sites_remaining": 2,
+          "suite_after_fix": "5/5 passed",
+          "suite_green": true,
+          "can_repair_cross_file_break": false
+        }
+      ]
+    },
+    {
+      "task_id": "task03_half_migration",
+      "ground_truth_sites": 3,
+      "tools": [
+        {
+          "tool": "ruff (DTZ)",
+          "detected": 3,
+          "detect_recall": 100.0,
+          "detect_precision": 100.0,
+          "fixed_files": 0,
+          "m1_recall_after_fix": 0.0,
+          "sites_remaining": 3,
+          "suite_after_fix": "7/7 passed",
+          "suite_green": true,
+          "can_repair_cross_file_break": false
+        },
+        {
+          "tool": "pyupgrade",
+          "detected": 0,
+          "detect_recall": 0.0,
+          "detect_precision": 0.0,
+          "fixed_files": 0,
+          "m1_recall_after_fix": 0.0,
+          "sites_remaining": 3,
+          "suite_after_fix": "7/7 passed",
+          "suite_green": true,
+          "can_repair_cross_file_break": false
+        }
+      ]
+    },
+    {
+      "task_id": "task04_multimodule",
+      "ground_truth_sites": 6,
+      "tools": [
+        {
+          "tool": "ruff (DTZ)",
+          "detected": 6,
+          "detect_recall": 100.0,
+          "detect_precision": 100.0,
+          "fixed_files": 0,
+          "m1_recall_after_fix": 0.0,
+          "sites_remaining": 6,
+          "suite_after_fix": "11/11 passed",
+          "suite_green": true,
+          "can_repair_cross_file_break": false
+        },
+        {
+          "tool": "pyupgrade",
+          "detected": 0,
+          "detect_recall": 0.0,
+          "detect_precision": 0.0,
+          "fixed_files": 0,
+          "m1_recall_after_fix": 0.0,
+          "sites_remaining": 6,
+          "suite_after_fix": "11/11 passed",
+          "suite_green": true,
+          "can_repair_cross_file_break": false
+        }
+      ]
+    }
+  ]
+}

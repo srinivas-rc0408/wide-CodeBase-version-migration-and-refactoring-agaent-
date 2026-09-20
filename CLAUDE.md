@@ -83,9 +83,9 @@ Use Conventional Commits: `feat:`, `fix:`, `docs:`, `test:`, `refactor:`, `chore
 
 Fill this in as you progress so the assistant has current context:
 
-- **Current phase:** P4 (LangGraph wiring, dependency-ordered batching, bounded context; P0–P3 done)
+- **Current phase:** P5 (benchmarking, ablations, results; P0–P4 done)
 - **Active migration task:** T1 — `datetime.utcnow()` → `datetime.now(timezone.utc)`
-- **Next milestone:** multi-module repo migrated via LangGraph with batched edits and bounded context
+- **Next milestone:** benchmark table + ablations + failure analysis
 
 ## When unsure
 

@@ -163,7 +163,29 @@ Three metrics, defined formally in [`docs/05_DATA_EVALUATION_PROTOCOL.md`](docs/
 - [x] **P2** Single-file edit + verify (end-to-end tiny agent)
 - [x] **P3** Recovery loop (the graded core): classify -> locate -> patch -> re-test, capped per failure signature
 - [x] **P4** Multi-file + memory: LangGraph state machine, dependency-ordered batching, bounded context
-- [ ] **P5** Benchmark + report + paper
+- [x] **P5** Benchmark harness + ablations + baselines: `python -m mra.benchmark` writes
+  [`runs/benchmark/results.md`](runs/benchmark/results.md),
+  `results.json` and `failure-analysis.md`
+- [ ] **P6** Tier-B external validity + paper
+
+## Results so far (Tier A, deterministic path)
+
+The whole matrix runs offline — the deterministic corrector stands in for the model, so
+every number below is reproducible without an API key:
+
+```bash
+python -m mra.benchmark            # 96 runs, ~2.5 min, writes runs/benchmark/
+```
+
+- **With the recovery loop:** 4/4 tasks green, M1 = 100 %, M2 = 100 %, 0 regressions.
+- **Without it:** 3/4 tasks give up (M1 recall 33–67 %, 1–3 regressions each) — the loop
+  is what finishes a cross-file migration, not the codemod.
+- **ruff (DTZ) and pyupgrade:** ruff detects 100 % of the call sites and rewrites none of
+  them (`DTZ003` has no autofix), so its M1 is 0 % while the suite stays green — which is
+  exactly why M1 and M2 are both reported.
+
+Read [`runs/benchmark/results.md`](runs/benchmark/results.md) for the per-task table and
+the ablations, and `failure-analysis.md` for every run that did not reach green.
 
 ## License
 
