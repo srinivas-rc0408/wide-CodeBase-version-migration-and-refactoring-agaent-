@@ -40,7 +40,7 @@ class CallSite:
         return asdict(self)
 
 
-def _dotted(node: cst.BaseExpression) -> tuple[cst.Name, list[str]] | None:
+def dotted_path(node: cst.BaseExpression) -> tuple[cst.Name, list[str]] | None:
     """Flatten ``a.b.c`` into its head ``Name`` node and the attribute names after it.
 
     Returns None for anything that is not a plain dotted path — ``f().g()``,
@@ -66,19 +66,17 @@ def _module_name(node: cst.BaseExpression) -> str:
     return ""
 
 
-class _CallSiteVisitor(cst.CSTVisitor):
-    """Collects import bindings, then resolves every dotted call against them."""
+class ImportBindings(cst.CSTVisitor):
+    """Maps each locally bound name to the fully-qualified thing it refers to.
 
-    METADATA_DEPENDENCIES = (PositionProvider, ScopeProvider)
+    One implementation of the import rules, shared by the finder and the
+    codemod — a second copy is how the two drift and the codemod edits a site
+    the analyzer never reported.
+    """
 
-    def __init__(self, target: str, file: str) -> None:
-        self.target = target
-        self.file = file
+    def __init__(self) -> None:
         #: local name -> fully-qualified thing it is bound to
         self.bindings: dict[str, str] = {}
-        self.sites: list[CallSite] = []
-
-    # -- binding collection -------------------------------------------------
 
     def visit_Import(self, node: cst.Import) -> None:
         for alias in node.names:
@@ -105,7 +103,24 @@ class _CallSiteVisitor(cst.CSTVisitor):
             binding = str(alias.evaluated_alias) if alias.asname is not None else name
             self.bindings[binding] = f"{module}.{name}" if module else name
 
-    # -- resolution ---------------------------------------------------------
+
+def bindings_of(module: cst.Module) -> dict[str, str]:
+    """Collect a whole module's import bindings up front."""
+    collector = ImportBindings()
+    module.visit(collector)
+    return collector.bindings
+
+
+class _CallSiteVisitor(ImportBindings):
+    """Resolves every dotted call against this module's import bindings."""
+
+    METADATA_DEPENDENCIES = (PositionProvider, ScopeProvider)
+
+    def __init__(self, target: str, file: str) -> None:
+        super().__init__()
+        self.target = target
+        self.file = file
+        self.sites: list[CallSite] = []
 
     def _shadowed(self, head: cst.Name) -> bool:
         """True if ``head`` is bound by anything other than an import here.
@@ -126,7 +141,7 @@ class _CallSiteVisitor(cst.CSTVisitor):
         return not all(isinstance(a, ImportAssignment) for a in assignments)
 
     def visit_Call(self, node: cst.Call) -> None:
-        flattened = _dotted(node.func)
+        flattened = dotted_path(node.func)
         if flattened is None:
             return
         head, attributes = flattened

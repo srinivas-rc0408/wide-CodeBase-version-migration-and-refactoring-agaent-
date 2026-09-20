@@ -114,16 +114,12 @@ $EDITOR .env                      # add DEEPSEEK_API_KEY
 # 3. build the sandbox image
 docker build -f Dockerfile.sandbox -t mra-sandbox:py312 .
 
-# 4. run a migration on a controlled task
-python -m mra.run \
-  --repo corpus/tierA/task01_datetime/old \
-  --task task01_datetime
-
-# 5. score the result
-python -m mra.metrics --run runs/<run_id>
+# 4. run a migration on a controlled task (analyse -> codemod -> verify -> score)
+python -m mra.run --task-dir corpus/tierA/task01_datetime
 ```
 
-Outputs land in `runs/<run_id>/`: the unified `.patch`, `trajectory.json`, and `metrics.json`.
+Outputs land in `runs/<run_id>/`: the unified `migration.patch`, `trajectory.json`,
+`metrics.json`, and the normalized `test_report.json`.
 
 ## Evaluation
 
@@ -149,8 +145,8 @@ Three metrics, defined formally in [`docs/05_DATA_EVALUATION_PROTOCOL.md`](docs/
 ## Roadmap (build phases)
 
 - [x] **P0** Dockerized skeleton: `pytest` + `git` wrapped as tools
-- [ ] **P1** Static analyzer: call sites + dependency graph (deterministic)
-- [ ] **P2** Single-file edit + verify (end-to-end tiny agent)
+- [x] **P1** Static analyzer: call sites + dependency graph (deterministic)
+- [x] **P2** Single-file edit + verify (end-to-end tiny agent)
 - [ ] **P3** Recovery loop (the graded core)
 - [ ] **P4** Multi-file + memory (state tracker + summarization)
 - [ ] **P5** Benchmark + report + paper

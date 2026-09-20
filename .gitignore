@@ -33,6 +33,9 @@ env/
 htmlcov/
 report.json
 
+# ---- Knowledge graph (commit the graph, not its extraction cache) ----
+graphify-out/cache/
+
 # ---- Editor / OS ----
 .vscode/
 .idea/

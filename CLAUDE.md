@@ -68,7 +68,7 @@ ruff check . && ruff format .
 docker build -f Dockerfile.sandbox -t mra-sandbox:py312 .
 
 # run a migration on a controlled task
-python -m mra.run --repo corpus/tierA/task01_datetime/old --task task01_datetime
+python -m mra.run --task-dir corpus/tierA/task01_datetime
 ```
 
 Before proposing a change as done: `pytest tests/` passes, `ruff check .` is clean, and no schema in `docs/03_SRS.md §4` was changed without updating the doc.
@@ -81,9 +81,9 @@ Use Conventional Commits: `feat:`, `fix:`, `docs:`, `test:`, `refactor:`, `chore
 
 Fill this in as you progress so the assistant has current context:
 
-- **Current phase:** P1 (static analyzer; P0 sandbox verifier done)
+- **Current phase:** P2 (deterministic edit + verify; P0 sandbox and P1 analyzer done)
 - **Active migration task:** T1 — `datetime.utcnow()` → `datetime.now(timezone.utc)`
-- **Next milestone:** analyzer output matches `ground_truth.json` on `task01_datetime`
+- **Next milestone:** end-to-end migrate task01 and task02 to green + generate patch
 
 ## When unsure
 

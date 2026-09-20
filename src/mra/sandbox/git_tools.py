@@ -60,4 +60,7 @@ def diff(repo_path: Path | str, against: str = "HEAD") -> str:
     """
     repo = _repo(repo_path)
     repo.git.add("-AN")
-    return repo.git.diff(against)
+    patch = repo.git.diff(against)
+    # GitPython strips the trailing newline, which `git apply` rejects as a
+    # corrupt patch. An empty diff stays empty.
+    return f"{patch}\n" if patch else patch
