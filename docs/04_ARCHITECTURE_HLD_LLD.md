@@ -153,6 +153,15 @@ def route_after_test(state) -> str:
     return "correct"                  # -> CORRECT -> TEST
 ```
 
+> **Implementation note (P4).** The `state["current_batch"] += 1` above is
+> illustrative only. A LangGraph router is handed a read-only view of the state
+> and returns an edge name; it has no channel to write to, so the increment is
+> dropped and the run re-edits batch 0 forever. `edit_node` advances the counter
+> instead, after consuming its batch — the routing *decision* is unchanged.
+> Likewise §3.4's `topological_sort` must be taken over the **reversed** graph:
+> edges run `importer -> imported`, so the plain order yields importers first,
+> which is the opposite of "process leaf-most contracts first" and violates FR-3.
+
 ### 2.4 Graph wiring (LangGraph 1.x)
 
 ```python

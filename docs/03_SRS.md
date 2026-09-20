@@ -121,8 +121,21 @@ All schemas are JSON Schema draft 2020-12. These are the authoritative data shap
     },
     "trajectory": {
       "type": "array",
-      "description": "Append-only audit log of events",
+      "description": "Append-only audit log of events, reconstructed from the checkpointer at end of run",
       "items": { "$ref": "mra:trajectory_event" }
+    },
+    "summary": {
+      "type": "string",
+      "description": "Rolling progress note carried into the next LLM prompt; length-bounded so context does not grow with repo size (NFR-12)"
+    },
+    "note": {
+      "type": "object",
+      "description": "The step just taken, as {action, detail}. A single slot, not a list: the checkpointer stores one state snapshot per step, so the checkpoint history IS the audit log and trajectory events are reconstructed from it",
+      "additionalProperties": false,
+      "properties": {
+        "action": { "type": "string" },
+        "detail": { "type": "object" }
+      }
     },
     "tokens": {
       "type": "object",
@@ -169,7 +182,7 @@ All schemas are JSON Schema draft 2020-12. These are the authoritative data shap
   "properties": {
     "seq":    { "type": "integer", "minimum": 0 },
     "ts":     { "type": "string", "format": "date-time" },
-    "node":   { "enum": ["MAP", "PLAN", "EDIT", "TEST", "CORRECT"] },
+    "node":   { "enum": ["MAP", "PLAN", "EDIT", "TEST", "CORRECT", "FINISH"] },
     "action": { "type": "string", "description": "Human-readable summary of what happened" },
     "detail": { "type": "object", "description": "Node-specific payload (files, diff, model, tokens)" }
   }
