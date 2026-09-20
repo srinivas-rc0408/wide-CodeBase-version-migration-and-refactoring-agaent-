@@ -34,5 +34,5 @@
   "semantic_checks": [
     "make_timestamp() returns a timezone-aware datetime (tzinfo is not None)"
   ],
-  "gold_commit": "pending"
+  "gold_commit": "b92a4c9878f61804ed833c2a90cf3073c9d498ab"
 }
