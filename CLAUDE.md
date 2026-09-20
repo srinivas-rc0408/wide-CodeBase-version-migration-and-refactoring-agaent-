@@ -44,6 +44,7 @@ Do not swap frameworks or add new heavy dependencies without updating `docs/` an
 | Model router + token accounting | `src/mra/models/` |
 | Metric computation (M1/M2/M3) | `src/mra/metrics/` |
 | Recovery loop (CORRECT/TEST until green or capped) | `src/mra/recovery/` |
+| Rolling summary + LLM context budget | `src/mra/memory.py` |
 | Corpus | `corpus/tierA/`, `corpus/tierB/` |
 | Run outputs | `runs/<run_id>/` (gitignored) |
 
@@ -82,9 +83,9 @@ Use Conventional Commits: `feat:`, `fix:`, `docs:`, `test:`, `refactor:`, `chore
 
 Fill this in as you progress so the assistant has current context:
 
-- **Current phase:** P3 (recovery loop — the graded core; P0 sandbox, P1 analyzer, P2 deterministic edit+verify done)
+- **Current phase:** P4 (LangGraph wiring, dependency-ordered batching, bounded context; P0–P3 done)
 - **Active migration task:** T1 — `datetime.utcnow()` → `datetime.now(timezone.utc)`
-- **Next milestone:** recover a half-migration failure to green automatically
+- **Next milestone:** multi-module repo migrated via LangGraph with batched edits and bounded context
 
 ## When unsure
 
