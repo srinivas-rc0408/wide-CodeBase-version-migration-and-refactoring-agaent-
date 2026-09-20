@@ -1,7 +1,16 @@
-"""P2 end-to-end slice: analyse -> snapshot -> codemod -> verify -> score.
+"""End-to-end slice: analyse -> snapshot -> codemod -> verify -> recover -> score.
 
-One task, one batch, no planner and no recovery. Everything runs on a writable
-copy under ``runs/<run_id>/repo``; the corpus source is only ever read.
+One task, one batch, no planner. Everything runs on a writable copy under
+``runs/<run_id>/repo``; the corpus source is only ever read.
+
+Two P3 seams sit on top of the P2 path, both optional so the deterministic
+run is unchanged when they are unused:
+
+* ``edit_only`` restricts EDIT to a subset of the flagged files. That is what
+  batching does in P4, and it is how the half-migration recovery fixture is
+  produced (``corpus/tierA/task03_half_migration``).
+* ``corrector`` turns on the recovery loop: if the post-edit suite is red, the
+  loop runs CORRECT/TEST until green or ``MAX_FIX_ATTEMPTS`` (FR-7, FR-9).
 
 Outputs land in ``runs/<run_id>/`` (NFR-13):
 ``migration.patch``, ``metrics.json``, ``trajectory.json``, ``test_report.json``.
@@ -13,6 +22,7 @@ import argparse
 import json
 import shutil
 import uuid
+from collections.abc import Collection
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -20,8 +30,11 @@ from typing import Any
 from mra.analysis import analyze, flat_sites
 from mra.codemods.datetime_utcnow import TARGET
 from mra.metrics import m1, m2
+from mra.models import cost_usd, total_tokens
 from mra.nodes.edit_node import apply_codemod
+from mra.recovery import recover
 from mra.sandbox import SandboxRunner, diff, snapshot
+from mra.state import MigrationState, new_state
 
 #: Ground-truth comparison key. Matches tests/test_analyzer.py; a column error
 #: would pass a looser (file, line, symbol) key and break a positional edit.
@@ -53,6 +66,11 @@ def migrate_task(
     run_id: str | None = None,
     runs_dir: Path | str = "runs",
     target: str = TARGET,
+    *,
+    edit_only: Collection[str] | None = None,
+    corrector: Any = None,
+    state: MigrationState | None = None,
+    max_attempts: int | None = None,
 ) -> dict[str, Any]:
     """Migrate a Tier-A task end to end and score it. Returns the run summary."""
     task_dir = Path(task_dir)
@@ -61,6 +79,13 @@ def migrate_task(
     out_dir = Path(runs_dir) / run_id
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    truth = json.loads((task_dir / "ground_truth.json").read_text())
+    if state is None:
+        state = new_state(run_id, str(out_dir / "repo"), {
+            "task_id": task_id,
+            "source_api": truth["source_api"],
+            "target_api": truth["target_api"],
+        })
     trajectory = Trajectory()
     work = out_dir / "repo"
     if work.exists():
@@ -84,7 +109,14 @@ def migrate_task(
     # -- EDIT --------------------------------------------------------------
     base_sha = snapshot(work, "pre-migration snapshot")
     trajectory.record("EDIT", "git snapshot before batch 0", sha=base_sha)
-    changed = apply_codemod(work, analysis["call_sites"])
+    batch = analysis["call_sites"] if edit_only is None else {
+        file: found for file, found in analysis["call_sites"].items() if file in edit_only
+    }
+    if edit_only is not None:
+        trajectory.record("EDIT", f"batch restricted to {len(batch)} of "
+                                  f"{len(analysis['call_sites'])} flagged file(s)",
+                          files=sorted(batch))
+    changed = apply_codemod(work, batch)
     trajectory.record("EDIT", f"codemod applied to {len(changed)} file(s)", files=changed)
 
     # -- TEST (post) -------------------------------------------------------
@@ -92,36 +124,60 @@ def migrate_task(
     trajectory.record("TEST", "post-migration suite",
                       total=post["total"], passed=post["passed"], failed=post["failed"])
 
-    patch = diff(work)
+    # -- CORRECT -----------------------------------------------------------
+    recovery: dict[str, Any] | None = None
+    green = post["failed"] == 0 and post["errors"] == 0
+    if corrector is not None and not green:
+        recovery = recover(
+            work, post, runner=runner, corrector=corrector, task_id=task_id,
+            trajectory=trajectory, run_id=run_id, max_attempts=max_attempts,
+            fix_attempts=state.setdefault("fix_attempts", {}),
+            context={"call_sites": analysis["call_sites"], "dep_graph": analysis["dep_graph"],
+                     "contract": state["contract"]},
+        )
+        post = recovery["report"]
+        green = recovery["outcome"] == "success"
+        # Files repaired during recovery count as migrated for M1, same as EDIT's.
+        changed = sorted({*changed, *(f for c in recovery["corrections"] for f in c["changed"])})
+
+    state["last_test_report"] = post
+    # Against the pre-migration snapshot, not HEAD: recovery commits its own
+    # rounds, so a HEAD-relative diff would report an empty migration.
+    patch = diff(work, base_sha)
     (out_dir / "migration.patch").write_text(patch)
 
     # -- score -------------------------------------------------------------
-    truth = json.loads((task_dir / "ground_truth.json").read_text())
-    found = {_key(site) for site in sites}
+    # The agent's claim is what it actually rewrote — sites in files it left
+    # alone were found but not migrated, and a half-finished migration must
+    # score as such. Deterministic runs that edit every flagged file are
+    # unaffected, since there `edited` is all of `found`.
+    edited = {_key(site) for site in sites if site["file"] in set(changed)}
     expected = {_key(site) for site in truth["call_sites"]}
-    # Every site the codemod actually rewrote is the agent's claim; correctness
-    # is its overlap with ground truth.
-    m1_score = m1(agent_sites=found, correct_sites=found, ground_truth_sites=expected)
+    m1_score = m1(agent_sites=edited, correct_sites=edited, ground_truth_sites=expected)
     m2_score = m2(t_total=pre["total"], t_post_pass=post["passed"])
 
-    green = post["failed"] == 0 and post["errors"] == 0
+    tokens = state["tokens"]
     metrics = {
         "task_id": task_id,
         "m1_recall": m1_score["recall"],
         "m1_precision": m1_score["precision"],
         "m2_pass_rate": m2_score["pass_rate"],
         "m2_regressions": m2_score["regressions"],
-        # No LLM in P2: the whole edit is deterministic, so M3 tokens are zero.
-        "m3_tokens": 0,
+        # Zero for a purely deterministic run: codemods cost no tokens (rule 5).
+        "m3_tokens": total_tokens(tokens),
         "m3_steps": len(trajectory.events),
-        "m3_cost_usd": 0.0,
-        "recovery_used": False,
+        "m3_cost_usd": round(cost_usd(tokens), 6),
+        "recovery_used": recovery is not None,
         "outcome": "success" if green else "gave_up",
     }
     (out_dir / "metrics.json").write_text(json.dumps(metrics, indent=2) + "\n")
     (out_dir / "trajectory.json").write_text(json.dumps(trajectory.events, indent=2) + "\n")
+    state["trajectory"] = trajectory.events
+    state["done"] = green
 
     return {
+        "state": state,
+        "recovery": recovery,
         "run_id": run_id,
         "task_id": task_id,
         "out_dir": out_dir,

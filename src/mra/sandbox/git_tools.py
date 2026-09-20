@@ -52,6 +52,18 @@ def rollback(repo_path: Path | str, sha: str) -> str:
     return repo.head.commit.hexsha
 
 
+def changed_paths(repo_path: Path | str, against: str = "HEAD") -> list[str]:
+    """Repo-relative paths differing from ``against``, untracked files included.
+
+    The NB-4 guard runs on this: snapshot, let a corrector edit, then ask what
+    it actually touched. A corrector that claims one file and edits the test
+    suite is caught here rather than trusted.
+    """
+    repo = _repo(repo_path)
+    repo.git.add("-AN")
+    return [line for line in repo.git.diff("--name-only", against).splitlines() if line]
+
+
 def diff(repo_path: Path | str, against: str = "HEAD") -> str:
     """Return a unified diff of the working tree against ``against``.
 
