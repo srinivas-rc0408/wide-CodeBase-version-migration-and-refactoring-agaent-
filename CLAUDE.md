@@ -85,7 +85,7 @@ Fill this in as you progress so the assistant has current context:
 
 - **Current phase:** P5 (benchmarking, ablations, results; P0–P4 done)
 - **Active migration task:** T1 — `datetime.utcnow()` → `datetime.now(timezone.utc)`
-- **Next milestone:** benchmark table + ablations + failure analysis
+- **Next milestone:** signature-break task + paper-ready results
 
 ## When unsure
 
