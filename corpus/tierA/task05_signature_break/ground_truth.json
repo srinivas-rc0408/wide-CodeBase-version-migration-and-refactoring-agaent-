@@ -94,5 +94,5 @@
     "every stamp in one serve() response is timezone-aware",
     "importing pkg.boot succeeds: STARTUP_LAG_S is computed at import time and requires boot.py and timebase.py to agree on the clock contract"
   ],
-  "gold_commit": ""
+  "gold_commit": "d27b110c18930bfdf4a6dc68343ce9845e76bfc1"
 }
