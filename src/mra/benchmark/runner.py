@@ -48,7 +48,7 @@ from mra.nodes.plan_node import DEFAULT_EDIT_BATCH_SIZE, plan_batches, plan_node
 
 #: The Tier-A corpus, in the order the table reports it.
 TASKS = ("task01_datetime", "task02_datetime_aliased",
-         "task03_half_migration", "task04_multimodule")
+         "task03_half_migration", "task04_multimodule", "task05_signature_break")
 
 DEFAULT_REPEATS = 3
 DEFAULT_CORPUS = Path("corpus/tierA")
@@ -97,6 +97,18 @@ CONFIGS: tuple[Config, ...] = (
            note="file-name order, one file per EDIT"),
     Config("order-fr3-violating-b1", order="fr3_violating", batch_size=1, ablation="B",
            note="dependents-first order, one file per EDIT"),
+    # With recovery on, every order is rescued and the only thing an order costs
+    # is corrective edits. Turning the loop off in the same three arms asks the
+    # harder question: does the order alone decide whether the run regresses?
+    Config("order-dependency-b1-norecovery", order="dependency", batch_size=1,
+           recovery=False, ablation="B",
+           note="dependency order, one file per EDIT, CORRECT loop disabled"),
+    Config("order-alphabetical-b1-norecovery", order="alphabetical", batch_size=1,
+           recovery=False, ablation="B",
+           note="file-name order, one file per EDIT, CORRECT loop disabled"),
+    Config("order-fr3-violating-b1-norecovery", order="fr3_violating", batch_size=1,
+           recovery=False, ablation="B",
+           note="dependents-first order, one file per EDIT, CORRECT loop disabled"),
     Config("batch-1", batch_size=1, ablation="D", note="one file per EDIT"),
     Config("batch-5", batch_size=5, ablation="D", note="five files per EDIT"),
     Config("edit-v4-pro", model="v4-pro", ablation="C",
@@ -412,9 +424,21 @@ def render_markdown(results: dict[str, Any]) -> str:
         "(recovery on, dependency-ordered batches of 3, deterministic corrector); every "
         "other configuration changes exactly one thing about it (docs/05 §3).",
         "",
-        "## 1. Per task, per configuration",
+        "## 1. The whole offline matrix",
+        "",
+        "Every (task, configuration) pair in one table — the paper's reference "
+        "grid. The per-task breakdowns below are the same rows, split for "
+        "reading. Live-model rows are absent by design; see §2C.",
         "",
     ]
+    order = {name: index for index, name in enumerate(results["tasks"])}
+    grid = sorted((a for a in aggregates if a["task_id"] in order),
+                  key=lambda a: (order[a["task_id"]], a["config"]))
+    key = "task / config"
+    lines += _table([{**a, key: f"{a['task_id']} / {a['config']}"} for a in grid],
+                    key=key) + [""]
+
+    lines += ["## 1b. Per task, per configuration", ""]
     for task in results["tasks"]:
         entries = [a for a in aggregates if a["task_id"] == task]
         if not entries:
@@ -451,17 +475,22 @@ def _ablation_b(results: dict[str, Any]) -> list[str]:
              "ignore the graph; the `order-fr3-violating` arms are `plan_batches` on the "
              "*reversed* graph — dependents before their dependencies, the inversion "
              "docs/04 §3.4's pseudocode produces if its missing `.reverse()` is taken "
-             "literally. Recovery is on in every arm, so an order is charged for in "
-             "corrective edits (`corr`) and steps before it is charged for in a failed "
-             "run.", "",
-             "Read the two groups separately. At batch 3 a Tier-A task is only one or "
+             "literally.", "",
+             "Read the three groups separately. At batch 3 a small task is only one or "
              "two batches wide, so edit order and batch size are confounded — an order "
              "that happens to put a producer and its consumer in the same batch never "
              "exposes the intermediate state at all. The `-b1` group edits one file per "
-             "batch, where sequence is the only variable left.", ""]
+             "batch, where sequence is the only variable left. The `-norecovery` group "
+             "then removes the loop, which is the only way to see what an order costs "
+             "when nothing is there to repair it.", ""]
     groups = (
-        ("batch size 3", ("baseline", "order-alphabetical", "order-fr3-violating")),
-        ("batch size 1", ("batch-1", "order-alphabetical-b1", "order-fr3-violating-b1")),
+        ("batch size 3, recovery on", ("baseline", "order-alphabetical",
+                                       "order-fr3-violating")),
+        ("batch size 1, recovery on", ("batch-1", "order-alphabetical-b1",
+                                       "order-fr3-violating-b1")),
+        ("batch size 1, recovery OFF", ("order-dependency-b1-norecovery",
+                                        "order-alphabetical-b1-norecovery",
+                                        "order-fr3-violating-b1-norecovery")),
     )
     for label, arms in groups:
         lines += [f"#### {label}", ""]
@@ -471,7 +500,8 @@ def _ablation_b(results: dict[str, Any]) -> list[str]:
                 lines += [f"**{task}**", ""] + _table(entries) + [""]
 
     lines += ["#### What the data says", "",
-              "Corrective edits per task, one file per batch (lower is better):", ""]
+              "Corrective edits per task, one file per batch, recovery on "
+              "(lower is better):", ""]
     dependency, alphabetical, violating = groups[1][1]
     for task in results["tasks"]:
         found = {e["config"]: e for e in _pick(results["aggregates"], groups[1][1], task)}
@@ -482,27 +512,75 @@ def _ablation_b(results: dict[str, Any]) -> list[str]:
             f"file-name order {found[alphabetical]['corrections_mean']:.0f}, "
             f"dependents-first {found[violating]['corrections_mean']:.0f}"
         )
+
+    lines += ["", "Outcome with the loop off, one file per batch — the same three orders "
+              "with nothing to repair them:", ""]
+    dep_off, alpha_off, fr3_off = groups[2][1]
+    separating: list[str] = []
+    for task in results["tasks"]:
+        found = {e["config"]: e for e in _pick(results["aggregates"], groups[2][1], task)}
+        if len(found) < 3:
+            continue
+        lines.append(
+            f"- **{task}** — dependency {_verdict(found[dep_off])} "
+            f"(M1 {found[dep_off]['m1_recall_mean']:.0f}%, "
+            f"{found[dep_off]['m2_regressions_mean']:.0f} regr), "
+            f"file-name {_verdict(found[alpha_off])} "
+            f"(M1 {found[alpha_off]['m1_recall_mean']:.0f}%, "
+            f"{found[alpha_off]['m2_regressions_mean']:.0f} regr), "
+            f"dependents-first {_verdict(found[fr3_off])} "
+            f"(M1 {found[fr3_off]['m1_recall_mean']:.0f}%, "
+            f"{found[fr3_off]['m2_regressions_mean']:.0f} regr)"
+        )
+        clean = (found[dep_off]["m2_regressions_mean"] == 0
+                 and found[dep_off]["outcomes"].get("success", 0) == found[dep_off]["n"])
+        broke = any(found[arm]["m2_regressions_mean"] > 0 for arm in (alpha_off, fr3_off))
+        if clean and broke:
+            separating.append(task)
+
+    lines += ["", "Three findings.", ""]
+    if separating:
+        joined = ", ".join(f"`{task}`" for task in separating)
+        lines += [
+            f"1. **Edit order alone decides the outcome on {joined}.** With the CORRECT "
+            "loop off, the dependency order finishes green with no regression while the "
+            "file-name and dependents-first orders both give up with a red suite. The "
+            "fixture's break is asymmetric by construction: `pkg.timebase` upgrades a "
+            "naive stamp it is handed but refuses to strip a `tzinfo`, so migrating the "
+            "contract owner first is always safe and migrating a caller first is not. "
+            "`pkg.boot` does that handback at module scope, so the wrong order raises "
+            "during **import** and pytest reports collection errors rather than test "
+            "failures — the hard break this ablation was missing.",
+            "",
+        ]
+    else:  # pragma: no cover - only if a future corpus change removes the asymmetry
+        lines += ["1. **No task separates the orders with the loop off.** Every arm that "
+                  "breaks, breaks in both directions.", ""]
     lines += [
-        "",
-        "Two findings, one of them not the expected one.",
-        "",
-        "1. **The dependents-first order is never cheaper and is sometimes the most "
+        "2. **The dependents-first order is never cheaper and is sometimes the most "
         "expensive arm run** — on `task04_multimodule` it spends the full NFR-1 retry "
         "ceiling of 3 attempts where the dependency order spends 2, i.e. it finishes one "
-        "attempt away from failing the task. That is what violating FR-3 costs here: not "
-        "a wrong answer, a thinner margin.",
+        "attempt away from failing the task. That is what violating FR-3 costs when a "
+        "loop is there to absorb it: not a wrong answer, a thinner margin.",
         "",
-        "2. **File-name order is not a worse order on this corpus.** At batch 3 a "
-        "Tier-A task is one or two batches wide, so alphabetical order degenerates into "
-        "a near big-bang migration that never exposes an intermediate state and needs no "
-        "recovery at all. That is a property of a six-file corpus, not evidence that the "
-        "graph is unnecessary — but it is the honest reading of these numbers, and the "
-        "textbook result (an arbitrary order causing a regression the dependency order "
-        "avoids) is **not reproduced here**. Getting it would need a task whose break is "
-        "a *signature* change rather than a semantic one, where editing a caller before "
-        "its callee raises on import instead of producing a wrong value. Tier A has no "
-        "such task yet; that is the gap to close before this ablation can carry the "
-        "claim docs/05 §3 assigns it.",
+        "3. **With the loop on, order is a cost and not a verdict.** Every order "
+        "completes every Tier-A task, `task05_signature_break` included. Dependency "
+        "order is never the most expensive arm and the dependents-first order is never "
+        "the cheapest, but the ranking is not uniform: file-name order is the cheapest "
+        "arm on `task04` (1 corrective edit against the dependency order's 2), which is "
+        "luck about which files that particular alphabet happens to group, and the same "
+        "order costs 2 where the dependency order costs 0 on `task05`. The ordering "
+        "claim this corpus supports is therefore conditional: *dependency order removes "
+        "the corrective edits on the task built to expose ordering, and without a "
+        "recovery loop it is the difference between a green migration and a failed "
+        "one.*",
+        "",
+        "One honest caveat on `task01`–`task04`: file-name order is not a worse order "
+        "there. Those tasks are one or two batches wide at batch 3, so alphabetical "
+        "order degenerates into a near big-bang migration that never exposes an "
+        "intermediate state. That is a property of a small corpus, not evidence that "
+        "the graph is unnecessary — `task05` exists precisely because the four earlier "
+        "tasks could not separate the orders.",
         "",
     ]
     return lines
@@ -572,8 +650,8 @@ def _baseline_section(results: dict[str, Any]) -> list[str]:
 def _why(row: dict[str, Any], configs: dict[str, dict[str, Any]]) -> str:
     config = configs.get(row["config"], {})
     if not config.get("recovery", True):
-        return ("recovery disabled (ablation A): the run gives up on the first red suite, "
-                "so the remaining batches are never edited")
+        return (f"recovery disabled (ablation {config.get('ablation') or 'A'}): the run "
+                "gives up on the first red suite, so the remaining batches are never edited")
     cap = max(row["fix_attempts"].values(), default=0)
     if row["fix_attempts"]:
         return (f"the CORRECT loop spent its per-signature retry ceiling (NFR-1): "

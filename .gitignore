@@ -14,6 +14,7 @@ runs/benchmark/*
 !runs/benchmark/results.json
 !runs/benchmark/results.md
 !runs/benchmark/failure-analysis.md
+!runs/benchmark/RESULTS_SUMMARY.md
 *.patch
 state.db
 *.sqlite
