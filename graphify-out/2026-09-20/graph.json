@@ -4,19 +4,6 @@
   "graph": {},
   "nodes": [
     {
-      "label": "SandboxRunner",
-      "file_type": "code",
-      "source_file": "src/mra/sandbox/runner.py",
-      "source_location": "L145",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "src_mra_sandbox_runner_sandboxrunner",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "sandboxrunner"
-    },
-    {
       "label": "CallSite",
       "file_type": "code",
       "source_file": "src/mra/analysis/call_sites.py",
@@ -46,14 +33,66 @@
       "label": "_CallSiteVisitor",
       "file_type": "code",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L69",
+      "source_location": "L114",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_mra_analysis_call_sites_callsitevisitor",
       "community": 12,
-      "community_name": "_CallSiteVisitor",
+      "community_name": "ConvertUtcnowCommand",
       "norm_label": "_callsitevisitor"
+    },
+    {
+      "label": "ImportBindings",
+      "file_type": "code",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L69",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "src_mra_analysis_call_sites_importbindings",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "importbindings"
+    },
+    {
+      "label": "ConvertUtcnowCommand",
+      "file_type": "code",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L37",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "src_mra_codemods_datetime_utcnow_convertutcnowcommand",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "convertutcnowcommand"
+    },
+    {
+      "label": "Trajectory",
+      "file_type": "code",
+      "source_file": "src/mra/run.py",
+      "source_location": "L35",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "src_mra_run_trajectory",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "trajectory"
+    },
+    {
+      "label": "SandboxRunner",
+      "file_type": "code",
+      "source_file": "src/mra/sandbox/runner.py",
+      "source_location": "L145",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "src_mra_sandbox_runner_sandboxrunner",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "sandboxrunner"
     },
     {
       "label": "_exc_type_from()",
@@ -64,7 +103,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_exc_type_from",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "_exc_type_from()"
     },
     {
@@ -76,7 +115,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_failure_from_collector",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "_failure_from_collector()"
     },
     {
@@ -88,7 +127,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_failure_from_test",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "_failure_from_test()"
     },
     {
@@ -100,7 +139,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_failure_signature",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "failure_signature()"
     },
     {
@@ -112,7 +151,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_lint_counts",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "_lint_counts()"
     },
     {
@@ -124,7 +163,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_normalize_message",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "normalize_message()"
     },
     {
@@ -136,7 +175,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_relative",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "_relative()"
     },
     {
@@ -148,7 +187,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_sandboxrunner_docker_argv",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "._docker_argv()"
     },
     {
@@ -160,7 +199,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_sandboxrunner_init",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": ".__init__()"
     },
     {
@@ -172,7 +211,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_sandboxrunner_normalize",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "._normalize()"
     },
     {
@@ -184,7 +223,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_sandboxrunner_run",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": ".run()"
     },
     {
@@ -196,56 +235,8 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_sandboxrunner_script",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "._script()"
-    },
-    {
-      "label": "_break_copy()",
-      "file_type": "code",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L66",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "tests_test_sandbox_break_copy",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "_break_copy()"
-    },
-    {
-      "label": "green_report()",
-      "file_type": "code",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L53",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "tests_test_sandbox_green_report",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "green_report()"
-    },
-    {
-      "label": "runner()",
-      "file_type": "code",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L48",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "tests_test_sandbox_runner",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "runner()"
-    },
-    {
-      "label": "test_deprecation_warnings_do_not_count_as_failures()",
-      "file_type": "code",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L91",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "tests_test_sandbox_test_deprecation_warnings_do_not_count_as_failures",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "test_deprecation_warnings_do_not_count_as_failures()"
     },
     {
       "label": "test_different_failures_get_different_signatures()",
@@ -256,44 +247,8 @@
       "_origin": "ast",
       "id": "tests_test_sandbox_test_different_failures_get_different_signatures",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "test_different_failures_get_different_signatures()"
-    },
-    {
-      "label": "test_failing_task_reports_a_usable_failure()",
-      "file_type": "code",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L98",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "tests_test_sandbox_test_failing_task_reports_a_usable_failure",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "test_failing_task_reports_a_usable_failure()"
-    },
-    {
-      "label": "test_green_report_matches_the_srs_schema()",
-      "file_type": "code",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L77",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "tests_test_sandbox_test_green_report_matches_the_srs_schema",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "test_green_report_matches_the_srs_schema()"
-    },
-    {
-      "label": "test_input_mount_is_not_modified()",
-      "file_type": "code",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L115",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "tests_test_sandbox_test_input_mount_is_not_modified",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "test_input_mount_is_not_modified()"
     },
     {
       "label": "test_normalization_strips_volatile_text()",
@@ -304,80 +259,8 @@
       "_origin": "ast",
       "id": "tests_test_sandbox_test_normalization_strips_volatile_text",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "test_normalization_strips_volatile_text()"
-    },
-    {
-      "label": "test_passing_task_reports_all_green()",
-      "file_type": "code",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L82",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "tests_test_sandbox_test_passing_task_reports_all_green",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "test_passing_task_reports_all_green()"
-    },
-    {
-      "label": "test_report_schema()",
-      "file_type": "code",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L34",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "tests_test_sandbox_test_report_schema",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "test_report_schema()"
-    },
-    {
-      "label": "test_same_failure_yields_the_same_signature()",
-      "file_type": "code",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L127",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "tests_test_sandbox_test_same_failure_yields_the_same_signature",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "test_same_failure_yields_the_same_signature()"
-    },
-    {
-      "label": "test_timeout_returns_a_structured_report()",
-      "file_type": "code",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L172",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "tests_test_sandbox_test_timeout_returns_a_structured_report",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "test_timeout_returns_a_structured_report()"
-    },
-    {
-      "label": "test_unparseable_repo_is_not_reported_as_green()",
-      "file_type": "code",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L187",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "tests_test_sandbox_test_unparseable_repo_is_not_reported_as_green",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "test_unparseable_repo_is_not_reported_as_green()"
-    },
-    {
-      "label": "_tree_digest()",
-      "file_type": "code",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L57",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "tests_test_sandbox_tree_digest",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "_tree_digest()"
     },
     {
       "label": "analyze()",
@@ -407,7 +290,7 @@
       "label": "find_in_repo()",
       "file_type": "code",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L153",
+      "source_location": "L168",
       "_callable": true,
       "_origin": "ast",
       "id": "src_mra_analysis_call_sites_find_in_repo",
@@ -419,7 +302,7 @@
       "label": "find_in_source()",
       "file_type": "code",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L145",
+      "source_location": "L160",
       "_callable": true,
       "_origin": "ast",
       "id": "src_mra_analysis_call_sites_find_in_source",
@@ -536,76 +419,112 @@
       "norm_label": "to_state_adjacency()"
     },
     {
+      "label": "test_state_adjacency_is_importers_per_file()",
+      "file_type": "code",
+      "source_file": "tests/test_analyzer.py",
+      "source_location": "L131",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_analyzer_test_state_adjacency_is_importers_per_file",
+      "community": 1,
+      "community_name": "analysis/__init__.py",
+      "norm_label": "test_state_adjacency_is_importers_per_file()"
+    },
+    {
+      "label": "bindings_of()",
+      "file_type": "code",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L107",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_mra_analysis_call_sites_bindings_of",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "bindings_of()"
+    },
+    {
       "label": ".__init__()",
       "file_type": "code",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L74",
+      "source_location": "L119",
       "_callable": true,
       "_origin": "ast",
       "id": "src_mra_analysis_call_sites_callsitevisitor_init",
       "community": 12,
-      "community_name": "_CallSiteVisitor",
+      "community_name": "ConvertUtcnowCommand",
       "norm_label": ".__init__()"
     },
     {
       "label": "._shadowed()",
       "file_type": "code",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L110",
+      "source_location": "L125",
       "_callable": true,
       "_origin": "ast",
       "id": "src_mra_analysis_call_sites_callsitevisitor_shadowed",
       "community": 12,
-      "community_name": "_CallSiteVisitor",
+      "community_name": "ConvertUtcnowCommand",
       "norm_label": "._shadowed()"
     },
     {
       "label": ".visit_Call()",
       "file_type": "code",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L128",
+      "source_location": "L143",
       "_callable": true,
       "_origin": "ast",
       "id": "src_mra_analysis_call_sites_callsitevisitor_visit_call",
       "community": 12,
-      "community_name": "_CallSiteVisitor",
+      "community_name": "ConvertUtcnowCommand",
       "norm_label": ".visit_call()"
+    },
+    {
+      "label": "dotted_path()",
+      "file_type": "code",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L43",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_mra_analysis_call_sites_dotted_path",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "dotted_path()"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L77",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_mra_analysis_call_sites_importbindings_init",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": ".__init__()"
     },
     {
       "label": ".visit_Import()",
       "file_type": "code",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L83",
+      "source_location": "L81",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_mra_analysis_call_sites_callsitevisitor_visit_import",
+      "id": "src_mra_analysis_call_sites_importbindings_visit_import",
       "community": 12,
-      "community_name": "_CallSiteVisitor",
+      "community_name": "ConvertUtcnowCommand",
       "norm_label": ".visit_import()"
     },
     {
       "label": ".visit_ImportFrom()",
       "file_type": "code",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L96",
+      "source_location": "L94",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_mra_analysis_call_sites_callsitevisitor_visit_importfrom",
+      "id": "src_mra_analysis_call_sites_importbindings_visit_importfrom",
       "community": 12,
-      "community_name": "_CallSiteVisitor",
+      "community_name": "ConvertUtcnowCommand",
       "norm_label": ".visit_importfrom()"
-    },
-    {
-      "label": "_dotted()",
-      "file_type": "code",
-      "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L43",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_mra_analysis_call_sites_dotted",
-      "community": 12,
-      "community_name": "_CallSiteVisitor",
-      "norm_label": "_dotted()"
     },
     {
       "label": "_module_name()",
@@ -616,8 +535,128 @@
       "_origin": "ast",
       "id": "src_mra_analysis_call_sites_module_name",
       "community": 12,
-      "community_name": "_CallSiteVisitor",
+      "community_name": "ConvertUtcnowCommand",
       "norm_label": "_module_name()"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L42",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_mra_codemods_datetime_utcnow_convertutcnowcommand_init",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".leave_Call()",
+      "file_type": "code",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L54",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_mra_codemods_datetime_utcnow_convertutcnowcommand_leave_call",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": ".leave_call()"
+    },
+    {
+      "label": ".transform_module_impl()",
+      "file_type": "code",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L48",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_mra_codemods_datetime_utcnow_convertutcnowcommand_transform_module_impl",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": ".transform_module_impl()"
+    },
+    {
+      "label": "apply_codemod()",
+      "file_type": "code",
+      "source_file": "src/mra/nodes/edit_node.py",
+      "source_location": "L19",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_mra_nodes_edit_node_apply_codemod",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "apply_codemod()"
+    },
+    {
+      "label": "m2()",
+      "file_type": "code",
+      "source_file": "src/mra/metrics/m2.py",
+      "source_location": "L11",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_mra_metrics_m2_m2",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "m2()"
+    },
+    {
+      "label": "_key()",
+      "file_type": "code",
+      "source_file": "src/mra/run.py",
+      "source_location": "L31",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_mra_run_key",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "_key()"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "src/mra/run.py",
+      "source_location": "L140",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_mra_run_main",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "main()"
+    },
+    {
+      "label": "migrate_task()",
+      "file_type": "code",
+      "source_file": "src/mra/run.py",
+      "source_location": "L51",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_mra_run_migrate_task",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "migrate_task()"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "src/mra/run.py",
+      "source_location": "L38",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_mra_run_trajectory_init",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".record()",
+      "file_type": "code",
+      "source_file": "src/mra/run.py",
+      "source_location": "L41",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_mra_run_trajectory_record",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": ".record()"
     },
     {
       "label": "diff()",
@@ -628,7 +667,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_git_tools_diff",
       "community": 13,
-      "community_name": "sandbox/__init__.py",
+      "community_name": "run.py",
       "norm_label": "diff()"
     },
     {
@@ -640,7 +679,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_git_tools_repo",
       "community": 13,
-      "community_name": "sandbox/__init__.py",
+      "community_name": "run.py",
       "norm_label": "_repo()"
     },
     {
@@ -652,7 +691,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_git_tools_rollback",
       "community": 13,
-      "community_name": "sandbox/__init__.py",
+      "community_name": "run.py",
       "norm_label": "rollback()"
     },
     {
@@ -664,8 +703,152 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_git_tools_snapshot",
       "community": 13,
-      "community_name": "sandbox/__init__.py",
+      "community_name": "run.py",
       "norm_label": "snapshot()"
+    },
+    {
+      "label": "_added_import_lines()",
+      "file_type": "code",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L56",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_added_import_lines",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "_added_import_lines()"
+    },
+    {
+      "label": "corpus_digests()",
+      "file_type": "code",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L43",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_corpus_digests",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "corpus_digests()"
+    },
+    {
+      "label": "runs()",
+      "file_type": "code",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L49",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_runs",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "runs()"
+    },
+    {
+      "label": "test_corpus_source_is_untouched()",
+      "file_type": "code",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L141",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_test_corpus_source_is_untouched",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "test_corpus_source_is_untouched()"
+    },
+    {
+      "label": "test_migrated_tree_satisfies_the_gold_semantic_check()",
+      "file_type": "code",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L116",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_test_migrated_tree_satisfies_the_gold_semantic_check",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "test_migrated_tree_satisfies_the_gold_semantic_check()"
+    },
+    {
+      "label": "test_migration_is_green_and_perfectly_scored()",
+      "file_type": "code",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L69",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_test_migration_is_green_and_perfectly_scored",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "test_migration_is_green_and_perfectly_scored()"
+    },
+    {
+      "label": "test_patch_applies_to_a_fresh_checkout()",
+      "file_type": "code",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L150",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_test_patch_applies_to_a_fresh_checkout",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "test_patch_applies_to_a_fresh_checkout()"
+    },
+    {
+      "label": "test_run_writes_every_artifact()",
+      "file_type": "code",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L166",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_test_run_writes_every_artifact",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "test_run_writes_every_artifact()"
+    },
+    {
+      "label": "test_suite_was_green_before_migration()",
+      "file_type": "code",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L80",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_test_suite_was_green_before_migration",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "test_suite_was_green_before_migration()"
+    },
+    {
+      "label": "test_task01_patch_adds_the_timezone_import()",
+      "file_type": "code",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L91",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_test_task01_patch_adds_the_timezone_import",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "test_task01_patch_adds_the_timezone_import()"
+    },
+    {
+      "label": "test_task02_patch_adds_no_import()",
+      "file_type": "code",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L100",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_test_task02_patch_adds_no_import",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "test_task02_patch_adds_no_import()"
+    },
+    {
+      "label": "_tree_digest()",
+      "file_type": "code",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L34",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_tree_digest",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "_tree_digest()"
     },
     {
       "label": "test_snapshot_rollback_and_diff_round_trip()",
@@ -676,8 +859,164 @@
       "_origin": "ast",
       "id": "tests_test_sandbox_test_snapshot_rollback_and_diff_round_trip",
       "community": 13,
-      "community_name": "sandbox/__init__.py",
+      "community_name": "run.py",
       "norm_label": "test_snapshot_rollback_and_diff_round_trip()"
+    },
+    {
+      "label": "_break_copy()",
+      "file_type": "code",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L66",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_sandbox_break_copy",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "_break_copy()"
+    },
+    {
+      "label": "green_report()",
+      "file_type": "code",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L53",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_sandbox_green_report",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "green_report()"
+    },
+    {
+      "label": "runner()",
+      "file_type": "code",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L48",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_sandbox_runner",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "runner()"
+    },
+    {
+      "label": "test_deprecation_warnings_do_not_count_as_failures()",
+      "file_type": "code",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L91",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_sandbox_test_deprecation_warnings_do_not_count_as_failures",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "test_deprecation_warnings_do_not_count_as_failures()"
+    },
+    {
+      "label": "test_failing_task_reports_a_usable_failure()",
+      "file_type": "code",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L98",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_sandbox_test_failing_task_reports_a_usable_failure",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "test_failing_task_reports_a_usable_failure()"
+    },
+    {
+      "label": "test_green_report_matches_the_srs_schema()",
+      "file_type": "code",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L77",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_sandbox_test_green_report_matches_the_srs_schema",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "test_green_report_matches_the_srs_schema()"
+    },
+    {
+      "label": "test_input_mount_is_not_modified()",
+      "file_type": "code",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L115",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_sandbox_test_input_mount_is_not_modified",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "test_input_mount_is_not_modified()"
+    },
+    {
+      "label": "test_passing_task_reports_all_green()",
+      "file_type": "code",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L82",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_sandbox_test_passing_task_reports_all_green",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "test_passing_task_reports_all_green()"
+    },
+    {
+      "label": "test_report_schema()",
+      "file_type": "code",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L34",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_sandbox_test_report_schema",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "test_report_schema()"
+    },
+    {
+      "label": "test_same_failure_yields_the_same_signature()",
+      "file_type": "code",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L127",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_sandbox_test_same_failure_yields_the_same_signature",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "test_same_failure_yields_the_same_signature()"
+    },
+    {
+      "label": "test_timeout_returns_a_structured_report()",
+      "file_type": "code",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L172",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_sandbox_test_timeout_returns_a_structured_report",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "test_timeout_returns_a_structured_report()"
+    },
+    {
+      "label": "test_unparseable_repo_is_not_reported_as_green()",
+      "file_type": "code",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L187",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_sandbox_test_unparseable_repo_is_not_reported_as_green",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "test_unparseable_repo_is_not_reported_as_green()"
+    },
+    {
+      "label": "_tree_digest()",
+      "file_type": "code",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L57",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_sandbox_tree_digest",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "_tree_digest()"
     },
     {
       "label": "flat_sites()",
@@ -798,18 +1137,6 @@
       "community": 2,
       "community_name": "test_analyzer.py",
       "norm_label": "test_report_m1_comparison()"
-    },
-    {
-      "label": "test_state_adjacency_is_importers_per_file()",
-      "file_type": "code",
-      "source_file": "tests/test_analyzer.py",
-      "source_location": "L131",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "tests_test_analyzer_test_state_adjacency_is_importers_per_file",
-      "community": 2,
-      "community_name": "test_analyzer.py",
-      "norm_label": "test_state_adjacency_is_importers_per_file()"
     },
     {
       "label": "test_task01_finds_the_single_from_import_site()",
@@ -1244,17 +1571,6 @@
       "norm_label": "test_stamp_age_is_non_negative()"
     },
     {
-      "label": "needs_docker",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "id": "needs_docker",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "needs_docker"
-    },
-    {
       "label": "Phase",
       "file_type": "code",
       "source_file": "",
@@ -1262,7 +1578,7 @@
       "_origin": "ast",
       "id": "phase",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "phase"
     },
     {
@@ -1273,7 +1589,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "runner.py"
     },
     {
@@ -1284,7 +1600,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_py_any",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "any"
     },
     {
@@ -1295,51 +1611,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_py_path",
       "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "path"
-    },
-    {
-      "label": "TempPathFactory",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "id": "temppathfactory",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "temppathfactory"
-    },
-    {
-      "label": "test_sandbox.py",
-      "file_type": "code",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "tests_test_sandbox",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "test_sandbox.py"
-    },
-    {
-      "label": "fixture",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "id": "tests_test_sandbox_py_fixture",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "fixture"
-    },
-    {
-      "label": "Path",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "id": "tests_test_sandbox_py_path",
-      "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "path"
     },
     {
@@ -1350,7 +1622,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_rationale_1",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "run a repo's test suite inside an isolated container and normalize the result...."
     },
     {
@@ -1361,7 +1633,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_rationale_116",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "normalize a collection error (syntax error, bad import) the same way. without..."
     },
     {
@@ -1372,19 +1644,8 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_rationale_137",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "ruff emits one flat diagnostic list with no severity split, so all are errors."
-    },
-    {
-      "label": "Runs a repo's suite in one throwaway container and returns a test_report. The\u2026",
-      "file_type": "rationale",
-      "source_file": "src/mra/sandbox/runner.py",
-      "source_location": "L146",
-      "_origin": "ast",
-      "id": "src_mra_sandbox_runner_rationale_146",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "runs a repo's suite in one throwaway container and returns a test_report. the..."
     },
     {
       "label": "Shell run inside the container. `timeout` here is what enforces NFR-4.",
@@ -1394,7 +1655,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_rationale_166",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "shell run inside the container. `timeout` here is what enforces nfr-4."
     },
     {
@@ -1405,7 +1666,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_rationale_208",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "verify ``repo`` in a container; return a ``mra:test_report`` dict. writes..."
     },
     {
@@ -1416,7 +1677,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_rationale_262",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "raw pytest-json-report (or its absence) -> the mra:test_report contract."
     },
     {
@@ -1427,7 +1688,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_rationale_48",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "strip everything run-specific from a failure message. absolute paths, memory..."
     },
     {
@@ -1438,7 +1699,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_rationale_62",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "stable id for a recurring failure: hash of (nodeid, exc_type, normalized..."
     },
     {
@@ -1449,7 +1710,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_rationale_72",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "best-effort exception class name for one raw pytest-json-report entry."
     },
     {
@@ -1460,7 +1721,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_rationale_87",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "container-absolute path -> repo-relative, so reports are host-portable."
     },
     {
@@ -1471,107 +1732,8 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_runner_rationale_93",
       "community": 0,
-      "community_name": "test_sandbox.py",
+      "community_name": "runner.py",
       "norm_label": "normalize one failed/errored test into a test_report.failures[] entry."
-    },
-    {
-      "label": "P0 acceptance: the sandbox verifies a real corpus task and reports it as data.\u2026",
-      "file_type": "rationale",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "tests_test_sandbox_rationale_1",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "p0 acceptance: the sandbox verifies a real corpus task and reports it as data...."
-    },
-    {
-      "label": "The source tree is mounted :ro and copied inside; a run must not touch it. The\u2026",
-      "file_type": "rationale",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L116",
-      "_origin": "ast",
-      "id": "tests_test_sandbox_rationale_116",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "the source tree is mounted :ro and copied inside; a run must not touch it. the..."
-    },
-    {
-      "label": "Retry capping (NFR-1) is meaningless if a signature drifts between runs. The\u2026",
-      "file_type": "rationale",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L128",
-      "_origin": "ast",
-      "id": "tests_test_sandbox_rationale_128",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "retry capping (nfr-1) is meaningless if a signature drifts between runs. the..."
-    },
-    {
-      "label": "NFR-4: a hanging suite is a reportable result, never an exception.",
-      "file_type": "rationale",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L173",
-      "_origin": "ast",
-      "id": "tests_test_sandbox_rationale_173",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "nfr-4: a hanging suite is a reportable result, never an exception."
-    },
-    {
-      "label": "Collection errors never reach pytest's summary; counting them is on us.",
-      "file_type": "rationale",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L190",
-      "_origin": "ast",
-      "id": "tests_test_sandbox_rationale_190",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "collection errors never reach pytest's summary; counting them is on us."
-    },
-    {
-      "label": "Pull the mra:test_report schema out of the SRS itself. Golden rule 4 makes the\u2026",
-      "file_type": "rationale",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L35",
-      "_origin": "ast",
-      "id": "tests_test_sandbox_rationale_35",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "pull the mra:test_report schema out of the srs itself. golden rule 4 makes the..."
-    },
-    {
-      "label": "Content hash of every file under ``root``, for tamper detection.",
-      "file_type": "rationale",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L58",
-      "_origin": "ast",
-      "id": "tests_test_sandbox_rationale_58",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "content hash of every file under ``root``, for tamper detection."
-    },
-    {
-      "label": "Copy a task tree and inject one failing assertion into its suite.",
-      "file_type": "rationale",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L67",
-      "_origin": "ast",
-      "id": "tests_test_sandbox_rationale_67",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "copy a task tree and inject one failing assertion into its suite."
-    },
-    {
-      "label": "task01/old raises DeprecationWarning on every utcnow() call and is still green.",
-      "file_type": "rationale",
-      "source_file": "tests/test_sandbox.py",
-      "source_location": "L92",
-      "_origin": "ast",
-      "id": "tests_test_sandbox_rationale_92",
-      "community": 0,
-      "community_name": "test_sandbox.py",
-      "norm_label": "task01/old raises deprecationwarning on every utcnow() call and is still green."
     },
     {
       "label": "DiGraph",
@@ -1742,9 +1904,9 @@
       "label": "Locate every call to ``target`` in one module's source text.",
       "file_type": "rationale",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L146",
+      "source_location": "L161",
       "_origin": "ast",
-      "id": "src_mra_analysis_call_sites_rationale_146",
+      "id": "src_mra_analysis_call_sites_rationale_161",
       "community": 1,
       "community_name": "analysis/__init__.py",
       "norm_label": "locate every call to ``target`` in one module's source text."
@@ -1753,9 +1915,9 @@
       "label": "Scan a repo for ``target`` and return the ``MigrationState.call_sites`` map.\u2026",
       "file_type": "rationale",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L156",
+      "source_location": "L171",
       "_origin": "ast",
-      "id": "src_mra_analysis_call_sites_rationale_156",
+      "id": "src_mra_analysis_call_sites_rationale_171",
       "community": 1,
       "community_name": "analysis/__init__.py",
       "norm_label": "scan a repo for ``target`` and return the ``migrationstate.call_sites`` map...."
@@ -1858,6 +2020,17 @@
       "community": 1,
       "community_name": "analysis/__init__.py",
       "norm_label": "static analysis: where the migration has to happen, and in what order it can."
+    },
+    {
+      "label": "SRS \u00a74.1 defines dep_graph as file -> files that import it (predecessors).",
+      "file_type": "rationale",
+      "source_file": "tests/test_analyzer.py",
+      "source_location": "L132",
+      "_origin": "ast",
+      "id": "tests_test_analyzer_rationale_132",
+      "community": 1,
+      "community_name": "analysis/__init__.py",
+      "norm_label": "srs \u00a74.1 defines dep_graph as file -> files that import it (predecessors)."
     },
     {
       "label": "05_DATA_EVALUATION_PROTOCOL.md",
@@ -2069,17 +2242,6 @@
       "norm_label": "data & evaluation protocol"
     },
     {
-      "label": "03_SRS.md",
-      "file_type": "document",
-      "source_file": "docs/03_SRS.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "docs_03_srs",
-      "community": 11,
-      "community_name": "Software Requirements Specification (SRS)",
-      "norm_label": "03_srs.md"
-    },
-    {
       "label": "1.1 Purpose",
       "file_type": "document",
       "source_file": "docs/03_SRS.md",
@@ -2267,17 +2429,6 @@
       "norm_label": "software requirements specification (srs)"
     },
     {
-      "label": "Call",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "id": "call",
-      "community": 12,
-      "community_name": "_CallSiteVisitor",
-      "norm_label": "call"
-    },
-    {
       "label": "Name",
       "file_type": "code",
       "source_file": "",
@@ -2285,7 +2436,7 @@
       "_origin": "ast",
       "id": "name",
       "community": 12,
-      "community_name": "_CallSiteVisitor",
+      "community_name": "ConvertUtcnowCommand",
       "norm_label": "name"
     },
     {
@@ -2296,8 +2447,19 @@
       "_origin": "ast",
       "id": "src_mra_analysis_call_sites_py_baseexpression",
       "community": 12,
-      "community_name": "_CallSiteVisitor",
+      "community_name": "ConvertUtcnowCommand",
       "norm_label": "baseexpression"
+    },
+    {
+      "label": "Call",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "src_mra_analysis_call_sites_py_call",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "call"
     },
     {
       "label": "Import",
@@ -2307,7 +2469,7 @@
       "_origin": "ast",
       "id": "src_mra_analysis_call_sites_py_import",
       "community": 12,
-      "community_name": "_CallSiteVisitor",
+      "community_name": "ConvertUtcnowCommand",
       "norm_label": "import"
     },
     {
@@ -2318,18 +2480,161 @@
       "_origin": "ast",
       "id": "src_mra_analysis_call_sites_py_importfrom",
       "community": 12,
-      "community_name": "_CallSiteVisitor",
+      "community_name": "ConvertUtcnowCommand",
       "norm_label": "importfrom"
+    },
+    {
+      "label": "Module",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "src_mra_analysis_call_sites_py_module",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "module"
+    },
+    {
+      "label": "datetime_utcnow.py",
+      "file_type": "code",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_mra_codemods_datetime_utcnow",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "datetime_utcnow.py"
+    },
+    {
+      "label": "BaseExpression",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "src_mra_codemods_datetime_utcnow_py_baseexpression",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "baseexpression"
+    },
+    {
+      "label": "Call",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "src_mra_codemods_datetime_utcnow_py_call",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "call"
+    },
+    {
+      "label": "Module",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "src_mra_codemods_datetime_utcnow_py_module",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "module"
+    },
+    {
+      "label": "codemods/__init__.py",
+      "file_type": "code",
+      "source_file": "src/mra/codemods/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_mra_codemods_init",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "codemods/__init__.py"
+    },
+    {
+      "label": "edit_node.py",
+      "file_type": "code",
+      "source_file": "src/mra/nodes/edit_node.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_mra_nodes_edit_node",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "edit_node.py"
+    },
+    {
+      "label": "Any",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "src_mra_nodes_edit_node_py_any",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "any"
+    },
+    {
+      "label": "Path",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "src_mra_nodes_edit_node_py_path",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "path"
+    },
+    {
+      "label": "nodes/__init__.py",
+      "file_type": "code",
+      "source_file": "src/mra/nodes/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_mra_nodes_init",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "nodes/__init__.py"
+    },
+    {
+      "label": "VisitorBasedCodemodCommand",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "visitorbasedcodemodcommand",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "visitorbasedcodemodcommand"
+    },
+    {
+      "label": "Collect a whole module's import bindings up front.",
+      "file_type": "rationale",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L108",
+      "_origin": "ast",
+      "id": "src_mra_analysis_call_sites_rationale_108",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "collect a whole module's import bindings up front."
+    },
+    {
+      "label": "Resolves every dotted call against this module's import bindings.",
+      "file_type": "rationale",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L115",
+      "_origin": "ast",
+      "id": "src_mra_analysis_call_sites_rationale_115",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "resolves every dotted call against this module's import bindings."
     },
     {
       "label": "True if ``head`` is bound by anything other than an import here. Guards\u2026",
       "file_type": "rationale",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L111",
+      "source_location": "L126",
       "_origin": "ast",
-      "id": "src_mra_analysis_call_sites_rationale_111",
+      "id": "src_mra_analysis_call_sites_rationale_126",
       "community": 12,
-      "community_name": "_CallSiteVisitor",
+      "community_name": "ConvertUtcnowCommand",
       "norm_label": "true if ``head`` is bound by anything other than an import here. guards..."
     },
     {
@@ -2340,7 +2645,7 @@
       "_origin": "ast",
       "id": "src_mra_analysis_call_sites_rationale_44",
       "community": 12,
-      "community_name": "_CallSiteVisitor",
+      "community_name": "ConvertUtcnowCommand",
       "norm_label": "flatten ``a.b.c`` into its head ``name`` node and the attribute names after it...."
     },
     {
@@ -2351,19 +2656,151 @@
       "_origin": "ast",
       "id": "src_mra_analysis_call_sites_rationale_61",
       "community": 12,
-      "community_name": "_CallSiteVisitor",
+      "community_name": "ConvertUtcnowCommand",
       "norm_label": "dotted text of an import's module expression (``a.b.c``)."
     },
     {
-      "label": "Collects import bindings, then resolves every dotted call against them.",
+      "label": "Maps each locally bound name to the fully-qualified thing it refers to. One\u2026",
       "file_type": "rationale",
       "source_file": "src/mra/analysis/call_sites.py",
       "source_location": "L70",
       "_origin": "ast",
       "id": "src_mra_analysis_call_sites_rationale_70",
       "community": 12,
-      "community_name": "_CallSiteVisitor",
-      "norm_label": "collects import bindings, then resolves every dotted call against them."
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "maps each locally bound name to the fully-qualified thing it refers to. one..."
+    },
+    {
+      "label": "T1 codemod: ``datetime.utcnow()`` -> ``datetime.now(timezone.utc)``.\u2026",
+      "file_type": "rationale",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_mra_codemods_datetime_utcnow_rationale_1",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "t1 codemod: ``datetime.utcnow()`` -> ``datetime.now(timezone.utc)``...."
+    },
+    {
+      "label": "Rewrite every resolved ``datetime.utcnow()`` call, whatever its spelling.",
+      "file_type": "rationale",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "src_mra_codemods_datetime_utcnow_rationale_38",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "rewrite every resolved ``datetime.utcnow()`` call, whatever its spelling."
+    },
+    {
+      "label": "Deterministic libcst codemods, one per migration task (golden rule 5).",
+      "file_type": "rationale",
+      "source_file": "src/mra/codemods/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_mra_codemods_init_rationale_1",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "deterministic libcst codemods, one per migration task (golden rule 5)."
+    },
+    {
+      "label": "EDIT node: apply the migration codemod to the files the analyzer flagged. A\u2026",
+      "file_type": "rationale",
+      "source_file": "src/mra/nodes/edit_node.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_mra_nodes_edit_node_rationale_1",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "edit node: apply the migration codemod to the files the analyzer flagged. a..."
+    },
+    {
+      "label": "Run the codemod over every file in ``call_sites``; return the ones that\u2026",
+      "file_type": "rationale",
+      "source_file": "src/mra/nodes/edit_node.py",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "src_mra_nodes_edit_node_rationale_24",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "run the codemod over every file in ``call_sites``; return the ones that..."
+    },
+    {
+      "label": "State-machine nodes. Plain functions for now; LangGraph wiring lands in P4.",
+      "file_type": "rationale",
+      "source_file": "src/mra/nodes/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_mra_nodes_init_rationale_1",
+      "community": 12,
+      "community_name": "ConvertUtcnowCommand",
+      "norm_label": "state-machine nodes. plain functions for now; langgraph wiring lands in p4."
+    },
+    {
+      "label": "metrics/__init__.py",
+      "file_type": "code",
+      "source_file": "src/mra/metrics/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_mra_metrics_init",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "metrics/__init__.py"
+    },
+    {
+      "label": "m1.py",
+      "file_type": "code",
+      "source_file": "src/mra/metrics/m1.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_mra_metrics_m1",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "m1.py"
+    },
+    {
+      "label": "m2.py",
+      "file_type": "code",
+      "source_file": "src/mra/metrics/m2.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_mra_metrics_m2",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "m2.py"
+    },
+    {
+      "label": "run.py",
+      "file_type": "code",
+      "source_file": "src/mra/run.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_mra_run",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "run.py"
+    },
+    {
+      "label": "Any",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "src_mra_run_py_any",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "any"
+    },
+    {
+      "label": "Path",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "src_mra_run_py_path",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "path"
     },
     {
       "label": "git_tools.py",
@@ -2373,7 +2810,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_git_tools",
       "community": 13,
-      "community_name": "sandbox/__init__.py",
+      "community_name": "run.py",
       "norm_label": "git_tools.py"
     },
     {
@@ -2384,7 +2821,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_git_tools_py_path",
       "community": 13,
-      "community_name": "sandbox/__init__.py",
+      "community_name": "run.py",
       "norm_label": "path"
     },
     {
@@ -2395,8 +2832,151 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_init",
       "community": 13,
-      "community_name": "sandbox/__init__.py",
+      "community_name": "run.py",
       "norm_label": "sandbox/__init__.py"
+    },
+    {
+      "label": "test_p2_end_to_end.py",
+      "file_type": "code",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "test_p2_end_to_end.py"
+    },
+    {
+      "label": "Any",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_py_any",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "any"
+    },
+    {
+      "label": "fixture",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_py_fixture",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "fixture"
+    },
+    {
+      "label": "needs_docker",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_py_needs_docker",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "needs_docker"
+    },
+    {
+      "label": "parametrize",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_py_parametrize",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "parametrize"
+    },
+    {
+      "label": "Path",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_py_path",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "path"
+    },
+    {
+      "label": "TempPathFactory",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_py_temppathfactory",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "temppathfactory"
+    },
+    {
+      "label": "Metric computation (M1/M2/M3), following docs/05_DATA_EVALUATION_PROTOCOL.md.",
+      "file_type": "rationale",
+      "source_file": "src/mra/metrics/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_mra_metrics_init_rationale_1",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "metric computation (m1/m2/m3), following docs/05_data_evaluation_protocol.md."
+    },
+    {
+      "label": "M1 \u2014 Migration Completeness. Transcribed verbatim from\u2026",
+      "file_type": "rationale",
+      "source_file": "src/mra/metrics/m1.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_mra_metrics_m1_rationale_1",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "m1 \u2014 migration completeness. transcribed verbatim from..."
+    },
+    {
+      "label": "M2 \u2014 Post-Migration Test Pass Rate. Transcribed verbatim from\u2026",
+      "file_type": "rationale",
+      "source_file": "src/mra/metrics/m2.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_mra_metrics_m2_rationale_1",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "m2 \u2014 post-migration test pass rate. transcribed verbatim from..."
+    },
+    {
+      "label": "P2 end-to-end slice: analyse -> snapshot -> codemod -> verify -> score. One\u2026",
+      "file_type": "rationale",
+      "source_file": "src/mra/run.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_mra_run_rationale_1",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "p2 end-to-end slice: analyse -> snapshot -> codemod -> verify -> score. one..."
+    },
+    {
+      "label": "Append-only event log, the ``mra:trajectory_event`` shape (SRS \u00a74.1).",
+      "file_type": "rationale",
+      "source_file": "src/mra/run.py",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "src_mra_run_rationale_36",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "append-only event log, the ``mra:trajectory_event`` shape (srs \u00a74.1)."
+    },
+    {
+      "label": "Migrate a Tier-A task end to end and score it. Returns the run summary.",
+      "file_type": "rationale",
+      "source_file": "src/mra/run.py",
+      "source_location": "L57",
+      "_origin": "ast",
+      "id": "src_mra_run_rationale_57",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "migrate a tier-a task end to end and score it. returns the run summary."
     },
     {
       "label": "Git snapshot / rollback / diff, exposed as agent tools. These operate on the\u2026",
@@ -2406,7 +2986,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_git_tools_rationale_1",
       "community": 13,
-      "community_name": "sandbox/__init__.py",
+      "community_name": "run.py",
       "norm_label": "git snapshot / rollback / diff, exposed as agent tools. these operate on the..."
     },
     {
@@ -2417,7 +2997,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_git_tools_rationale_22",
       "community": 13,
-      "community_name": "sandbox/__init__.py",
+      "community_name": "run.py",
       "norm_label": "open ``path`` as a git repo, initializing it if it is not one yet."
     },
     {
@@ -2428,7 +3008,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_git_tools_rationale_35",
       "community": 13,
-      "community_name": "sandbox/__init__.py",
+      "community_name": "run.py",
       "norm_label": "commit the whole working tree and return the new commit sha. allows an empty..."
     },
     {
@@ -2439,7 +3019,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_git_tools_rationale_48",
       "community": 13,
-      "community_name": "sandbox/__init__.py",
+      "community_name": "run.py",
       "norm_label": "hard-reset the tree to ``sha`` and drop untracked files; return the sha."
     },
     {
@@ -2450,7 +3030,7 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_git_tools_rationale_56",
       "community": 13,
-      "community_name": "sandbox/__init__.py",
+      "community_name": "run.py",
       "norm_label": "return a unified diff of the working tree against ``against``. includes..."
     },
     {
@@ -2461,8 +3041,107 @@
       "_origin": "ast",
       "id": "src_mra_sandbox_init_rationale_1",
       "community": 13,
-      "community_name": "sandbox/__init__.py",
+      "community_name": "run.py",
       "norm_label": "isolated execution: container-backed verification and git snapshot/rollback."
+    },
+    {
+      "label": "P2 acceptance: analyse -> codemod -> verify, end to end, on both real tasks.\u2026",
+      "file_type": "rationale",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_rationale_1",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "p2 acceptance: analyse -> codemod -> verify, end to end, on both real tasks...."
+    },
+    {
+      "label": "Module/aliased forms: timezone already rides the import. Adding one is over-\u2026",
+      "file_type": "rationale",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L101",
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_rationale_101",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "module/aliased forms: timezone already rides the import. adding one is over-..."
+    },
+    {
+      "label": "Syntactic success is not success: gold's tz-aware test must pass on our output.\u2026",
+      "file_type": "rationale",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L119",
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_rationale_119",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "syntactic success is not success: gold's tz-aware test must pass on our output...."
+    },
+    {
+      "label": "Edits happen on the copy under runs/<run_id>/repo, never on the corpus.",
+      "file_type": "rationale",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L144",
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_rationale_144",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "edits happen on the copy under runs/<run_id>/repo, never on the corpus."
+    },
+    {
+      "label": "FR-10: the deliverable patch must apply to a clean old/ tree.",
+      "file_type": "rationale",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L151",
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_rationale_151",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "fr-10: the deliverable patch must apply to a clean old/ tree."
+    },
+    {
+      "label": "Taken before any run, compared after: the corpus must be read-only in practice.",
+      "file_type": "rationale",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L44",
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_rationale_44",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "taken before any run, compared after: the corpus must be read-only in practice."
+    },
+    {
+      "label": "Added lines that introduce `from datetime import timezone`.",
+      "file_type": "rationale",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L57",
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_rationale_57",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "added lines that introduce `from datetime import timezone`."
+    },
+    {
+      "label": "NB-10: without this precondition M2 means nothing.",
+      "file_type": "rationale",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L81",
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_rationale_81",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "nb-10: without this precondition m2 means nothing."
+    },
+    {
+      "label": "From-import form: `timezone` is not in scope, so the migration must add it.",
+      "file_type": "rationale",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L92",
+      "_origin": "ast",
+      "id": "tests_test_p2_end_to_end_rationale_92",
+      "community": 13,
+      "community_name": "run.py",
+      "norm_label": "from-import form: `timezone` is not in scope, so the migration must add it."
     },
     {
       "label": "Snapshot before a batch, mutate, roll back: NFR-9 in one pass.",
@@ -2472,7 +3151,7 @@
       "_origin": "ast",
       "id": "tests_test_sandbox_rationale_153",
       "community": 13,
-      "community_name": "sandbox/__init__.py",
+      "community_name": "run.py",
       "norm_label": "snapshot before a batch, mutate, roll back: nfr-9 in one pass."
     },
     {
@@ -2619,136 +3298,169 @@
       "norm_label": "literature review & state of the art"
     },
     {
-      "label": "10. Risks",
-      "file_type": "document",
-      "source_file": "docs/PRD.md",
-      "source_location": "L62",
-      "_origin": "ast",
-      "id": "docs_prd_10_risks",
-      "community": 15,
-      "community_name": "Product Requirements Document (PRD)",
-      "norm_label": "10. risks"
-    },
-    {
-      "label": "1. Problem",
-      "file_type": "document",
-      "source_file": "docs/PRD.md",
-      "source_location": "L14",
-      "_origin": "ast",
-      "id": "docs_prd_1_problem",
-      "community": 15,
-      "community_name": "Product Requirements Document (PRD)",
-      "norm_label": "1. problem"
-    },
-    {
-      "label": "2. Goal",
-      "file_type": "document",
-      "source_file": "docs/PRD.md",
-      "source_location": "L17",
-      "_origin": "ast",
-      "id": "docs_prd_2_goal",
-      "community": 15,
-      "community_name": "Product Requirements Document (PRD)",
-      "norm_label": "2. goal"
-    },
-    {
-      "label": "3. Non-goals",
-      "file_type": "document",
-      "source_file": "docs/PRD.md",
-      "source_location": "L20",
-      "_origin": "ast",
-      "id": "docs_prd_3_non_goals",
-      "community": 15,
-      "community_name": "Product Requirements Document (PRD)",
-      "norm_label": "3. non-goals"
-    },
-    {
-      "label": "4. Users / personas",
-      "file_type": "document",
-      "source_file": "docs/PRD.md",
-      "source_location": "L23",
-      "_origin": "ast",
-      "id": "docs_prd_4_users_personas",
-      "community": 15,
-      "community_name": "Product Requirements Document (PRD)",
-      "norm_label": "4. users / personas"
-    },
-    {
-      "label": "5. User stories",
-      "file_type": "document",
-      "source_file": "docs/PRD.md",
-      "source_location": "L30",
-      "_origin": "ast",
-      "id": "docs_prd_5_user_stories",
-      "community": 15,
-      "community_name": "Product Requirements Document (PRD)",
-      "norm_label": "5. user stories"
-    },
-    {
-      "label": "6. Scope (in / out)",
-      "file_type": "document",
-      "source_file": "docs/PRD.md",
-      "source_location": "L36",
-      "_origin": "ast",
-      "id": "docs_prd_6_scope_in_out",
-      "community": 15,
-      "community_name": "Product Requirements Document (PRD)",
-      "norm_label": "6. scope (in / out)"
-    },
-    {
-      "label": "7. Success metrics",
-      "file_type": "document",
-      "source_file": "docs/PRD.md",
-      "source_location": "L40",
-      "_origin": "ast",
-      "id": "docs_prd_7_success_metrics",
-      "community": 15,
-      "community_name": "Product Requirements Document (PRD)",
-      "norm_label": "7. success metrics"
-    },
-    {
-      "label": "8. Milestones (release plan)",
-      "file_type": "document",
-      "source_file": "docs/PRD.md",
-      "source_location": "L48",
-      "_origin": "ast",
-      "id": "docs_prd_8_milestones_release_plan",
-      "community": 15,
-      "community_name": "Product Requirements Document (PRD)",
-      "norm_label": "8. milestones (release plan)"
-    },
-    {
-      "label": "9. Dependencies & assumptions",
-      "file_type": "document",
-      "source_file": "docs/PRD.md",
-      "source_location": "L59",
-      "_origin": "ast",
-      "id": "docs_prd_9_dependencies_assumptions",
-      "community": 15,
-      "community_name": "Product Requirements Document (PRD)",
-      "norm_label": "9. dependencies & assumptions"
-    },
-    {
-      "label": "Codebase-Wide Version Migration & Refactoring Agent (MRA)",
-      "file_type": "document",
-      "source_file": "docs/PRD.md",
-      "source_location": "L2",
-      "_origin": "ast",
-      "id": "docs_prd_codebase_wide_version_migration_refactoring_agent_mra",
-      "community": 15,
-      "community_name": "Product Requirements Document (PRD)",
-      "norm_label": "codebase-wide version migration & refactoring agent (mra)"
-    },
-    {
-      "label": "Product Requirements Document (PRD)",
-      "file_type": "document",
-      "source_file": "docs/PRD.md",
+      "label": "test_sandbox.py",
+      "file_type": "code",
+      "source_file": "tests/test_sandbox.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "docs_prd_product_requirements_document_prd",
+      "id": "tests_test_sandbox",
       "community": 15,
-      "community_name": "Product Requirements Document (PRD)",
-      "norm_label": "product requirements document (prd)"
+      "community_name": "SandboxRunner",
+      "norm_label": "test_sandbox.py"
+    },
+    {
+      "label": "fixture",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "tests_test_sandbox_py_fixture",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "fixture"
+    },
+    {
+      "label": "needs_docker",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "tests_test_sandbox_py_needs_docker",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "needs_docker"
+    },
+    {
+      "label": "Path",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "tests_test_sandbox_py_path",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "path"
+    },
+    {
+      "label": "TempPathFactory",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "tests_test_sandbox_py_temppathfactory",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "temppathfactory"
+    },
+    {
+      "label": "Runs a repo's suite in one throwaway container and returns a test_report. The\u2026",
+      "file_type": "rationale",
+      "source_file": "src/mra/sandbox/runner.py",
+      "source_location": "L146",
+      "_origin": "ast",
+      "id": "src_mra_sandbox_runner_rationale_146",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "runs a repo's suite in one throwaway container and returns a test_report. the..."
+    },
+    {
+      "label": "P0 acceptance: the sandbox verifies a real corpus task and reports it as data.\u2026",
+      "file_type": "rationale",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_test_sandbox_rationale_1",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "p0 acceptance: the sandbox verifies a real corpus task and reports it as data...."
+    },
+    {
+      "label": "The source tree is mounted :ro and copied inside; a run must not touch it. The\u2026",
+      "file_type": "rationale",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L116",
+      "_origin": "ast",
+      "id": "tests_test_sandbox_rationale_116",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "the source tree is mounted :ro and copied inside; a run must not touch it. the..."
+    },
+    {
+      "label": "Retry capping (NFR-1) is meaningless if a signature drifts between runs. The\u2026",
+      "file_type": "rationale",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L128",
+      "_origin": "ast",
+      "id": "tests_test_sandbox_rationale_128",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "retry capping (nfr-1) is meaningless if a signature drifts between runs. the..."
+    },
+    {
+      "label": "NFR-4: a hanging suite is a reportable result, never an exception.",
+      "file_type": "rationale",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L173",
+      "_origin": "ast",
+      "id": "tests_test_sandbox_rationale_173",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "nfr-4: a hanging suite is a reportable result, never an exception."
+    },
+    {
+      "label": "Collection errors never reach pytest's summary; counting them is on us.",
+      "file_type": "rationale",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L190",
+      "_origin": "ast",
+      "id": "tests_test_sandbox_rationale_190",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "collection errors never reach pytest's summary; counting them is on us."
+    },
+    {
+      "label": "Pull the mra:test_report schema out of the SRS itself. Golden rule 4 makes the\u2026",
+      "file_type": "rationale",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "tests_test_sandbox_rationale_35",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "pull the mra:test_report schema out of the srs itself. golden rule 4 makes the..."
+    },
+    {
+      "label": "Content hash of every file under ``root``, for tamper detection.",
+      "file_type": "rationale",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "tests_test_sandbox_rationale_58",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "content hash of every file under ``root``, for tamper detection."
+    },
+    {
+      "label": "Copy a task tree and inject one failing assertion into its suite.",
+      "file_type": "rationale",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L67",
+      "_origin": "ast",
+      "id": "tests_test_sandbox_rationale_67",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "copy a task tree and inject one failing assertion into its suite."
+    },
+    {
+      "label": "task01/old raises DeprecationWarning on every utcnow() call and is still green.",
+      "file_type": "rationale",
+      "source_file": "tests/test_sandbox.py",
+      "source_location": "L92",
+      "_origin": "ast",
+      "id": "tests_test_sandbox_rationale_92",
+      "community": 15,
+      "community_name": "SandboxRunner",
+      "norm_label": "task01/old raises deprecationwarning on every utcnow() call and is still green."
     },
     {
       "label": "task01_datetime/README.md",
@@ -2872,125 +3584,114 @@
       "norm_label": "the one factor that varies: import style"
     },
     {
-      "label": "Acknowledgements",
+      "label": "CLAUDE.md",
       "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L162",
-      "_origin": "ast",
-      "id": "readme_acknowledgements",
-      "community": 17,
-      "community_name": "Codebase-Wide Version Migration & Refactoring Agent (MRA)",
-      "norm_label": "acknowledgements"
-    },
-    {
-      "label": "Architecture at a glance",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L25",
-      "_origin": "ast",
-      "id": "readme_architecture_at_a_glance",
-      "community": 17,
-      "community_name": "Codebase-Wide Version Migration & Refactoring Agent (MRA)",
-      "norm_label": "architecture at a glance"
-    },
-    {
-      "label": "Codebase-Wide Version Migration & Refactoring Agent (MRA)",
-      "file_type": "document",
-      "source_file": "README.md",
+      "source_file": "CLAUDE.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "readme_codebase_wide_version_migration_refactoring_agent_mra",
+      "id": "claude_claude_md",
       "community": 17,
-      "community_name": "Codebase-Wide Version Migration & Refactoring Agent (MRA)",
-      "norm_label": "codebase-wide version migration & refactoring agent (mra)"
+      "community_name": "CLAUDE.md",
+      "norm_label": "claude.md"
     },
     {
-      "label": "Documentation index",
+      "label": "Coding conventions",
       "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L136",
+      "source_file": "CLAUDE.md",
+      "source_location": "L49",
       "_origin": "ast",
-      "id": "readme_documentation_index",
+      "id": "claude_coding_conventions",
       "community": 17,
-      "community_name": "Codebase-Wide Version Migration & Refactoring Agent (MRA)",
-      "norm_label": "documentation index"
+      "community_name": "CLAUDE.md",
+      "norm_label": "coding conventions"
     },
     {
-      "label": "Evaluation",
+      "label": "Commit conventions",
       "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L128",
+      "source_file": "CLAUDE.md",
+      "source_location": "L76",
       "_origin": "ast",
-      "id": "readme_evaluation",
+      "id": "claude_commit_conventions",
       "community": 17,
-      "community_name": "Codebase-Wide Version Migration & Refactoring Agent (MRA)",
-      "norm_label": "evaluation"
+      "community_name": "CLAUDE.md",
+      "norm_label": "commit conventions"
     },
     {
-      "label": "License",
+      "label": "Current phase / context",
       "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L158",
+      "source_file": "CLAUDE.md",
+      "source_location": "L80",
       "_origin": "ast",
-      "id": "readme_license",
+      "id": "claude_current_phase_context",
       "community": 17,
-      "community_name": "Codebase-Wide Version Migration & Refactoring Agent (MRA)",
-      "norm_label": "license"
+      "community_name": "CLAUDE.md",
+      "norm_label": "current phase / context"
     },
     {
-      "label": "Quickstart",
+      "label": "Golden rules (do not violate)",
       "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L100",
-      "_origin": "ast",
-      "id": "readme_quickstart",
-      "community": 17,
-      "community_name": "Codebase-Wide Version Migration & Refactoring Agent (MRA)",
-      "norm_label": "quickstart"
-    },
-    {
-      "label": "Repository structure",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L58",
-      "_origin": "ast",
-      "id": "readme_repository_structure",
-      "community": 17,
-      "community_name": "Codebase-Wide Version Migration & Refactoring Agent (MRA)",
-      "norm_label": "repository structure"
-    },
-    {
-      "label": "Roadmap (build phases)",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L149",
-      "_origin": "ast",
-      "id": "readme_roadmap_build_phases",
-      "community": 17,
-      "community_name": "Codebase-Wide Version Migration & Refactoring Agent (MRA)",
-      "norm_label": "roadmap (build phases)"
-    },
-    {
-      "label": "Tech stack",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L42",
-      "_origin": "ast",
-      "id": "readme_tech_stack",
-      "community": 17,
-      "community_name": "Codebase-Wide Version Migration & Refactoring Agent (MRA)",
-      "norm_label": "tech stack"
-    },
-    {
-      "label": "What this is",
-      "file_type": "document",
-      "source_file": "README.md",
+      "source_file": "CLAUDE.md",
       "source_location": "L11",
       "_origin": "ast",
-      "id": "readme_what_this_is",
+      "id": "claude_golden_rules_do_not_violate",
       "community": 17,
-      "community_name": "Codebase-Wide Version Migration & Refactoring Agent (MRA)",
-      "norm_label": "what this is"
+      "community_name": "CLAUDE.md",
+      "norm_label": "golden rules (do not violate)"
+    },
+    {
+      "label": "How to run and test",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "claude_how_to_run_and_test",
+      "community": 17,
+      "community_name": "CLAUDE.md",
+      "norm_label": "how to run and test"
+    },
+    {
+      "label": "Tech stack (fixed \u2014 verified Aug 2026)",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "claude_tech_stack_fixed_verified_aug_2026",
+      "community": 17,
+      "community_name": "CLAUDE.md",
+      "norm_label": "tech stack (fixed \u2014 verified aug 2026)"
+    },
+    {
+      "label": "What this project is",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "claude_what_this_project_is",
+      "community": 17,
+      "community_name": "CLAUDE.md",
+      "norm_label": "what this project is"
+    },
+    {
+      "label": "When unsure",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L88",
+      "_origin": "ast",
+      "id": "claude_when_unsure",
+      "community": 17,
+      "community_name": "CLAUDE.md",
+      "norm_label": "when unsure"
+    },
+    {
+      "label": "Where things live",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "claude_where_things_live",
+      "community": 17,
+      "community_name": "CLAUDE.md",
+      "norm_label": "where things live"
     },
     {
       "label": "CONFIGURATION.md",
@@ -3114,17 +3815,6 @@
       "norm_label": "a tiny multi-module package used as a migration-corpus fixture."
     },
     {
-      "label": "parametrize",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "id": "parametrize",
-      "community": 2,
-      "community_name": "test_analyzer.py",
-      "norm_label": "parametrize"
-    },
-    {
       "label": "Any",
       "file_type": "code",
       "source_file": "",
@@ -3134,28 +3824,6 @@
       "community": 2,
       "community_name": "test_analyzer.py",
       "norm_label": "any"
-    },
-    {
-      "label": "metrics/__init__.py",
-      "file_type": "code",
-      "source_file": "src/mra/metrics/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_mra_metrics_init",
-      "community": 2,
-      "community_name": "test_analyzer.py",
-      "norm_label": "metrics/__init__.py"
-    },
-    {
-      "label": "m1.py",
-      "file_type": "code",
-      "source_file": "src/mra/metrics/m1.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_mra_metrics_m1",
-      "community": 2,
-      "community_name": "test_analyzer.py",
-      "norm_label": "m1.py"
     },
     {
       "label": "test_analyzer.py",
@@ -3191,6 +3859,17 @@
       "norm_label": "fixture"
     },
     {
+      "label": "parametrize",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "tests_test_analyzer_py_parametrize",
+      "community": 2,
+      "community_name": "test_analyzer.py",
+      "norm_label": "parametrize"
+    },
+    {
       "label": "Flatten the per-file map into one list, the form ground truth uses.",
       "file_type": "rationale",
       "source_file": "src/mra/analysis/analyzer.py",
@@ -3202,28 +3881,6 @@
       "norm_label": "flatten the per-file map into one list, the form ground truth uses."
     },
     {
-      "label": "Metric computation (M1/M2/M3), following docs/05_DATA_EVALUATION_PROTOCOL.md.",
-      "file_type": "rationale",
-      "source_file": "src/mra/metrics/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_mra_metrics_init_rationale_1",
-      "community": 2,
-      "community_name": "test_analyzer.py",
-      "norm_label": "metric computation (m1/m2/m3), following docs/05_data_evaluation_protocol.md."
-    },
-    {
-      "label": "M1 \u2014 Migration Completeness. Transcribed verbatim from\u2026",
-      "file_type": "rationale",
-      "source_file": "src/mra/metrics/m1.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_mra_metrics_m1_rationale_1",
-      "community": 2,
-      "community_name": "test_analyzer.py",
-      "norm_label": "m1 \u2014 migration completeness. transcribed verbatim from..."
-    },
-    {
       "label": "P1 acceptance: the analyzer must score 100/100 on both corpus tasks. task01 is\u2026",
       "file_type": "rationale",
       "source_file": "tests/test_analyzer.py",
@@ -3233,17 +3890,6 @@
       "community": 2,
       "community_name": "test_analyzer.py",
       "norm_label": "p1 acceptance: the analyzer must score 100/100 on both corpus tasks. task01 is..."
-    },
-    {
-      "label": "SRS \u00a74.1 defines dep_graph as file -> files that import it (predecessors).",
-      "file_type": "rationale",
-      "source_file": "tests/test_analyzer.py",
-      "source_location": "L132",
-      "_origin": "ast",
-      "id": "tests_test_analyzer_rationale_132",
-      "community": 2,
-      "community_name": "test_analyzer.py",
-      "norm_label": "srs \u00a74.1 defines dep_graph as file -> files that import it (predecessors)."
     },
     {
       "label": "Recall 100 = missed nothing; precision 100 = matched nothing extra.",
@@ -3426,17 +4072,6 @@
       "norm_label": "mra"
     },
     {
-      "label": "codemods/__init__.py",
-      "file_type": "code",
-      "source_file": "src/mra/codemods/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_mra_codemods_init",
-      "community": 28,
-      "community_name": "codemods/__init__.py",
-      "norm_label": "codemods/__init__.py"
-    },
-    {
       "label": "graph.py",
       "file_type": "code",
       "source_file": "src/mra/graph.py",
@@ -3457,116 +4092,6 @@
       "community": 3,
       "community_name": "Project Synopsis & Charter",
       "norm_label": "claude.md"
-    },
-    {
-      "label": "CLAUDE.md",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "claude_claude_md",
-      "community": 3,
-      "community_name": "Project Synopsis & Charter",
-      "norm_label": "claude.md"
-    },
-    {
-      "label": "Coding conventions",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L49",
-      "_origin": "ast",
-      "id": "claude_coding_conventions",
-      "community": 3,
-      "community_name": "Project Synopsis & Charter",
-      "norm_label": "coding conventions"
-    },
-    {
-      "label": "Commit conventions",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L76",
-      "_origin": "ast",
-      "id": "claude_commit_conventions",
-      "community": 3,
-      "community_name": "Project Synopsis & Charter",
-      "norm_label": "commit conventions"
-    },
-    {
-      "label": "Current phase / context",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L80",
-      "_origin": "ast",
-      "id": "claude_current_phase_context",
-      "community": 3,
-      "community_name": "Project Synopsis & Charter",
-      "norm_label": "current phase / context"
-    },
-    {
-      "label": "Golden rules (do not violate)",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L11",
-      "_origin": "ast",
-      "id": "claude_golden_rules_do_not_violate",
-      "community": 3,
-      "community_name": "Project Synopsis & Charter",
-      "norm_label": "golden rules (do not violate)"
-    },
-    {
-      "label": "How to run and test",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L58",
-      "_origin": "ast",
-      "id": "claude_how_to_run_and_test",
-      "community": 3,
-      "community_name": "Project Synopsis & Charter",
-      "norm_label": "how to run and test"
-    },
-    {
-      "label": "Tech stack (fixed \u2014 verified Aug 2026)",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L21",
-      "_origin": "ast",
-      "id": "claude_tech_stack_fixed_verified_aug_2026",
-      "community": 3,
-      "community_name": "Project Synopsis & Charter",
-      "norm_label": "tech stack (fixed \u2014 verified aug 2026)"
-    },
-    {
-      "label": "What this project is",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "claude_what_this_project_is",
-      "community": 3,
-      "community_name": "Project Synopsis & Charter",
-      "norm_label": "what this project is"
-    },
-    {
-      "label": "When unsure",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L88",
-      "_origin": "ast",
-      "id": "claude_when_unsure",
-      "community": 3,
-      "community_name": "Project Synopsis & Charter",
-      "norm_label": "when unsure"
-    },
-    {
-      "label": "Where things live",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L34",
-      "_origin": "ast",
-      "id": "claude_where_things_live",
-      "community": 3,
-      "community_name": "Project Synopsis & Charter",
-      "norm_label": "where things live"
     },
     {
       "label": "01_PROJECT_CHARTER.md",
@@ -3712,6 +4237,17 @@
       "norm_label": "project synopsis & charter"
     },
     {
+      "label": "03_SRS.md",
+      "file_type": "document",
+      "source_file": "docs/03_SRS.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_03_srs",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "03_srs.md"
+    },
+    {
       "label": "PRD.md",
       "file_type": "document",
       "source_file": "docs/PRD.md",
@@ -3721,6 +4257,138 @@
       "community": 3,
       "community_name": "Project Synopsis & Charter",
       "norm_label": "prd.md"
+    },
+    {
+      "label": "10. Risks",
+      "file_type": "document",
+      "source_file": "docs/PRD.md",
+      "source_location": "L62",
+      "_origin": "ast",
+      "id": "docs_prd_10_risks",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "10. risks"
+    },
+    {
+      "label": "1. Problem",
+      "file_type": "document",
+      "source_file": "docs/PRD.md",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "docs_prd_1_problem",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "1. problem"
+    },
+    {
+      "label": "2. Goal",
+      "file_type": "document",
+      "source_file": "docs/PRD.md",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "docs_prd_2_goal",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "2. goal"
+    },
+    {
+      "label": "3. Non-goals",
+      "file_type": "document",
+      "source_file": "docs/PRD.md",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "docs_prd_3_non_goals",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "3. non-goals"
+    },
+    {
+      "label": "4. Users / personas",
+      "file_type": "document",
+      "source_file": "docs/PRD.md",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "docs_prd_4_users_personas",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "4. users / personas"
+    },
+    {
+      "label": "5. User stories",
+      "file_type": "document",
+      "source_file": "docs/PRD.md",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "docs_prd_5_user_stories",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "5. user stories"
+    },
+    {
+      "label": "6. Scope (in / out)",
+      "file_type": "document",
+      "source_file": "docs/PRD.md",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "docs_prd_6_scope_in_out",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "6. scope (in / out)"
+    },
+    {
+      "label": "7. Success metrics",
+      "file_type": "document",
+      "source_file": "docs/PRD.md",
+      "source_location": "L40",
+      "_origin": "ast",
+      "id": "docs_prd_7_success_metrics",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "7. success metrics"
+    },
+    {
+      "label": "8. Milestones (release plan)",
+      "file_type": "document",
+      "source_file": "docs/PRD.md",
+      "source_location": "L48",
+      "_origin": "ast",
+      "id": "docs_prd_8_milestones_release_plan",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "8. milestones (release plan)"
+    },
+    {
+      "label": "9. Dependencies & assumptions",
+      "file_type": "document",
+      "source_file": "docs/PRD.md",
+      "source_location": "L59",
+      "_origin": "ast",
+      "id": "docs_prd_9_dependencies_assumptions",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "9. dependencies & assumptions"
+    },
+    {
+      "label": "Codebase-Wide Version Migration & Refactoring Agent (MRA)",
+      "file_type": "document",
+      "source_file": "docs/PRD.md",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "docs_prd_codebase_wide_version_migration_refactoring_agent_mra",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "codebase-wide version migration & refactoring agent (mra)"
+    },
+    {
+      "label": "Product Requirements Document (PRD)",
+      "file_type": "document",
+      "source_file": "docs/PRD.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_prd_product_requirements_document_prd",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "product requirements document (prd)"
     },
     {
       "label": "RESOURCE_PACK.md",
@@ -3743,6 +4411,127 @@
       "community": 3,
       "community_name": "Project Synopsis & Charter",
       "norm_label": "readme.md"
+    },
+    {
+      "label": "Acknowledgements",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L158",
+      "_origin": "ast",
+      "id": "readme_acknowledgements",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "acknowledgements"
+    },
+    {
+      "label": "Architecture at a glance",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "readme_architecture_at_a_glance",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "architecture at a glance"
+    },
+    {
+      "label": "Codebase-Wide Version Migration & Refactoring Agent (MRA)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "readme_codebase_wide_version_migration_refactoring_agent_mra",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "codebase-wide version migration & refactoring agent (mra)"
+    },
+    {
+      "label": "Documentation index",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L132",
+      "_origin": "ast",
+      "id": "readme_documentation_index",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "documentation index"
+    },
+    {
+      "label": "Evaluation",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L124",
+      "_origin": "ast",
+      "id": "readme_evaluation",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "evaluation"
+    },
+    {
+      "label": "License",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L154",
+      "_origin": "ast",
+      "id": "readme_license",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "license"
+    },
+    {
+      "label": "Quickstart",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L100",
+      "_origin": "ast",
+      "id": "readme_quickstart",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "quickstart"
+    },
+    {
+      "label": "Repository structure",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "readme_repository_structure",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "repository structure"
+    },
+    {
+      "label": "Roadmap (build phases)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L145",
+      "_origin": "ast",
+      "id": "readme_roadmap_build_phases",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "roadmap (build phases)"
+    },
+    {
+      "label": "Tech stack",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "readme_tech_stack",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "tech stack"
+    },
+    {
+      "label": "What this is",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "readme_what_this_is",
+      "community": 3,
+      "community_name": "Project Synopsis & Charter",
+      "norm_label": "what this is"
     },
     {
       "label": "mra/__init__.py",
@@ -3778,28 +4567,6 @@
       "norm_label": "correct_node.py"
     },
     {
-      "label": "edit_node.py",
-      "file_type": "code",
-      "source_file": "src/mra/nodes/edit_node.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_mra_nodes_edit_node",
-      "community": 33,
-      "community_name": "edit_node.py",
-      "norm_label": "edit_node.py"
-    },
-    {
-      "label": "nodes/__init__.py",
-      "file_type": "code",
-      "source_file": "src/mra/nodes/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_mra_nodes_init",
-      "community": 34,
-      "community_name": "nodes/__init__.py",
-      "norm_label": "nodes/__init__.py"
-    },
-    {
       "label": "map_node.py",
       "file_type": "code",
       "source_file": "src/mra/nodes/map_node.py",
@@ -3831,17 +4598,6 @@
       "community": 37,
       "community_name": "test_node.py",
       "norm_label": "test_node.py"
-    },
-    {
-      "label": "run.py",
-      "file_type": "code",
-      "source_file": "src/mra/run.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_mra_run",
-      "community": 38,
-      "community_name": "run.py",
-      "norm_label": "run.py"
     },
     {
       "label": "state.py",
@@ -5059,11 +5815,11 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L129",
+      "source_location": "L109",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_mra_analysis_call_sites_callsitevisitor_visit_call",
-      "target": "src_mra_analysis_call_sites_dotted",
+      "source": "src_mra_analysis_call_sites_bindings_of",
+      "target": "src_mra_analysis_call_sites_importbindings",
       "confidence_score": 1.0
     },
     {
@@ -5071,7 +5827,19 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L134",
+      "source_location": "L144",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_analysis_call_sites_callsitevisitor_visit_call",
+      "target": "src_mra_analysis_call_sites_dotted_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L149",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_analysis_call_sites_callsitevisitor_visit_call",
@@ -5083,7 +5851,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L141",
+      "source_location": "L156",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_analysis_call_sites_callsitevisitor_visit_call",
@@ -5095,31 +5863,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L85",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_mra_analysis_call_sites_callsitevisitor_visit_import",
-      "target": "src_mra_analysis_call_sites_module_name",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L102",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_mra_analysis_call_sites_callsitevisitor_visit_importfrom",
-      "target": "src_mra_analysis_call_sites_module_name",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L163",
+      "source_location": "L178",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_analysis_call_sites_find_in_repo",
@@ -5131,7 +5875,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L165",
+      "source_location": "L180",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_analysis_call_sites_find_in_repo",
@@ -5143,11 +5887,35 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L148",
+      "source_location": "L163",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_analysis_call_sites_find_in_source",
       "target": "src_mra_analysis_call_sites_callsitevisitor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L83",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_analysis_call_sites_importbindings_visit_import",
+      "target": "src_mra_analysis_call_sites_module_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L100",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_analysis_call_sites_importbindings_visit_importfrom",
+      "target": "src_mra_analysis_call_sites_module_name",
       "confidence_score": 1.0
     },
     {
@@ -5232,6 +6000,162 @@
       "_origin": "ast",
       "source": "src_mra_analysis_dep_graph_module_index",
       "target": "src_mra_analysis_dep_graph_python_files",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_codemods_datetime_utcnow_convertutcnowcommand_leave_call",
+      "target": "src_mra_analysis_call_sites_dotted_path"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_codemods_datetime_utcnow_convertutcnowcommand_transform_module_impl",
+      "target": "src_mra_analysis_call_sites_bindings_of"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L148",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_main",
+      "target": "src_mra_run_migrate_task",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L100",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_migrate_task",
+      "target": "src_mra_run_key",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/mra/run.py",
+      "source_location": "L104",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_migrate_task",
+      "target": "src_mra_metrics_m1_m1"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/mra/run.py",
+      "source_location": "L105",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_migrate_task",
+      "target": "src_mra_metrics_m2_m2"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_migrate_task",
+      "target": "src_mra_run_trajectory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L71",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_migrate_task",
+      "target": "src_mra_analysis_analyzer_analyze",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L72",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_migrate_task",
+      "target": "src_mra_analysis_analyzer_flat_sites",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L78",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_migrate_task",
+      "target": "src_mra_sandbox_runner_sandboxrunner",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_migrate_task",
+      "target": "src_mra_sandbox_git_tools_snapshot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L87",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_migrate_task",
+      "target": "src_mra_nodes_edit_node_apply_codemod",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L95",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_migrate_task",
+      "target": "src_mra_sandbox_git_tools_diff",
       "confidence_score": 1.0
     },
     {
@@ -5526,6 +6450,66 @@
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_corpus_digests",
+      "target": "tests_test_p2_end_to_end_tree_digest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_runs",
+      "target": "src_mra_run_migrate_task"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L145",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_corpus_source_is_untouched",
+      "target": "tests_test_p2_end_to_end_tree_digest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L94",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_task01_patch_adds_the_timezone_import",
+      "target": "tests_test_p2_end_to_end_added_import_lines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L103",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_task02_patch_adds_no_import",
+      "target": "tests_test_p2_end_to_end_added_import_lines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
       "source_file": "tests/test_sandbox.py",
       "source_location": "L101",
       "weight": 1.0,
@@ -5579,7 +6563,7 @@
       "context": "decorator",
       "_origin": "ast",
       "source": "tests_test_analyzer_test_dep_graph_has_the_cross_file_edge_and_nothing_spurious",
-      "target": "parametrize",
+      "target": "tests_test_analyzer_py_parametrize",
       "confidence_score": 1.0
     },
     {
@@ -5591,7 +6575,7 @@
       "context": "decorator",
       "_origin": "ast",
       "source": "tests_test_analyzer_test_every_import_spelling_resolves_to_one_symbol",
-      "target": "parametrize",
+      "target": "tests_test_analyzer_py_parametrize",
       "confidence_score": 1.0
     },
     {
@@ -5603,7 +6587,7 @@
       "context": "decorator",
       "_origin": "ast",
       "source": "tests_test_analyzer_test_finder_does_not_match_lookalikes",
-      "target": "parametrize",
+      "target": "tests_test_analyzer_py_parametrize",
       "confidence_score": 1.0
     },
     {
@@ -5615,7 +6599,7 @@
       "context": "decorator",
       "_origin": "ast",
       "source": "tests_test_analyzer_test_m1_is_perfect_on_both_tasks",
-      "target": "parametrize",
+      "target": "tests_test_analyzer_py_parametrize",
       "confidence_score": 1.0
     },
     {
@@ -5627,7 +6611,199 @@
       "context": "decorator",
       "_origin": "ast",
       "source": "tests_test_analyzer_test_state_adjacency_is_importers_per_file",
-      "target": "parametrize",
+      "target": "tests_test_analyzer_py_parametrize",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L42",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_corpus_digests",
+      "target": "tests_test_p2_end_to_end_py_fixture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_runs",
+      "target": "tests_test_p2_end_to_end_py_fixture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L139",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_corpus_source_is_untouched",
+      "target": "tests_test_p2_end_to_end_py_needs_docker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L140",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_corpus_source_is_untouched",
+      "target": "tests_test_p2_end_to_end_py_parametrize",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L114",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_migrated_tree_satisfies_the_gold_semantic_check",
+      "target": "tests_test_p2_end_to_end_py_needs_docker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L115",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_migrated_tree_satisfies_the_gold_semantic_check",
+      "target": "tests_test_p2_end_to_end_py_parametrize",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_migration_is_green_and_perfectly_scored",
+      "target": "tests_test_p2_end_to_end_py_needs_docker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_migration_is_green_and_perfectly_scored",
+      "target": "tests_test_p2_end_to_end_py_parametrize",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L148",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_patch_applies_to_a_fresh_checkout",
+      "target": "tests_test_p2_end_to_end_py_needs_docker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L149",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_patch_applies_to_a_fresh_checkout",
+      "target": "tests_test_p2_end_to_end_py_parametrize",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L164",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_run_writes_every_artifact",
+      "target": "tests_test_p2_end_to_end_py_needs_docker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L165",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_run_writes_every_artifact",
+      "target": "tests_test_p2_end_to_end_py_parametrize",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L78",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_suite_was_green_before_migration",
+      "target": "tests_test_p2_end_to_end_py_needs_docker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L79",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_suite_was_green_before_migration",
+      "target": "tests_test_p2_end_to_end_py_parametrize",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L90",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_task01_patch_adds_the_timezone_import",
+      "target": "tests_test_p2_end_to_end_py_needs_docker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L99",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_task02_patch_adds_no_import",
+      "target": "tests_test_p2_end_to_end_py_needs_docker",
       "confidence_score": 1.0
     },
     {
@@ -5663,7 +6839,7 @@
       "context": "decorator",
       "_origin": "ast",
       "source": "tests_test_sandbox_test_deprecation_warnings_do_not_count_as_failures",
-      "target": "needs_docker",
+      "target": "tests_test_sandbox_py_needs_docker",
       "confidence_score": 1.0
     },
     {
@@ -5675,7 +6851,7 @@
       "context": "decorator",
       "_origin": "ast",
       "source": "tests_test_sandbox_test_failing_task_reports_a_usable_failure",
-      "target": "needs_docker",
+      "target": "tests_test_sandbox_py_needs_docker",
       "confidence_score": 1.0
     },
     {
@@ -5687,7 +6863,7 @@
       "context": "decorator",
       "_origin": "ast",
       "source": "tests_test_sandbox_test_green_report_matches_the_srs_schema",
-      "target": "needs_docker",
+      "target": "tests_test_sandbox_py_needs_docker",
       "confidence_score": 1.0
     },
     {
@@ -5699,7 +6875,7 @@
       "context": "decorator",
       "_origin": "ast",
       "source": "tests_test_sandbox_test_input_mount_is_not_modified",
-      "target": "needs_docker",
+      "target": "tests_test_sandbox_py_needs_docker",
       "confidence_score": 1.0
     },
     {
@@ -5711,7 +6887,7 @@
       "context": "decorator",
       "_origin": "ast",
       "source": "tests_test_sandbox_test_passing_task_reports_all_green",
-      "target": "needs_docker",
+      "target": "tests_test_sandbox_py_needs_docker",
       "confidence_score": 1.0
     },
     {
@@ -5735,7 +6911,7 @@
       "context": "decorator",
       "_origin": "ast",
       "source": "tests_test_sandbox_test_same_failure_yields_the_same_signature",
-      "target": "needs_docker",
+      "target": "tests_test_sandbox_py_needs_docker",
       "confidence_score": 1.0
     },
     {
@@ -5747,7 +6923,7 @@
       "context": "decorator",
       "_origin": "ast",
       "source": "tests_test_sandbox_test_timeout_returns_a_structured_report",
-      "target": "needs_docker",
+      "target": "tests_test_sandbox_py_needs_docker",
       "confidence_score": 1.0
     },
     {
@@ -5759,7 +6935,7 @@
       "context": "decorator",
       "_origin": "ast",
       "source": "tests_test_sandbox_test_unparseable_repo_is_not_reported_as_green",
-      "target": "needs_docker",
+      "target": "tests_test_sandbox_py_needs_docker",
       "confidence_score": 1.0
     },
     {
@@ -5802,12 +6978,48 @@
       "relation": "re_exports",
       "context": "export",
       "confidence": "EXTRACTED",
+      "source_file": "src/mra/codemods/__init__.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_codemods_init",
+      "target": "src_mra_codemods_datetime_utcnow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
       "source_file": "src/mra/metrics/__init__.py",
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_metrics_init",
       "target": "src_mra_metrics_m1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/metrics/__init__.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_metrics_init",
+      "target": "src_mra_metrics_m2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/nodes/__init__.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_nodes_init",
+      "target": "src_mra_nodes_edit_node",
       "confidence_score": 1.0
     },
     {
@@ -5878,7 +7090,7 @@
       "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_mra_analysis_call_sites_dotted",
+      "source": "src_mra_analysis_call_sites_dotted_path",
       "target": "name",
       "confidence_score": 1.0
     },
@@ -5887,7 +7099,7 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L153",
+      "source_location": "L168",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_analysis_call_sites_find_in_repo",
@@ -5899,7 +7111,7 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L153",
+      "source_location": "L168",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_analysis_call_sites_find_in_repo",
@@ -5911,7 +7123,7 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L145",
+      "source_location": "L160",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_analysis_call_sites_find_in_source",
@@ -5940,6 +7152,54 @@
       "_origin": "ast",
       "source": "src_mra_analysis_dep_graph_python_files",
       "target": "src_mra_analysis_dep_graph_py_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/nodes/edit_node.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_nodes_edit_node_apply_codemod",
+      "target": "src_mra_codemods_datetime_utcnow_convertutcnowcommand",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/nodes/edit_node.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_nodes_edit_node_apply_codemod",
+      "target": "src_mra_nodes_edit_node_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_key",
+      "target": "src_mra_run_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_migrate_task",
+      "target": "src_mra_run_py_any",
       "confidence_score": 1.0
     },
     {
@@ -6084,6 +7344,114 @@
       "_origin": "ast",
       "source": "tests_test_analyzer_test_task02_resolves_module_and_aliased_spellings",
       "target": "tests_test_analyzer_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_runs",
+      "target": "tests_test_p2_end_to_end_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L141",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_corpus_source_is_untouched",
+      "target": "tests_test_p2_end_to_end_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L116",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_migrated_tree_satisfies_the_gold_semantic_check",
+      "target": "tests_test_p2_end_to_end_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L69",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_migration_is_green_and_perfectly_scored",
+      "target": "tests_test_p2_end_to_end_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L150",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_patch_applies_to_a_fresh_checkout",
+      "target": "tests_test_p2_end_to_end_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L166",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_run_writes_every_artifact",
+      "target": "tests_test_p2_end_to_end_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L80",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_suite_was_green_before_migration",
+      "target": "tests_test_p2_end_to_end_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L91",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_task01_patch_adds_the_timezone_import",
+      "target": "tests_test_p2_end_to_end_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L100",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_task02_patch_adds_no_import",
+      "target": "tests_test_p2_end_to_end_py_any",
       "confidence_score": 1.0
     },
     {
@@ -6306,12 +7674,156 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_codemods_datetime_utcnow",
+      "target": "src_mra_analysis_call_sites_bindings_of",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_codemods_datetime_utcnow",
+      "target": "src_mra_analysis_call_sites_dotted_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/codemods/__init__.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_codemods_init",
+      "target": "src_mra_codemods_datetime_utcnow_convertutcnowcommand",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/mra/metrics/__init__.py",
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_metrics_init",
       "target": "src_mra_metrics_m1_m1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/metrics/__init__.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_metrics_init",
+      "target": "src_mra_metrics_m2_m2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/nodes/edit_node.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_nodes_edit_node",
+      "target": "src_mra_codemods_datetime_utcnow_convertutcnowcommand",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/nodes/__init__.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_nodes_init",
+      "target": "src_mra_nodes_edit_node_apply_codemod",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run",
+      "target": "src_mra_analysis_analyzer_analyze",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run",
+      "target": "src_mra_analysis_analyzer_flat_sites",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run",
+      "target": "src_mra_nodes_edit_node_apply_codemod",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run",
+      "target": "src_mra_sandbox_git_tools_diff",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run",
+      "target": "src_mra_sandbox_git_tools_snapshot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run",
+      "target": "src_mra_sandbox_runner_sandboxrunner",
       "confidence_score": 1.0
     },
     {
@@ -6450,6 +7962,90 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_codemods_datetime_utcnow",
+      "target": "src_mra_analysis_call_sites",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/nodes/edit_node.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_nodes_edit_node",
+      "target": "src_mra_codemods_datetime_utcnow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run",
+      "target": "src_mra_analysis_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run",
+      "target": "src_mra_codemods_datetime_utcnow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run",
+      "target": "src_mra_metrics_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run",
+      "target": "src_mra_nodes_edit_node",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run",
+      "target": "src_mra_sandbox_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "tests/test_analyzer.py",
       "source_location": "L17",
       "weight": 1.0,
@@ -6468,6 +8064,30 @@
       "_origin": "ast",
       "source": "tests_test_analyzer",
       "target": "src_mra_metrics_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end",
+      "target": "src_mra_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end",
+      "target": "src_mra_sandbox_init",
       "confidence_score": 1.0
     },
     {
@@ -6547,7 +8167,19 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L110",
+      "source_location": "L107",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_analysis_call_sites_bindings_of",
+      "target": "src_mra_analysis_call_sites_py_module",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L125",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_analysis_call_sites_callsitevisitor_shadowed",
@@ -6559,35 +8191,11 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L128",
+      "source_location": "L143",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_analysis_call_sites_callsitevisitor_visit_call",
-      "target": "call",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "parameter_type",
-      "confidence": "EXTRACTED",
-      "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L83",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_mra_analysis_call_sites_callsitevisitor_visit_import",
-      "target": "src_mra_analysis_call_sites_py_import",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "parameter_type",
-      "confidence": "EXTRACTED",
-      "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L96",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_mra_analysis_call_sites_callsitevisitor_visit_importfrom",
-      "target": "src_mra_analysis_call_sites_py_importfrom",
+      "target": "src_mra_analysis_call_sites_py_call",
       "confidence_score": 1.0
     },
     {
@@ -6598,8 +8206,32 @@
       "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_mra_analysis_call_sites_dotted",
+      "source": "src_mra_analysis_call_sites_dotted_path",
       "target": "src_mra_analysis_call_sites_py_baseexpression",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L81",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_analysis_call_sites_importbindings_visit_import",
+      "target": "src_mra_analysis_call_sites_py_import",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L94",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_analysis_call_sites_importbindings_visit_importfrom",
+      "target": "src_mra_analysis_call_sites_py_importfrom",
       "confidence_score": 1.0
     },
     {
@@ -6672,6 +8304,54 @@
       "_origin": "ast",
       "source": "src_mra_analysis_dep_graph_to_state_adjacency",
       "target": "digraph",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_codemods_datetime_utcnow_convertutcnowcommand_leave_call",
+      "target": "src_mra_codemods_datetime_utcnow_py_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/nodes/edit_node.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_nodes_edit_node_apply_codemod",
+      "target": "src_mra_nodes_edit_node_py_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_migrate_task",
+      "target": "src_mra_run_py_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_trajectory_record",
+      "target": "src_mra_run_py_any",
       "confidence_score": 1.0
     },
     {
@@ -6810,6 +8490,54 @@
       "relation": "references",
       "context": "parameter_type",
       "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_runs",
+      "target": "tests_test_p2_end_to_end_py_temppathfactory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L116",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_migrated_tree_satisfies_the_gold_semantic_check",
+      "target": "tests_test_p2_end_to_end_py_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L150",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_patch_applies_to_a_fresh_checkout",
+      "target": "tests_test_p2_end_to_end_py_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_tree_digest",
+      "target": "tests_test_p2_end_to_end_py_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
       "source_file": "tests/test_sandbox.py",
       "source_location": "L53",
       "weight": 1.0,
@@ -6827,7 +8555,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_sandbox_runner",
-      "target": "temppathfactory",
+      "target": "tests_test_sandbox_py_temppathfactory",
       "confidence_score": 1.0
     },
     {
@@ -7038,6 +8766,30 @@
       "relation": "references",
       "context": "return_type",
       "confidence": "EXTRACTED",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_codemods_datetime_utcnow_convertutcnowcommand_leave_call",
+      "target": "src_mra_codemods_datetime_utcnow_py_baseexpression",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_codemods_datetime_utcnow_convertutcnowcommand_transform_module_impl",
+      "target": "src_mra_codemods_datetime_utcnow_py_module",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
       "source_file": "tests/test_sandbox.py",
       "source_location": "L66",
       "weight": 1.0,
@@ -7080,6 +8832,30 @@
       "_origin": "ast",
       "source": "src_mra_analysis_analyzer",
       "target": "src_mra_analysis_dep_graph",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run",
+      "target": "src_mra_metrics_m1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run",
+      "target": "src_mra_metrics_m2",
       "confidence_score": 1.0
     },
     {
@@ -9033,7 +10809,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L128",
+      "source_location": "L124",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_codebase_wide_version_migration_refactoring_agent_mra",
@@ -9044,7 +10820,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L136",
+      "source_location": "L132",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_codebase_wide_version_migration_refactoring_agent_mra",
@@ -9055,7 +10831,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L149",
+      "source_location": "L145",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_codebase_wide_version_migration_refactoring_agent_mra",
@@ -9066,7 +10842,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L158",
+      "source_location": "L154",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_codebase_wide_version_migration_refactoring_agent_mra",
@@ -9077,7 +10853,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L162",
+      "source_location": "L158",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_codebase_wide_version_migration_refactoring_agent_mra",
@@ -9143,7 +10919,29 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L145",
+      "source_location": "L107",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_analysis_call_sites",
+      "target": "src_mra_analysis_call_sites_bindings_of",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L114",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_analysis_call_sites",
+      "target": "src_mra_analysis_call_sites_callsitevisitor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L160",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_analysis_call_sites",
@@ -9154,7 +10952,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L153",
+      "source_location": "L168",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_analysis_call_sites",
@@ -9180,7 +10978,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_analysis_call_sites",
-      "target": "src_mra_analysis_call_sites_dotted",
+      "target": "src_mra_analysis_call_sites_dotted_path",
       "confidence_score": 1.0
     },
     {
@@ -9202,7 +11000,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_analysis_call_sites",
-      "target": "src_mra_analysis_call_sites_callsitevisitor",
+      "target": "src_mra_analysis_call_sites_importbindings",
       "confidence_score": 1.0
     },
     {
@@ -9285,12 +11083,89 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_codemods_datetime_utcnow",
+      "target": "src_mra_codemods_datetime_utcnow_convertutcnowcommand",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/mra/metrics/m1.py",
       "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_metrics_m1",
       "target": "src_mra_metrics_m1_m1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/metrics/m2.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_metrics_m2",
+      "target": "src_mra_metrics_m2_m2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/nodes/edit_node.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_nodes_edit_node",
+      "target": "src_mra_nodes_edit_node_apply_codemod",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L140",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run",
+      "target": "src_mra_run_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run",
+      "target": "src_mra_run_key",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run",
+      "target": "src_mra_run_trajectory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run",
+      "target": "src_mra_run_migrate_task",
       "confidence_score": 1.0
     },
     {
@@ -9549,6 +11424,138 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L100",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end",
+      "target": "tests_test_p2_end_to_end_test_task02_patch_adds_no_import",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L116",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end",
+      "target": "tests_test_p2_end_to_end_test_migrated_tree_satisfies_the_gold_semantic_check",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L141",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end",
+      "target": "tests_test_p2_end_to_end_test_corpus_source_is_untouched",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L150",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end",
+      "target": "tests_test_p2_end_to_end_test_patch_applies_to_a_fresh_checkout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L166",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end",
+      "target": "tests_test_p2_end_to_end_test_run_writes_every_artifact",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end",
+      "target": "tests_test_p2_end_to_end_tree_digest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end",
+      "target": "tests_test_p2_end_to_end_corpus_digests",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end",
+      "target": "tests_test_p2_end_to_end_runs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end",
+      "target": "tests_test_p2_end_to_end_added_import_lines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L69",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end",
+      "target": "tests_test_p2_end_to_end_test_migration_is_green_and_perfectly_scored",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L80",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end",
+      "target": "tests_test_p2_end_to_end_test_suite_was_green_before_migration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L91",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end",
+      "target": "tests_test_p2_end_to_end_test_task01_patch_adds_the_timezone_import",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "tests/test_sandbox.py",
       "source_location": "L115",
       "weight": 1.0,
@@ -9723,6 +11730,28 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L114",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_analysis_call_sites_callsitevisitor",
+      "target": "src_mra_analysis_call_sites_importbindings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_codemods_datetime_utcnow_convertutcnowcommand",
+      "target": "visitorbasedcodemodcommand",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
@@ -9737,29 +11766,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L110",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_mra_analysis_call_sites_callsitevisitor",
-      "target": "src_mra_analysis_call_sites_callsitevisitor_shadowed",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L128",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_mra_analysis_call_sites_callsitevisitor",
-      "target": "src_mra_analysis_call_sites_callsitevisitor_visit_call",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L74",
+      "source_location": "L119",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_analysis_call_sites_callsitevisitor",
@@ -9770,22 +11777,55 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L83",
+      "source_location": "L125",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_analysis_call_sites_callsitevisitor",
-      "target": "src_mra_analysis_call_sites_callsitevisitor_visit_import",
+      "target": "src_mra_analysis_call_sites_callsitevisitor_shadowed",
       "confidence_score": 1.0
     },
     {
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L96",
+      "source_location": "L143",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_analysis_call_sites_callsitevisitor",
-      "target": "src_mra_analysis_call_sites_callsitevisitor_visit_importfrom",
+      "target": "src_mra_analysis_call_sites_callsitevisitor_visit_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L77",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_analysis_call_sites_importbindings",
+      "target": "src_mra_analysis_call_sites_importbindings_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L81",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_analysis_call_sites_importbindings",
+      "target": "src_mra_analysis_call_sites_importbindings_visit_import",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L94",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_analysis_call_sites_importbindings",
+      "target": "src_mra_analysis_call_sites_importbindings_visit_importfrom",
       "confidence_score": 1.0
     },
     {
@@ -9819,6 +11859,61 @@
       "_origin": "ast",
       "source": "src_mra_analysis_dep_graph_importcollector",
       "target": "src_mra_analysis_dep_graph_importcollector_visit_importfrom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_codemods_datetime_utcnow_convertutcnowcommand",
+      "target": "src_mra_codemods_datetime_utcnow_convertutcnowcommand_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_codemods_datetime_utcnow_convertutcnowcommand",
+      "target": "src_mra_codemods_datetime_utcnow_convertutcnowcommand_transform_module_impl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_codemods_datetime_utcnow_convertutcnowcommand",
+      "target": "src_mra_codemods_datetime_utcnow_convertutcnowcommand_leave_call",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_trajectory",
+      "target": "src_mra_run_trajectory_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_trajectory",
+      "target": "src_mra_run_trajectory_record",
       "confidence_score": 1.0
     },
     {
@@ -10298,10 +12393,32 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L111",
+      "source_location": "L108",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_mra_analysis_call_sites_rationale_111",
+      "source": "src_mra_analysis_call_sites_rationale_108",
+      "target": "src_mra_analysis_call_sites_bindings_of",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L115",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_analysis_call_sites_rationale_115",
+      "target": "src_mra_analysis_call_sites_callsitevisitor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/analysis/call_sites.py",
+      "source_location": "L126",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_analysis_call_sites_rationale_126",
       "target": "src_mra_analysis_call_sites_callsitevisitor_shadowed",
       "confidence_score": 1.0
     },
@@ -10309,10 +12426,10 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L146",
+      "source_location": "L161",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_mra_analysis_call_sites_rationale_146",
+      "source": "src_mra_analysis_call_sites_rationale_161",
       "target": "src_mra_analysis_call_sites_find_in_source",
       "confidence_score": 1.0
     },
@@ -10320,10 +12437,10 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "src/mra/analysis/call_sites.py",
-      "source_location": "L156",
+      "source_location": "L171",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "src_mra_analysis_call_sites_rationale_156",
+      "source": "src_mra_analysis_call_sites_rationale_171",
       "target": "src_mra_analysis_call_sites_find_in_repo",
       "confidence_score": 1.0
     },
@@ -10346,7 +12463,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_analysis_call_sites_rationale_44",
-      "target": "src_mra_analysis_call_sites_dotted",
+      "target": "src_mra_analysis_call_sites_dotted_path",
       "confidence_score": 1.0
     },
     {
@@ -10368,7 +12485,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_mra_analysis_call_sites_rationale_70",
-      "target": "src_mra_analysis_call_sites_callsitevisitor",
+      "target": "src_mra_analysis_call_sites_importbindings",
       "confidence_score": 1.0
     },
     {
@@ -10462,6 +12579,39 @@
     {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_codemods_datetime_utcnow_rationale_1",
+      "target": "src_mra_codemods_datetime_utcnow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/codemods/datetime_utcnow.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_codemods_datetime_utcnow_rationale_38",
+      "target": "src_mra_codemods_datetime_utcnow_convertutcnowcommand",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/codemods/__init__.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_codemods_init_rationale_1",
+      "target": "src_mra_codemods_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
       "source_file": "src/mra/metrics/__init__.py",
       "source_location": "L1",
       "weight": 1.0,
@@ -10479,6 +12629,83 @@
       "_origin": "ast",
       "source": "src_mra_metrics_m1_rationale_1",
       "target": "src_mra_metrics_m1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/metrics/m2.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_metrics_m2_rationale_1",
+      "target": "src_mra_metrics_m2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/nodes/edit_node.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_nodes_edit_node_rationale_1",
+      "target": "src_mra_nodes_edit_node",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/nodes/edit_node.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_nodes_edit_node_rationale_24",
+      "target": "src_mra_nodes_edit_node_apply_codemod",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/nodes/__init__.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_nodes_init_rationale_1",
+      "target": "src_mra_nodes_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_rationale_1",
+      "target": "src_mra_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_rationale_36",
+      "target": "src_mra_run_trajectory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/mra/run.py",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_mra_run_rationale_57",
+      "target": "src_mra_run_migrate_task",
       "confidence_score": 1.0
     },
     {
@@ -10748,6 +12975,105 @@
     {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_rationale_1",
+      "target": "tests_test_p2_end_to_end",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_rationale_101",
+      "target": "tests_test_p2_end_to_end_test_task02_patch_adds_no_import",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L119",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_rationale_119",
+      "target": "tests_test_p2_end_to_end_test_migrated_tree_satisfies_the_gold_semantic_check",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L144",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_rationale_144",
+      "target": "tests_test_p2_end_to_end_test_corpus_source_is_untouched",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L151",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_rationale_151",
+      "target": "tests_test_p2_end_to_end_test_patch_applies_to_a_fresh_checkout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L44",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_rationale_44",
+      "target": "tests_test_p2_end_to_end_corpus_digests",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_rationale_57",
+      "target": "tests_test_p2_end_to_end_added_import_lines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L81",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_rationale_81",
+      "target": "tests_test_p2_end_to_end_test_suite_was_green_before_migration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L92",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_rationale_92",
+      "target": "tests_test_p2_end_to_end_test_task01_patch_adds_the_timezone_import",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
       "source_file": "tests/test_sandbox.py",
       "source_location": "L1",
       "weight": 1.0,
@@ -10870,7 +13196,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L130",
+      "source_location": "L126",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
@@ -10881,7 +13207,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L140",
+      "source_location": "L136",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
@@ -10892,7 +13218,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L141",
+      "source_location": "L137",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
@@ -10903,7 +13229,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L142",
+      "source_location": "L138",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
@@ -10914,7 +13240,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L146",
+      "source_location": "L142",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
@@ -10925,7 +13251,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L147",
+      "source_location": "L143",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
@@ -11409,6 +13735,18 @@
       "_origin": "ast",
       "source": "tests_test_analyzer_test_task02_resolves_module_and_aliased_spellings",
       "target": "src_mra_analysis_analyzer_flat_sites"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_p2_end_to_end.py",
+      "source_location": "L128",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_p2_end_to_end_test_migrated_tree_satisfies_the_gold_semantic_check",
+      "target": "src_mra_sandbox_runner_sandboxrunner"
     },
     {
       "relation": "calls",
