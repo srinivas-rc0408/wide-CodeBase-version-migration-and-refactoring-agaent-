@@ -1,0 +1,98 @@
+{
+  "task_id": "task05_signature_break",
+  "difficulty": "hard",
+  "source_api": "datetime.utcnow",
+  "target_api": "datetime.now(timezone.utc)",
+  "call_sites": [
+    {
+      "file": "src/pkg/api.py",
+      "line": 11,
+      "col": 25,
+      "symbol": "datetime.datetime.utcnow",
+      "kind": "call"
+    },
+    {
+      "file": "src/pkg/boot.py",
+      "line": 17,
+      "col": 13,
+      "symbol": "datetime.datetime.utcnow",
+      "kind": "call"
+    },
+    {
+      "file": "src/pkg/handler.py",
+      "line": 11,
+      "col": 18,
+      "symbol": "datetime.datetime.utcnow",
+      "kind": "call"
+    },
+    {
+      "file": "src/pkg/ledger.py",
+      "line": 13,
+      "col": 64,
+      "symbol": "datetime.datetime.utcnow",
+      "kind": "call"
+    },
+    {
+      "file": "src/pkg/metrics.py",
+      "line": 11,
+      "col": 15,
+      "symbol": "datetime.datetime.utcnow",
+      "kind": "call"
+    },
+    {
+      "file": "src/pkg/timebase.py",
+      "line": 25,
+      "col": 11,
+      "symbol": "datetime.datetime.utcnow",
+      "kind": "call"
+    }
+  ],
+  "expected_import_changes": [
+    {
+      "file": "src/pkg/api.py",
+      "add": [
+        "timezone"
+      ],
+      "remove": []
+    },
+    {
+      "file": "src/pkg/boot.py",
+      "add": [
+        "timezone"
+      ],
+      "remove": []
+    },
+    {
+      "file": "src/pkg/handler.py",
+      "add": [
+        "timezone"
+      ],
+      "remove": []
+    },
+    {
+      "file": "src/pkg/ledger.py",
+      "add": [
+        "timezone"
+      ],
+      "remove": []
+    },
+    {
+      "file": "src/pkg/metrics.py",
+      "add": [
+        "timezone"
+      ],
+      "remove": []
+    },
+    {
+      "file": "src/pkg/timebase.py",
+      "add": [],
+      "remove": []
+    }
+  ],
+  "semantic_checks": [
+    "utc_now() returns a timezone-aware datetime (tzinfo is not None)",
+    "every stamp in one serve() response is timezone-aware",
+    "importing pkg.boot succeeds: STARTUP_LAG_S is computed at import time and requires boot.py and timebase.py to agree on the clock contract"
+  ],
+  "gold_commit": ""
+}

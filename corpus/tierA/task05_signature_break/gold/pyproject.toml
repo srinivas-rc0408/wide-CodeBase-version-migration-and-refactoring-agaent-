@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pkg"
+version = "0.1.0"
+description = "Corpus fixture: a clock contract whose migration order is enforced at import time."
+requires-python = "==3.12.*"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

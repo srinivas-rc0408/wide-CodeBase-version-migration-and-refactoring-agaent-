@@ -1,0 +1,35 @@
+id: task05_signature_break
+description: >-
+  The edit-order fixture. Same contract as task01 (datetime.utcnow ->
+  datetime.now(timezone.utc)), from-import style, across a six-module service.
+  |A| = 6. What no other Tier-A task has: the break is ASYMMETRIC in the
+  migration order, and in one direction it is a hard one. pkg.timebase owns the
+  clock contract and normalizes stamps it is handed with a deliberately one-way
+  shim — a naive stamp from an unmigrated caller is read as UTC, an aware stamp
+  handed to a still-naive clock is passed through rather than downgraded. So
+  migrating timebase.py FIRST (dependency order) is always safe, while
+  migrating any of its callers first raises TypeError. pkg.boot does that
+  handback at MODULE level, so migrating boot.py before timebase.py raises
+  during import and pytest reports collection errors, not test failures.
+source_api: datetime.utcnow
+target_api: datetime.now(timezone.utc)
+difficulty: hard
+batching:
+  expected_batches:
+    - [src/pkg/timebase.py]
+    - [src/pkg/boot.py, src/pkg/ledger.py]
+    - [src/pkg/handler.py, src/pkg/metrics.py]
+    - [src/pkg/api.py]
+  cycle: []
+  breaks_after_batch: null          # dependency order never opens the window
+  expected_failure: null
+  expected_exc_type: null
+  wrong_order:
+    # Both arbitrary orders put boot.py before timebase.py, at either batch size.
+    alphabetical_batch_1: [src/pkg/api.py, src/pkg/boot.py, src/pkg/handler.py,
+                           src/pkg/ledger.py, src/pkg/metrics.py, src/pkg/timebase.py]
+    fr3_violating_batch_1: [src/pkg/api.py, src/pkg/handler.py, src/pkg/metrics.py,
+                            src/pkg/boot.py, src/pkg/ledger.py, src/pkg/timebase.py]
+    breaks_at: src/pkg/boot.py
+    expected_failure: collection error on every test module that imports pkg.boot
+    expected_exc_type: TypeError
