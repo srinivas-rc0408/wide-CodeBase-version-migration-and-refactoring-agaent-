@@ -32,6 +32,7 @@ CORPUS = REPO_ROOT / "corpus" / "tierA"
 TASK01 = CORPUS / "task01_datetime"
 TASK03 = CORPUS / "task03_half_migration"
 TASK04 = CORPUS / "task04_multimodule"
+TASK05 = CORPUS / "task05_signature_break"
 
 BY_NAME = {config.name: config for config in CONFIGS}
 
@@ -54,7 +55,7 @@ def _tree_digest(root: Path) -> str:
 
 @pytest.fixture(scope="session")
 def corpus_digests() -> dict[str, str]:
-    return {task.name: _tree_digest(task) for task in (TASK01, TASK03, TASK04)}
+    return {task.name: _tree_digest(task) for task in (TASK01, TASK03, TASK04, TASK05)}
 
 
 @pytest.fixture(scope="session")
@@ -89,6 +90,30 @@ def ablation_b(runs_dir: Path, corpus_digests: dict[str, str]) -> dict[str, dict
                                     recovery=False),
     }
     return {name: run_one(TASK04, config, runs_dir=runs_dir)
+            for name, config in arms.items()}
+
+
+@pytest.fixture(scope="session")
+def ablation_b_task05(runs_dir: Path, corpus_digests: dict[str, str]) -> dict[str, dict[str, Any]]:
+    """The same three orders on the task built so that order alone decides the outcome.
+
+    ``task05_signature_break`` is asymmetric where ``task04`` is symmetric: its
+    contract owner upgrades a naive stamp it is handed but refuses to strip a
+    ``tzinfo``, so the dependency order never opens a window and the other two
+    always do. One file per batch in every arm, so order is the only variable.
+    """
+    arms = {
+        "dependency": Config("b5-dep", order="dependency", batch_size=1),
+        "alphabetical": Config("b5-alpha", order="alphabetical", batch_size=1),
+        "fr3_violating": Config("b5-fr3", order="fr3_violating", batch_size=1),
+        "dependency-off": Config("b5-dep-off", order="dependency", batch_size=1,
+                                 recovery=False),
+        "alphabetical-off": Config("b5-alpha-off", order="alphabetical", batch_size=1,
+                                   recovery=False),
+        "fr3_violating-off": Config("b5-fr3-off", order="fr3_violating", batch_size=1,
+                                    recovery=False),
+    }
+    return {name: run_one(TASK05, config, runs_dir=runs_dir)
             for name, config in arms.items()}
 
 
@@ -160,6 +185,67 @@ def test_every_order_is_still_a_complete_migration_when_the_loop_runs(
         row = ablation_b[arm]
         assert row["outcome"] == "success", arm
         assert row["m1_recall"] == 100 and row["m2_regressions"] == 0, arm
+
+
+# -- B on task05: the task where the order is the whole result ---------------
+
+
+@pytest.mark.parametrize("arbitrary", ["alphabetical", "fr3_violating"])
+def test_dependency_order_is_never_worse_than_an_arbitrary_one_on_task05(
+    ablation_b_task05: dict[str, dict[str, Any]], arbitrary: str
+) -> None:
+    """Direction only: the graph order costs no more than ignoring the graph."""
+    dependency, other = ablation_b_task05["dependency"], ablation_b_task05[arbitrary]
+
+    assert dependency["outcome"] == "success"
+    assert dependency["corrections"] <= other["corrections"]
+    assert dependency["m3_steps"] <= other["m3_steps"]
+    assert dependency["m1_recall"] >= other["m1_recall"]
+    assert dependency["m2_regressions"] <= other["m2_regressions"]
+
+
+def test_the_dependency_order_needs_no_corrective_edit_on_task05(
+    ablation_b_task05: dict[str, dict[str, Any]]
+) -> None:
+    """The asymmetry: migrating the contract owner first never opens the window."""
+    dependency = ablation_b_task05["dependency"]
+    assert dependency["corrections"] == 0
+    assert not dependency["recovery_used"]
+    assert dependency["m1_recall"] == 100 and dependency["m2_pass_rate"] == 100
+
+
+@pytest.mark.parametrize("arbitrary", ["alphabetical-off", "fr3_violating-off"])
+def test_without_the_loop_only_the_dependency_order_survives_task05(
+    ablation_b_task05: dict[str, dict[str, Any]], arbitrary: str
+) -> None:
+    """The result task04 could not produce: with recovery off, order decides the run.
+
+    task04's break is symmetric, so every order breaks and the ordering result is
+    only *how far* the run got. Here the dependency order does not break at all.
+    """
+    dependency, other = ablation_b_task05["dependency-off"], ablation_b_task05[arbitrary]
+
+    assert dependency["outcome"] == "success"
+    assert dependency["m2_regressions"] == 0 and dependency["m2_pass_rate"] == 100
+
+    assert other["outcome"] == "gave_up"
+    assert other["m2_regressions"] > 0
+    assert other["m1_recall"] < dependency["m1_recall"]
+
+
+def test_the_wrong_order_breaks_task05_at_collection_time(
+    ablation_b_task05: dict[str, dict[str, Any]]
+) -> None:
+    """File-name order migrates pkg.boot before pkg.timebase, and boot fails on import.
+
+    A collection error is reported against the *test module* that could not be
+    imported, so the failing nodeids are whole files with no ``::test_`` in them.
+    """
+    failures = ablation_b_task05["alphabetical-off"]["failures"]
+    assert failures, "the arm was supposed to break"
+    assert all(failure["exc_type"] == "TypeError" for failure in failures)
+    collection = [f for f in failures if "::" not in f["nodeid"]]
+    assert collection, f"expected an import-time break, got {[f['nodeid'] for f in failures]}"
 
 
 # -- the baseline tools ----------------------------------------------------
@@ -240,9 +326,11 @@ def test_the_table_renders_every_task_and_configuration(matrix: dict[str, Any]) 
         assert f"### {task}" in table
     for config in ("baseline", "no-recovery"):
         assert f"`{config}`" in table
-    for heading in ("## 1. Per task, per configuration", "### A. Recovery loop ON vs OFF",
-                    "## 3. Deterministic baselines"):
+    for heading in ("## 1. The whole offline matrix", "## 1b. Per task, per configuration",
+                    "### A. Recovery loop ON vs OFF", "## 3. Deterministic baselines"):
         assert heading in table
+    for task in matrix["tasks"]:
+        assert f"`{task} / baseline`" in table, "the consolidated grid is missing a row"
     assert "ruff (DTZ)" in table, "the baseline section did not render"
 
 
@@ -276,10 +364,13 @@ def test_live_model_rows_are_skipped_not_faked(matrix: dict[str, Any]) -> None:
 # -- boundaries ------------------------------------------------------------
 
 
-def test_no_benchmark_run_touched_a_test_file(ablation_a: dict[str, dict[str, Any]],
-                                              ablation_b: dict[str, dict[str, Any]]) -> None:
+def test_no_benchmark_run_touched_a_test_file(
+    ablation_a: dict[str, dict[str, Any]],
+    ablation_b: dict[str, dict[str, Any]],
+    ablation_b_task05: dict[str, dict[str, Any]],
+) -> None:
     """NB-4 holds across every configuration, including the deliberately bad ones."""
-    for row in [*ablation_a.values(), *ablation_b.values()]:
+    for row in [*ablation_a.values(), *ablation_b.values(), *ablation_b_task05.values()]:
         offenders = [path for path in row["changed_files"] if is_test_path(path)]
         assert not offenders, f"{row['config']} edited the oracle: {offenders}"
 
@@ -288,7 +379,8 @@ def test_the_corpus_is_unchanged_after_the_whole_suite(
     corpus_digests: dict[str, str],
     ablation_a: dict[str, dict[str, Any]],
     ablation_b: dict[str, dict[str, Any]],
+    ablation_b_task05: dict[str, dict[str, Any]],
     matrix: dict[str, Any],
 ) -> None:
-    for task in (TASK01, TASK03, TASK04):
+    for task in (TASK01, TASK03, TASK04, TASK05):
         assert _tree_digest(task) == corpus_digests[task.name], f"{task.name} was modified"
