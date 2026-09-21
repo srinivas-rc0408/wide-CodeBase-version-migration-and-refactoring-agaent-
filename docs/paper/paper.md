@@ -2,7 +2,6 @@
 title: "Dependency-Ordered, Self-Correcting Codebase Migration: An Agent and a Controlled Benchmark"
 author: "TODO — author list"
 date: "TODO"
-abstract: "TODO — see §0 (stub)."
 ---
 
 <!--
@@ -10,6 +9,10 @@ abstract: "TODO — see §0 (stub)."
 
   PROVENANCE RULE: every number in this document must carry an HTML comment
   naming the file and the cell it came from. Nothing is typed from memory.
+  A SOURCE comment covers every line above it, back to the previous SOURCE
+  comment or the nearest heading — so a claim sentence and the table it
+  introduces share one pointer. That rule is what makes the coverage check
+  mechanical: no numeric line in §7 may sit in a span that ends without one.
   The two sources are:
     - runs/benchmark/results.md          (generated 2026-09-21T05:49:48Z)
     - runs/benchmark/RESULTS_SUMMARY.md  (same source results.json)
@@ -276,7 +279,7 @@ factor that varies attributable.
 | Task | \|A\| | Files | Tests | Difficulty | The one factor it varies |
 |---|---|---|---|---|---|
 | `task01_datetime` | 1 | 1 | 5 | easy | Baseline. From-import style, single site. The control. |
-| `task02_datetime_aliased` | 2 | 2 | 5 | easy | **Alias resolution.** `import datetime` and `import datetime as dt`. Its `expected_import_changes` are deliberately empty — adding `from datetime import timezone` here is an unnecessary edit, so the task scores *precision*, not just recall. |
+| `task02_datetime_aliased` | 2 | 2 | 5 | easy | **Alias resolution.** `import datetime` and `import datetime as dt`. Its `expected_import_changes` name both files with an empty `add` list — adding `from datetime import timezone` here is an unnecessary edit, so the task scores *precision*, not just recall. |
 | `task03_half_migration` | 3 | 3 | 7 | medium | **Recovery.** The tree starts partially migrated; one module subtracts its own clock reading from another module's, so the mixed state is already broken. Asks whether the agent can finish from the failure alone. |
 | `task04_multimodule` | 6 | 6 | 11 | hard | **Scale and cycles.** Seven modules with a genuine import cycle that must be migrated atomically, and a break that only surfaces after an earlier batch lands. Exercises condensation and batch planning. |
 | `task05_signature_break` | 6 | 6 | 14 | hard | **Edit order.** An asymmetric break: migrating the contract owner first is always safe, migrating any caller first raises at import time. The only task on which order changes the verdict. |
@@ -286,8 +289,8 @@ factor that varies attributable.
      Difficulty from each ground_truth.json "difficulty" field.
      Factor descriptions from each corpus/tierA/*/README.md. -->
 
-`task02`'s empty `expected_import_changes` deserve emphasis because they are
-the corpus's only precision trap. A matcher tuned to `task01` looks for
+`task02`'s empty-`add` `expected_import_changes` deserve emphasis because they
+are the corpus's only precision trap. A matcher tuned to `task01` looks for
 `Attribute(value=Name("datetime"), attr=Name("utcnow"))`; in `task02` the
 receiver is itself an `Attribute`, so that matcher — and a
 `datetime\.utcnow\(` regex — finds **zero** of the two sites. Correct
@@ -353,7 +356,7 @@ $$
 **Why both halves are reported.** Recall alone is trivially gamed by editing
 everything; precision alone is trivially gamed by editing one site correctly
 and stopping. The corpus contains a live instance of the precision half:
-`task02`'s `expected_import_changes` are empty, so an agent that helpfully
+`task02`'s `expected_import_changes` require no import to be added, so an agent that helpfully
 adds `from datetime import timezone` under a module-import binding is
 *correct-looking and wrong*, and only precision records it.
 
@@ -603,6 +606,14 @@ in the corpus where detection precision falls below 100 %. `pyupgrade`
 detects nothing at all: this migration is not in its rule set, so its row is
 a floor, not a failure.
 
+<!-- SOURCE: results.json baselines[task05_signature_break].tools["ruff (DTZ)"]:
+     detected 7 against ground_truth_sites 6, detect_recall 100.0, detect_precision 85.714… (→ 86 %).
+     The seventh hit is DTZ001 at corpus/tierA/task05_signature_break/old/tests/test_timebase.py:12,
+     `NAIVE = datetime(2024, 1, 1, 12, 0, 0)` — reproduce with
+     `ruff check --select DTZ corpus/tierA/task05_signature_break/old`.
+     Every other task's detect_precision is 100.0 in the same structure.
+     pyupgrade: detected 0 / detect_recall 0.0 on all five tasks. -->
+
 Neither tool can repair a cross-file break, because neither edits across
 files at all: on `task03`, `task04` and `task05` the regression the agent
 recovers from does not exist for them, since they never create it. That is
@@ -633,19 +644,37 @@ half of the claim rests on `task05` alone.
      runs/benchmark/RESULTS_SUMMARY.md claim (c) claim-1 table. -->
 
 The two arbitrary orders on `task05` break *differently*, and that difference
-is the finding. File-name order reaches `src/pkg/boot.py` at batch 2, one
-batch ahead of `src/pkg/timebase.py`; `boot.py` performs its clock handback at
-module scope, so the `TypeError` is raised during **import**. Three test
-modules never load, and the failing node IDs are whole files with no
-`::test_` component — M2 0.0 % with 14 regressions, the entire suite.
-Dependents-first order reaches `boot.py` one batch later and trips the same
-contract at call time instead: M2 78.6 % with 3 regressions. Dependency order
-reaches neither window: 3× success, 0 regressions, 0 corrective edits.
+is the finding, and the planned batch lists explain it exactly.
+
+File-name order plans
+`[api] [boot] [handler] [ledger] [metrics] [timebase]` and so reaches
+`src/pkg/boot.py` at batch 2 — four batches ahead of the contract owner
+`src/pkg/timebase.py` at batch 6. `boot.py` performs its clock handback at
+**module scope**, so the `TypeError` is raised during *import*: the run gives
+up after batch 2, three test modules never load, and the failing node IDs are
+whole files with no `::test_` component — M2 0.0 % with 14 regressions, the
+entire suite.
+
+Dependents-first order plans
+`[api] [handler] [metrics] [boot] [ledger] [timebase]` and never reaches
+`boot.py` at all: it gives up after batch 3 of 6, with `api`, `handler` and
+`metrics` migrated ahead of `timebase`. The same guard therefore trips at
+*call* time rather than import time, inside three tests in
+`tests/test_api.py` and `tests/test_metrics.py` — M2 78.6 % with 3
+regressions. Dependency order reaches neither window: 3× success, 0
+regressions, 0 corrective edits.
+
+The two arbitrary orders are thus not two degrees of the same break but two
+different ones, and only the earlier of the two takes out the suite wholesale.
 
 <!-- SOURCE: runs/benchmark/failure-analysis.md, entries
-     "`order-alphabetical-b1-norecovery` on task05_signature_break" (planned batches list, M2 0.0%, 14 regressions,
-     3 surviving failures whose nodeids are tests/test_api.py, tests/test_boot.py, tests/test_handler.py — no "::")
-     and "`order-fr3-violating-b1-norecovery` on task05_signature_break" (M2 78.6%, 3 regressions, nodeids carry "::test_"). -->
+     "`order-alphabetical-b1-norecovery` on task05_signature_break" — planned batches
+     [[api],[boot],[handler],[ledger],[metrics],[timebase]], "gave_up after batch 2/6", M2 0.0%, 14 regressions,
+     3 surviving failures whose nodeids are tests/test_api.py, tests/test_boot.py, tests/test_handler.py (no "::")
+     — and "`order-fr3-violating-b1-norecovery` on task05_signature_break" — planned batches
+     [[api],[handler],[metrics],[boot],[ledger],[timebase]], "gave_up after batch 3/6",
+     files actually migrated [api, handler, metrics], M2 78.6%, 3 regressions whose nodeids are
+     tests/test_api.py::test_serve_returns_the_whole_response and two in tests/test_metrics.py (all carry "::"). -->
 
 **(c-ii) Corrective-edit cost — with the loop on, and not uniform.**
 Dependency order is never the most expensive arm and dependents-first order is
@@ -669,11 +698,15 @@ Mean corrective edits, one file per batch, recovery on (lower is better):
 The `task04` row is reported as found: file-name order costs one edit *fewer*
 than dependency order there. That is luck about which files that particular
 alphabet happens to group, not evidence against FR-3 — and the same order
-costs 2 where dependency order costs 0 on `task05`. The dependents-first arm
-on `task04` spends the full retry ceiling of 3 attempts, i.e. it finishes one
-attempt away from failing the task outright.
+costs 2 where dependency order costs 0 on `task05`. Both dependents-first arms
+on `task04` — batch 3 and batch 1 — spend the full retry ceiling of 3 attempts
+on a *single* failure signature, i.e. they finish one attempt away from failing
+the task outright; dependency order spends 2 on the same task.
 
-<!-- SOURCE: runs/benchmark/results.md §2B "What the data says", finding 2. -->
+<!-- SOURCE: runs/benchmark/results.md §2B "What the data says", finding 2, for the ranking.
+     The "single signature" detail from results.json rows order-fr3-violating / task04_multimodule
+     and order-fr3-violating-b1 / task04_multimodule: fix_attempts == {"2773f89c64a8ae65": 3} in all
+     3 repeats of each, against {"…": 2} for baseline / task04_multimodule. -->
 
 **(c-iii) What is *not* shown.** With the loop on, every order completes every
 Tier-A task at M1 100 / M2 100, `task05` included. On this corpus, edit order
@@ -771,13 +804,20 @@ exercises them is future work (§9).
 
 **By why recovery did not happen**, all 14 pairs carry the same reason:
 *"recovery disabled: the run gives up on the first red suite, so the remaining
-batches are never edited."* No pair in this matrix exhausted the
-`MAX_FIX_ATTEMPTS = 3` ceiling — the ceiling is approached but never reached,
-by `order-fr3-violating` on `task04`, which spends all 3 attempts and still
-finishes green (§7.4).
+batches are never edited."* **No run anywhere in the matrix gave up by
+exhausting the retry cap.** The highest `fix_attempts` counter observed is
+exactly `MAX_FIX_ATTEMPTS = 3`, reached on one signature
+(`2773f89c64a8ae65`) by both dependents-first arms on `task04_multimodule` —
+and both finish **green**, because the third corrective edit turns the suite
+green before the router is asked to take `give_up` (§7.4). Every failure in
+this section is a *disabled* loop, never an exhausted one, so this matrix says
+nothing about whether 3 is the right ceiling.
 
-<!-- SOURCE: runs/benchmark/failure-analysis.md — the "why it was not recovered" line of all 14 entries;
-     the 3-attempt figure from runs/benchmark/results.md §2B "What the data says", finding 2. -->
+<!-- SOURCE: runs/benchmark/failure-analysis.md — the "why it was not recovered" line of all 14 entries
+     reads "recovery disabled (ablation A|B)". Cap figures from results.json: max over all 165 rows of
+     max(fix_attempts.values()) == 3, attained only by order-fr3-violating / task04_multimodule and
+     order-fr3-violating-b1 / task04_multimodule (outcome "success" in all 6 rows); no row with
+     outcome "gave_up" has any fix_attempts entry >= 3. -->
 
 **The two shapes of break.** The 14 pairs divide into two failure geometries
 that the node IDs distinguish without ambiguity:
