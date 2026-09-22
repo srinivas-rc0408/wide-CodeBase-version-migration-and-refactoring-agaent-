@@ -1,8 +1,11 @@
 """The recovery loop: EDIT -> TEST -> CORRECT -> TEST -> ... -> green or give up.
 
-This is FR-7 and FR-9 in one function. A plain function on purpose — the
-LangGraph wiring is P4, and a state machine whose mechanics are only
-observable through a framework is a state machine nobody can test.
+This is FR-7 and FR-9 in one function. A plain function on purpose, and it
+stayed one after P4 added the LangGraph wiring: a state machine whose
+mechanics are only observable through a framework is a state machine nobody
+can test. ``mra/graph.py`` routes CORRECT/TEST itself and shares only the cap
+defined here; this loop is what ``mra.run`` drives and what the P3 tests
+exercise directly.
 
 Two stop conditions, both required:
 

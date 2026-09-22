@@ -1,4 +1,6 @@
-"""State-machine nodes. Plain functions for now; LangGraph wiring lands in P4."""
+"""State-machine nodes: plain ``state -> partial update`` functions, wired
+together as a LangGraph ``StateGraph`` in ``mra/graph.py``.
+"""
 
 from mra.nodes.edit_node import apply_codemod
 

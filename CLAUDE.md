@@ -41,12 +41,12 @@ Do not swap frameworks or add new heavy dependencies without updating `docs/` an
 | Static analysis (libcst visitors, graph builder) | `src/mra/analysis/` |
 | Deterministic codemods (per migration task) | `src/mra/codemods/` |
 | Sandbox wrappers (docker run, git) | `src/mra/sandbox/` |
-| Model router + token accounting | `src/mra/models/` |
-| Metric computation (M1/M2/M3) | `src/mra/metrics/` |
+| Model router + token accounting (M3) | `src/mra/models/` |
+| Metric computation (M1, M2) | `src/mra/metrics/` |
 | Recovery loop (CORRECT/TEST until green or capped) | `src/mra/recovery/` |
 | Rolling summary + LLM context budget | `src/mra/memory.py` |
 | Corpus | `corpus/tierA/`, `corpus/tierB/` |
-| Run outputs | `runs/<run_id>/` (gitignored) |
+| Run outputs | `runs/<run_id>/` — gitignored, except the four paper-cited artefacts under `runs/benchmark/`: `results.json`, `results.md`, `failure-analysis.md`, `RESULTS_SUMMARY.md` |
 
 ## Coding conventions
 

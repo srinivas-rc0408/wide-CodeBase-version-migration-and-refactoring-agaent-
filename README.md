@@ -53,7 +53,7 @@ Full component diagram and node contracts: [`docs/04_ARCHITECTURE_HLD_LLD.md`](d
 | LLM (edits) | DeepSeek V4-Pro |
 | LLM (summaries/classification) | DeepSeek V4-Flash |
 
-Verified current as of Aug 2026. See [`docs/RESOURCE_PACK.md`](docs/RESOURCE_PACK.md) for versions and rationale.
+Verified current as of Sep 2026. See [`docs/RESOURCE_PACK.md`](docs/RESOURCE_PACK.md) for versions and rationale.
 
 ## Repository structure
 
@@ -74,7 +74,11 @@ mra/
 │   ├── 04_ARCHITECTURE_HLD_LLD.md
 │   ├── 05_DATA_EVALUATION_PROTOCOL.md
 │   ├── RESOURCE_PACK.md
-│   └── PRD.md
+│   ├── PRD.md
+│   ├── Project_Explained_Simply.pdf
+│   └── paper/
+│       ├── paper.md              # the P5 write-up
+│       └── verify_paper.py       # checks it against runs/benchmark/
 ├── src/mra/
 │   ├── __init__.py
 │   ├── state.py                  # MigrationState (see SRS §4.1)
@@ -88,12 +92,15 @@ mra/
 │   ├── analysis/                 # libcst visitors, networkx graph builder
 │   ├── codemods/                 # deterministic libcst transforms (per task)
 │   ├── sandbox/                  # docker run wrappers, git snapshot/rollback
-│   ├── models/                   # DeepSeek router, token accounting
-│   └── metrics/                  # M1/M2/M3 computation
+│   ├── models/                   # DeepSeek router, token accounting (M3)
+│   └── metrics/                  # M1 + M2 computation
 ├── corpus/
 │   ├── tierA/                    # controlled repos + ground_truth.json
 │   └── tierB/                    # real OSS repos (tagged before/gold)
 ├── runs/                         # per-run outputs: patch, trajectory, metrics (gitignored)
+│   └── benchmark/                # ...except these four, committed because the paper
+│                                 #    cites them: results.json, results.md,
+│                                 #    failure-analysis.md, RESULTS_SUMMARY.md
 └── tests/                        # unit tests for the agent itself
 ```
 
@@ -154,6 +161,7 @@ Three metrics, defined formally in [`docs/05_DATA_EVALUATION_PROTOCOL.md`](docs/
 | [Data & Evaluation Protocol](docs/05_DATA_EVALUATION_PROTOCOL.md) | Corpus, metric formulas, sandbox setup |
 | [Resource Pack](docs/RESOURCE_PACK.md) | Verified stack, migration data, reference code |
 | [PRD](docs/PRD.md) | One-page problem/scope/success framing |
+| [Project, Explained Simply](docs/Project_Explained_Simply.pdf) | Plain-English walkthrough of the whole system, glossary included (14 pp, PDF) |
 | [Paper draft v1](docs/paper/paper.md) | The write-up of the P5 results; §1 and §3–§9 written, Abstract/§2/§10/References stubbed |
 | [CLAUDE.md](CLAUDE.md) | Conventions & guardrails for AI coding assistants |
 
