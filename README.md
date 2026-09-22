@@ -154,7 +154,7 @@ Three metrics, defined formally in [`docs/05_DATA_EVALUATION_PROTOCOL.md`](docs/
 | [Data & Evaluation Protocol](docs/05_DATA_EVALUATION_PROTOCOL.md) | Corpus, metric formulas, sandbox setup |
 | [Resource Pack](docs/RESOURCE_PACK.md) | Verified stack, migration data, reference code |
 | [PRD](docs/PRD.md) | One-page problem/scope/success framing |
-| [Paper draft v1](docs/paper/paper.md) | The write-up of the P5 results; §3–§9 written, Abstract/§1/§2/§10 stubbed |
+| [Paper draft v1](docs/paper/paper.md) | The write-up of the P5 results; §1 and §3–§9 written, Abstract/§2/§10/References stubbed |
 | [CLAUDE.md](CLAUDE.md) | Conventions & guardrails for AI coding assistants |
 
 ## Roadmap (build phases)

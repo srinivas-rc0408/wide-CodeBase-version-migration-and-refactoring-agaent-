@@ -83,9 +83,10 @@ Use Conventional Commits: `feat:`, `fix:`, `docs:`, `test:`, `refactor:`, `chore
 
 Fill this in as you progress so the assistant has current context:
 
-- **Current phase:** P5 (benchmarking, ablations, results; P0–P4 done)
+- **Current phase:** P0–P5 done; paper draft v1 written (`docs/paper/paper.md`)
 - **Active migration task:** T1 — `datetime.utcnow()` → `datetime.now(timezone.utc)`
-- **Next milestone:** paper draft v1
+- **Next milestone:** P6 — Tier-B external validity, and the paper's hand-written
+  sections (Abstract, §2, §10, References)
 
 ## When unsure
 
