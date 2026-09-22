@@ -206,7 +206,7 @@ reach green.
 
 ## License
 
-TBD — a permissive license (e.g. **MIT**) is recommended for an academic project you may open-source. Confirm with the guide/department before publishing.
+[MIT](LICENSE) — © 2026 Srinivas R C.
 
 ## Acknowledgements
 

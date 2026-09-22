@@ -18,7 +18,7 @@ The agent is a **LangGraph 1.x state machine**: `MAP → PLAN → EDIT → TEST 
 6. **Respect the functional boundaries** in `docs/03_SRS.md §5` (NB-1…NB-10). In particular: Python source only; no infra/CI changes; no business-logic rewrites unrelated to the migration; no network at agent runtime; stop at `MAX_FIX_ATTEMPTS`.
 7. **Pin dependencies.** Never add an unpinned dependency. Add it to `pyproject.toml` with a version and explain why.
 
-## Tech stack (fixed — verified Aug 2026)
+## Tech stack (fixed — verified Sep 2026)
 
 - **Python 3.12**
 - **LangGraph 1.x** (build v1 patterns; the 0.x API is maintenance-only)
