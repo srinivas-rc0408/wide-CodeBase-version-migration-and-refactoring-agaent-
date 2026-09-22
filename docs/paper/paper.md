@@ -45,28 +45,40 @@ date: "TODO"
 
 # 1. Introduction
 
-> **STUB — outline only. Do not ghost-write.**
+When a library releases a breaking change, a single altered API contract can
+break callers spread across many interdependent files. Some of these breaks are
+invisible to static analysis: the code still parses and imports, and the failure
+surfaces only when the test suite runs. In our datetime migration, replacing a
+deprecated call left one module returning a timezone-aware value while its
+callers still passed naive ones — a TypeError that no linter could see and that
+appeared only when the tests executed.
 
-- **The problem.** A version migration changes a *contract*, and every caller
-  of that contract is a potential break. The unit of work is the dependency
-  graph, not the file.
-- **Why the obvious tools stop short.** Linters detect the pattern; they do
-  not own the consequences of changing it. (Forward-reference the ruff row in
-  §7.2 — it is the cleanest motivating number in the paper.)
-- **Why an LLM alone stops short.** No verification loop, no ordering
-  discipline, no bound on retries; the failure mode is a confident wrong
-  patch with a red suite.
-- **The gap we target.** An agent whose *loop* and *edit order* are explicit,
-  inspectable artefacts rather than emergent behaviour.
-- **Contributions**, as a numbered list:
-  1. A 5-node state machine whose checkpoint history *is* its audit log.
-  2. Dependency-ordered batching with atomic cycle collapse (FR-3).
-  3. A signature-based retry cap that makes "gave up" a defined outcome.
-  4. A 5-task controlled corpus with gold states and complete ground truth,
-     including a fixture built specifically to make edit order decisive.
-  5. A fully offline, deterministic ablation matrix — reproducible without
-     an API key.
-- **Roadmap paragraph** — one sentence per section.
+Deterministic tools detect these deprecations but cannot resolve them. In our
+benchmarks Ruff reached full detection parity with our analyzer yet fixed none
+of the sites, leaving migration completeness at zero while the suite stayed
+green (M1 0 / M2 100) — the sharpest evidence that detection and repair are
+different problems. Generative LLM agents attempt the repair but, without a
+dependency model, edit files in an unsafe order, and without execution they
+cannot verify their own output against the tests.
+
+<!-- SOURCE: runs/benchmark/results.md §3 "Deterministic baselines — ruff (DTZ) and
+     pyupgrade", the `ruff (DTZ)` row of every task: `fixed` 0, `M1 recall after fix`
+     0%, `suite after fix` n/n passed. Equivalently results.json
+     baselines[<task>].tools["ruff (DTZ)"]: fixed_files 0, m1_recall_after_fix 0.0,
+     detect_recall 100.0, suite_green true. Expanded with the per-task table in §7.3. -->
+
+We built a five-node self-correcting agent that applies a fix, runs the test
+suite, and uses the resulting stack traces to iteratively repair its own edits.
+Across a five-task benchmark, three tasks fail without this recovery loop and
+all five succeed with it. The same experiment shows that edit order changes cost
+and failure risk but never the final outcome once recovery is present — order is
+a cost, not a verdict.
+
+<!-- SOURCE: runs/benchmark/results.md §2A "Recovery loop ON vs OFF" — the
+     `no-recovery` arm reads `3× gave_up` on task02_datetime_aliased,
+     task03_half_migration and task04_multimodule, and `3× success` on all five
+     tasks under `baseline`. Cross-checked against runs/benchmark/RESULTS_SUMMARY.md
+     claim (a) table. Expanded with the per-task table in §7.2. -->
 
 ---
 

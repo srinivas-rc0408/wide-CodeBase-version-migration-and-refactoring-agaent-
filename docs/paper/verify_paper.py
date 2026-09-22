@@ -28,6 +28,8 @@ GRID_HEADER = (
 )
 # `task05` is an identifier, not a figure; don't treat its digits as a claim.
 IDENTIFIER_DIGITS = re.compile(r"task0\d|V4-|c-i{1,3}\b|§\d|FR-\d|NB-\d|NFR-\d|M[123]\b")
+# Padding words cut from §1 by hand; a later pass must not reintroduce them.
+INTENSIFIERS = r"\b(?:completely|absolutely|merely|significantly)\b"
 
 results: list[tuple[bool, str]] = []
 
@@ -133,15 +135,25 @@ def main() -> int:
     )
 
     # 5. The prose sections stay stubs, and §2 invents no citation.
+    # §1 is written, so it is checked for what it must NOT contain instead.
     for heading in (
         "# Abstract",
-        "# 1. Introduction",
         "# 2. Related Work",
         "# 10. Conclusion",
         "# References",
     ):
         body = "\n".join(lines[lines.index(heading) : lines.index(heading) + 6])
         check("STUB" in body, f"stub preserved: {heading.lstrip('# ')}")
+    intro_start, intro_end = section(lines, "# 1. Introduction", "# 2. Related Work")
+    intro = "\n".join(lines[intro_start:intro_end])
+    check("STUB" not in intro, "§1: written — the stub outline is gone")
+    padding = sorted(set(re.findall(INTENSIFIERS, intro, re.IGNORECASE)))
+    check(
+        not padding,
+        f"§1: no intensifier padding{' — found ' + ', '.join(padding)}"
+        if padding
+        else "§1: no intensifier padding",
+    )
     lit_start, lit_end = section(lines, "# 2. Related Work", "# 3. System")
     related = "\n".join(lines[lit_start:lit_end])
     check(
