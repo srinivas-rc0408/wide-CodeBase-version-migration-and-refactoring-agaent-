@@ -18,8 +18,9 @@ date: "TODO"
     - runs/benchmark/RESULTS_SUMMARY.md  (same source results.json)
   Regenerate with `python -m mra.benchmark` and re-check §7 if either moves.
 
-  STATUS: §3-§9 are written. Abstract, §1, §2, §10 are deliberate stubs —
-  bullet outlines only, to be written by hand. Do not auto-fill them.
+  STATUS: §1 and §3-§9 are written. Abstract, §2, §10 and References are the
+  deliberate stubs — bullet outlines only, to be written by hand. Do not
+  auto-fill them.
   §2 carries [CITE: ...] placeholders; fill from docs/02_LITERATURE_REVIEW.md
   only, and only after verifying each reference exists.
 -->
